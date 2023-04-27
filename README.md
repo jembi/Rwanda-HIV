@@ -6,14 +6,14 @@ This is an empty IG
 ### Publication
 This ImplementationGuide is published in the following locations:
 
-Continuous Build: __http://build.fhir.org/ig/openhie/fhir-ig-empty/branches/main/index.html__  
-Canonical / permanent URL: 
+* Continuous Build: <http://build.fhir.org/ig/openhie/Rwanda-HIV/>
+* Canonical/permanent URL: <https://openhie.github.io/Rwanda-HIV/index.html>
 <br> </br>
 
 ### Issues
 Issues and change requests are managed here:  
 
-Issues:  __https://github.com/openhie/fhir-ig-empty/issues__  
-Kanban board:  __https://github.com/openhie/fhir-ig-empty/projects/1__  
+* Issues:  <https://github.com/openhie/Rwanda-HIV/issues>  
+* Kanban board: 
 
 ---
