@@ -42,8 +42,7 @@ Extension: KeyPopulationStatus
 Id: key-population-status
 Title: "Key HIV Population"
 Description: "Populations who are at higher risk for HIV."
-* value[x] only CodeableConcept
-* valueCodeableConcept from VSKeyPopulationSatus (required)
+* value[x] only CodeableConcept from VSKeyPopulationSatus (required)
 * valueCodeableConcept.text = "HIV key population"
 * valueCodeableConcept.coding.display 1..1
 
