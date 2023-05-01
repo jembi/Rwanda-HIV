@@ -81,6 +81,7 @@ Id: vs-key-population-status
 Title: "Key Population Status"
 Description: "A list of key population types"
 * ^experimental = false
+
 * $SCT#472986005 "Sexually active with men"
 * $SCT#159799000 "Female prostitute"
 * $SCT#159800001 "Male prostitute"
