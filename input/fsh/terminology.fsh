@@ -11,6 +11,8 @@ Description:  "A list of specimen types."
 * $SCT#441620008 "Oral fluid specimen"
 * $SCT#258580003 "Whole blood specimen"
 * $SCT#119364003 "Serum specimen"
+* $SCT#122555007 "Venous blood specimen"
+* $SCT#122554006 "Capillary blood specimen"
 
 ValueSet: VSTestTypes
 Id: vs-test-types
@@ -103,3 +105,28 @@ Title: "HIV Test Done"
 Description:  "Used by the observation to indicate that a HIV test was performed."
 * ^experimental = false
 * $SCT#315124004 "Human immunodeficiency virus viral load"
+
+ValueSet: VSPatientPregnant
+Id: vs-patient-pregnant
+Title: "Patient Pregnant"
+Description:  "Used by the observation to indicate whether a patient is pregnant."
+* ^experimental = false
+* $SCT#250426008 "Pregnancy test equivocal"
+* $SCT#250425007 "Pregnancy test negative"
+* $SCT#250423000 "Pregnancy test positive"
+
+ValueSet: VSReasonSForARVRegimenChange
+Id: vs-reason-arv-regimen-change
+Title: "Reasons for ARV Regimen Change"
+Description:  "Used by the careplan to indicate the reason why a patient had their ARV regimen changed."
+* ^experimental = false
+* $SCT#7895008 "Poisoning caused by drug AND/OR medicinal substance"
+* $SCT#77386006 "Pregnancy"
+* $SCT#59037007 "Intolerance to drug"
+* $SCT#271737000 "Anemia"
+* $SCT#76018003 "Virologic"
+* $SCT#275934008 "Very poor response treatment"
+* $SCT#182856006 "Drug not available - out of stock"
+* $SCT#56717001 "Tuberculosis"
+* $SCT#408351004 "Drug interactions considered as new drugs added"
+* $SCT#52651000119105 "Finding related to risk factor in pregnancy"
