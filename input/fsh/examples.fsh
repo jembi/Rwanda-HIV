@@ -354,3 +354,19 @@ Description: "Date HIV Test Done example"
 * note.text = "Additional information regarding the HIV test"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: PatientPregnancyStatusExample
+InstanceOf: PatientPregnancyStatus
+Usage: #example
+Title: "Patient Pregnancy Status"
+Description: "This profile is to record the pregnany status for the patient."
+* status = #final
+* code = $SCT#250425007
+* code.text = "Pregnancy status"
+* code.coding.display = "Pregnancy test negative"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-12-10"
+* note.text = "Additional information..."
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"

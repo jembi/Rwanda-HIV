@@ -322,3 +322,16 @@ Description: "This profile is to record the date when HIV test was done for a pa
 * encounter 1..1
 * effectiveDateTime 1..1
 * note 0..* MS
+
+Profile: PatientPregnancyStatus
+Parent: Observation
+Id: patient-pegnancy-staus
+Title: "Patient Pregnancy Status"
+Description: "This profile is to record the pregnany status for the patient."
+* status = #final
+* code from VSPatientPregnant (required)
+* code.text = "Pregnancy status"
+* subject 1..1
+* encounter 1..1
+* effectiveDateTime 1..1
+* note 0..* MS
