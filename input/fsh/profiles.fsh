@@ -347,5 +347,4 @@ Description: "This profile is for recording the Patient's ARV Dispensing quantit
 * medicationCodeableConcept.text = "ARV Regimen"
 * subject 1..1
 * encounter 1..1 
-* basedOn 1..1 
 * note 0..1

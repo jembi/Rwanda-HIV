@@ -381,7 +381,6 @@ Description: "HIV Care Medication Request Example"
 * medicationCodeableConcept = $SCT#427314002
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
-* basedOn = Reference(ARVTreatmentRegimenSwitchedOrSubstitutedExample)
 * note.text = "AZT + 3TC + DRV/r"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
