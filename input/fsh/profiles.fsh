@@ -16,7 +16,7 @@ Extension: PatientAgeInMonths
 Id: patient-age-days
 Title: "Patient Age In Months"
 Description: "Age of the patient calculated in months."
-* value[x] only valueInteger
+* value[x] only integer
 * ^context[0].type = #element
 * ^context[0].expression = "Patient"
 
@@ -24,7 +24,7 @@ Extension: PatientAgeInYears
 Id: patient-age-years
 Title: "Patient Age In Years"
 Description: "Age of the patient calculated in years."
-* value[x] only valueInteger
+* value[x] only integer
 * ^context[0].type = #element
 * ^context[0].expression = "Patient"
 

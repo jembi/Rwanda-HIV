@@ -28,8 +28,8 @@ Description: "Patient example"
 * gender = #female
 * birthDate = "1990-12-12"
 * managingOrganization = Reference(HIVOrganizationExample)
-* extension[PAM].valueCodeableConcept.text = "Patient Age In Months"
-* extension[PAY].valueCodeableConcept.text = "Patient Age In Years"
+* extension[PAM].valueInteger = 388
+* extension[PAY].valueInteger = 32
 
 Instance: HIVPatientIsNewExample
 InstanceOf: HIVPatientIsNew
