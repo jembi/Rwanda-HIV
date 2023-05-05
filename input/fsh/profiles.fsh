@@ -16,7 +16,7 @@ Extension: PatientAgeInMonths
 Id: patient-age-days
 Title: "Patient Age In Months"
 Description: "Age of the patient calculated in months."
-* value[x] only CodeableConcept
+* value[x] only valueInteger
 * ^context[0].type = #element
 * ^context[0].expression = "Patient"
 
@@ -24,7 +24,7 @@ Extension: PatientAgeInYears
 Id: patient-age-years
 Title: "Patient Age In Years"
 Description: "Age of the patient calculated in years."
-* value[x] only CodeableConcept
+* value[x] only valueInteger
 * ^context[0].type = #element
 * ^context[0].expression = "Patient"
 
@@ -319,3 +319,16 @@ Description: "This profile is to record the pregnany status for the patient."
 * encounter 1..1
 * effectiveDateTime 1..1
 * note 0..* MS
+
+Profile: HIVCareMedicationRequest
+Parent: MedicationRequest
+Id: hiv-med-req
+Title: "HIV Care Medication Request"
+Description: "This profile is for recording the Patient's ARV Dispensing quantity in days."
+* status 1..1
+* intent 1..1
+* medicationCodeableConcept from VSARVRegimen (required)
+* medicationCodeableConcept.text = "ARV Regimen"
+* subject 1..1
+* encounter 1..1 
+* note 0..1

@@ -354,3 +354,17 @@ Description: "This profile is to record the pregnany status for the patient."
 * note.text = "Additional information..."
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: HIVCareMedicationRequestExample
+InstanceOf: HIVCareMedicationRequest
+Usage: #example
+Title: "HIV Care Medication Request Example"
+Description: "HIV Care Medication Request Example"
+* status = #active
+* intent = #proposal
+* medicationCodeableConcept = $SCT#427314002
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* note.text = "AZT + 3TC + DRV/r"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
