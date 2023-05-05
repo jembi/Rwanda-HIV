@@ -50,7 +50,7 @@ Id: hiv-patient-is-new
 Title: "HIV Patient Is New"
 Description: "This profile is to record whether an HIV patient is new."
 * status = #final
-* code from VSIsPatientNew (required)
+* code = $SCT#769681006
 * code.text = "New Patient Indication"
 * subject 1..1
 * encounter 1..1

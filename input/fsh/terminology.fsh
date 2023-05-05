@@ -130,10 +130,3 @@ Description:  "Used by the careplan to indicate the reason why a patient had the
 * $SCT#56717001 "Tuberculosis"
 * $SCT#408351004 "Drug interactions considered as new drugs added"
 * $SCT#52651000119105 "Finding related to risk factor in pregnancy"
-
-ValueSet: VSIsPatientNew
-Id: vs-is-patient-new
-Title: "Is Patient New"
-Description:  "Used by the observation to indicate whether the patient is new."
-* ^experimental = false
-* $SCT#452721000124101 "Patient new to facility"

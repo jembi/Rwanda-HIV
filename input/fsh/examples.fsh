@@ -27,7 +27,6 @@ Description: "Patient example"
 * telecom[1].value = "someone@example.com"
 * gender = #female
 * birthDate = "1990-12-12"
-* maritalStatus = #M
 * managingOrganization = Reference(HIVOrganizationExample)
 * extension[PAM].valueCodeableConcept.text = "Patient Age In Months"
 * extension[PAY].valueCodeableConcept.text = "Patient Age In Years"
@@ -38,7 +37,7 @@ Usage: #example
 Title: "Patient Is New example"
 Description: "Patient Is New example"
 * status = #final
-* code = $SCT#452721000124101
+* code = $SCT#769681006
 * code.text = "New Patient Indication"
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
