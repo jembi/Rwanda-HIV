@@ -46,6 +46,8 @@ Description: "Populations who are at higher risk for HIV."
 * valueCodeableConcept from VSKeyPopulationSatus (required)
 * valueCodeableConcept.text = "HIV key population"
 * valueCodeableConcept.coding.display 1..1
+* ^context[0].type = #element
+* ^context[0].expression = "Patient"
 
 Profile: HIVOrganization
 Parent: Organization
@@ -91,6 +93,8 @@ Id: hiv-care-next-visit
 Title: "Next Appointment Date"
 Description: "A date representing the patient's next scheduled appointment."
 * value[x] only dateTime
+* ^context[0].type = #element
+* ^context[0].expression = "Encounter"
 
 Profile: TransferringFacilityEncounter
 Parent: Encounter
