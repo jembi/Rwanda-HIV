@@ -3,49 +3,26 @@ Parent: Patient
 Id: hiv-patient
 Title: "Patient"
 Description: "A patient resource for an HIV Patient"
-* identifier 1..*
-* identifier ^slicing.discriminator.type = #pattern
-* identifier ^slicing.discriminator.path = "system"
-* identifier ^slicing.rules = #openAtEnd
-* identifier contains
-    NID 0..1 and
-    MR 1..1
-* identifier[NID].value 0..1 MS
-* identifier[NID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/nid" (exactly)
-* identifier[MR].value 1..1
-* identifier[MR].system = "http://openhie.org/fhir/rwanda-hiv/identifier/mr" (exactly)
-* identifier[MR].type.coding.code = #MR
-* identifier[MR].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[MR].type.coding.display = "Medical record number"
-* identifier[MR].type.text = "Patient folder number"
 * name.given 1..*
 * name.family 1..1
 * telecom 0..* MS
 * gender 1..1
 * birthDate 1..1
-* address 0..* MS
-* address.city 1..1
-* address.line 1..*
-* address.district 1..1
-* address.state 1..1
-* address.country 1..1
-* contact 0..* MS
-* contact.name.given 1..*
-* contact.name.family 1..1
-* contact.telecom 0..* MS
-* contact.relationship 1..1
-* maritalStatus 1..1 
 * managingOrganization 1..1
-* extension contains KeyPopulationStatus named KPS 1..1
+* extension contains PatientAgeInMonths named PAM 0..1
+* extension contains PatientAgeInYears named PAY 0..1
 
-Extension: KeyPopulationStatus
-Id: key-population-status
-Title: "Key HIV Population"
-Description: "Populations who are at higher risk for HIV."
+Extension: PatientAgeInMonths
+Id: patient-age-days
+Title: "Patient Age In Months"
+Description: "Age of the patient calculated in months."
 * value[x] only CodeableConcept
-* valueCodeableConcept from VSKeyPopulationSatus (required)
-* valueCodeableConcept.text = "HIV key population"
-* valueCodeableConcept.coding.display 1..1
+
+Extension: PatientAgeInYears
+Id: patient-age-years
+Title: "Patient Age In Years"
+Description: "Age of the patient calculated in years."
+* value[x] only CodeableConcept
 
 Profile: HIVOrganization
 Parent: Organization
@@ -65,13 +42,33 @@ Description: "Organization providing HIV Testing Services."
 * identifier[XX].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[XX].type.coding.display = "Organization identifier"
 * identifier[XX].type.text = "HIV Organization identifier"
-* address 1..1
-* address.country 1..1
-* address.state 1..1
-* address.district 1..1
-* address.city 1..1
-* address.line 1..*
 * name 1..1
+
+Profile: HIVPatientIsNew
+Parent: Observation
+Id: hiv-patient-is-new
+Title: "HIV Patient Is New"
+Description: "This profile is to record whether an HIV patient is new."
+* status = #final
+* code from VSIsPatientNew (required)
+* code.text = "New Patient Indication"
+* subject 1..1
+* encounter 1..1
+* valueBoolean 1..1
+* note 0..* MS
+
+Profile: PatientPregnant
+Parent: Observation
+Id: patient-pregnant
+Title: "Patient Pregnant"
+Description: "This profile is to record the patient pregnancy test outcome."
+* status = #final
+* code from VSPatientPregnant (required)
+* code.text = "Patient Pregnancy Test Outcome"
+* subject 1..1
+* encounter 1..1
+* valueBoolean 1..1
+* note 0..* MS
 
 Profile: TargetFacilityEncounter
 Parent: Encounter
@@ -193,10 +190,10 @@ Description: "What is the location of the organization responsible for conductin
 * identifier[XX].type.coding.display = "Organization identifier"
 * identifier[XX].type.text = "HIV Organization identifier"
 * address 1..1
-* address.country 1..1
+//* address.country 1..1
 * address.state 1..1
 * address.district 1..1
-* address.city 1..1
+//* address.city 1..1
 * name 1..1
 
 Profile: HIVServiceRequest
