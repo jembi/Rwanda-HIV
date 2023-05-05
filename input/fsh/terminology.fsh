@@ -70,28 +70,6 @@ Description: "Reasons why a lab order was cancelled or rejected."
 * $SCT#281266006 "No sample received"
 * $SCT#135839007 "Sample rejected"
 
-CodeSystem: CSKeyPopulationStatus
-Id: cs-key-population-status
-Title: "Key Population Status"
-Description: "A list of key population types"
-* ^experimental = false
-* ^caseSensitive = true
-* #General-Population "General Population"
-
-ValueSet: VSKeyPopulationSatus
-Id: vs-key-population-status
-Title: "Key Population Status"
-Description: "A list of key population types"
-* ^experimental = false
-
-* $SCT#472986005 "Sexually active with men"
-* $SCT#159799000 "Female prostitute"
-* $SCT#159800001 "Male prostitute"
-* $SCT#228388006 "Intravenous drug user"
-* $SCT#417284009 "Current drug user"
-* $SCT#407375002 "Surgically transgendered transsexual"
-* include codes from system CSKeyPopulationStatus
-
 ValueSet: VSCondition
 Id: vs-condition
 Title: "Conditions"
@@ -157,3 +135,10 @@ Description: "A list of ARV regimen."
 * $SCT#414090006 "Product containing emtricitabine and tenofovir"
 * $SCT#387151007 "Zidovudine"
 * $SCT#776469003 "Product containing only lamivudine and zidovudine"
+
+ValueSet: VSARVMedicationRequest
+Id: vs-arvtreatment-activity-type
+Title: "ARV Treatment Medication Request"
+Description: "Codes used to represent a medication request for ART."
+* ^experimental = false
+*  $LNC#45260-7 "HIV ART medication"

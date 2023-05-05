@@ -47,16 +47,19 @@ Description: "Patient Is New example"
 * note.time = "2015-02-07T13:28:17-05:00"
 
 Instance: PatientPregnantExample
-InstanceOf: PatientPregnant
+InstanceOf: PatientPregnancyStatus
 Usage: #example
 Title: "Patient Pregnant example"
 Description: "Patient Pregnant example"
 * status = #final
-* code = $SCT#250426008
-* code.text = "Patient Pregnancy Test Outcome"
+* code = $SCT#250421003
+* code.text = "Pregnancy status"
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
-* valueBoolean = true
+* effectiveDateTime = "2022-11-30"
+* valueCodeableConcept = $SCT#250423000
+* valueCodeableConcept.text = "Pregnancy test result"
+* valueCodeableConcept.coding.display = "Pregnancy test positive"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -339,32 +342,37 @@ Description: "Date HIV Test Done example"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
 
-Instance: PatientPregnancyStatusExample
-InstanceOf: PatientPregnancyStatus
+Instance: ARVTreatmentExample
+InstanceOf: ARVTreatment
 Usage: #example
-Title: "Patient Pregnancy Status"
-Description: "This profile is to record the pregnany status for the patient."
-* status = #final
-* code = $SCT#250425007
-* code.text = "Pregnancy status"
-* code.coding.display = "Pregnancy test negative"
-* subject = Reference(HIVPatientExample)
-* encounter = Reference(TargetFacilityEncounterExample)
-* effectiveDateTime = "2022-12-10"
-* note.text = "Additional information..."
-* note.authorReference = Reference(HIVOrganizationExample)
-* note.time = "2015-02-07T13:28:17-05:00"
-
-Instance: HIVCareMedicationRequestExample
-InstanceOf: HIVCareMedicationRequest
-Usage: #example
-Title: "HIV Care Medication Request Example"
-Description: "HIV Care Medication Request Example"
+Title: "ARV CarePlan example"
+Description: "ARV CarePlan example"
+* identifier[PLAC].value = "facility1"
+* identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
+* identifier[PLAC].type.coding.code = #PLAC
+* identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[PLAC].type.coding.display = "Placer identifier"
+* identifier[PLAC].type.text = "Unique ART number"
 * status = #active
-* intent = #proposal
-* medicationCodeableConcept = $SCT#427314002
+* intent = #plan
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
-* note.text = "AZT + 3TC + DRV/r"
+* period.start = "2022-12-01"
+* period.end = "2022-12-01"
+* activity.detail.kind = #MedicationRequest
+* activity.detail.code = $LNC#45260-7 
+* activity.detail.code.text = "HIV medication request"
+* activity.detail.code.coding.display = "HIV ART medication"
+* activity.detail.reasonCode = $SCT#76018003
+* activity.detail.reasonCode.text = "Regimen change reason"
+* activity.detail.reasonCode.coding.display = "Virologic"
+* activity.detail.status = #in-progress
+* activity.detail.productCodeableConcept = $SCT#427314002
+* activity.detail.productCodeableConcept.coding.display = "Antiviral therapy"
+* activity.detail.productCodeableConcept.text = "ARV regimen"
+* activity.detail.extension[artRegimenSwitchedOrSubstituted].valueBoolean = false
+* activity.detail.scheduledPeriod.start = "2023-01-01"
+* activity.detail.scheduledPeriod.end = "2023-01-01"
+* note.text = "ABC + 3TC + LPV/r"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"

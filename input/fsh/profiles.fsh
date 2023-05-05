@@ -13,7 +13,7 @@ Description: "A patient resource for an HIV Patient"
 * extension contains PatientAgeInYears named PAY 0..1 MS
 
 Extension: PatientAgeInMonths
-Id: patient-age-days
+Id: patient-age-months
 Title: "Patient Age In Months"
 Description: "Age of the patient calculated in months."
 * value[x] only integer
@@ -56,19 +56,6 @@ Description: "This profile is to record whether an HIV patient is new."
 * status = #final
 * code = $SCT#769681006
 * code.text = "New Patient Indication"
-* subject 1..1
-* encounter 1..1
-* valueBoolean 1..1
-* note 0..* MS
-
-Profile: PatientPregnant
-Parent: Observation
-Id: patient-pregnant
-Title: "Patient Pregnant"
-Description: "This profile is to record the patient pregnancy test outcome."
-* status = #final
-* code from VSPatientPregnant (required)
-* code.text = "Patient Pregnancy Test Outcome"
 * subject 1..1
 * encounter 1..1
 * valueBoolean 1..1
@@ -309,26 +296,62 @@ Description: "This profile is to record the date when HIV test was done for a pa
 
 Profile: PatientPregnancyStatus
 Parent: Observation
-Id: patient-pegnancy-staus
+Id: hiv-patient-pregnant
 Title: "Patient Pregnancy Status"
-Description: "This profile is to record the pregnany status for the patient."
+Description: "This profile is to record the pregnacy status for the patient."
 * status = #final
-* code from VSPatientPregnant (required)
+* code = $SCT#250421003
 * code.text = "Pregnancy status"
 * subject 1..1
 * encounter 1..1
+* valueCodeableConcept from VSPatientPregnant (required)
+* valueCodeableConcept.text = "Pregnancy test result"
 * effectiveDateTime 1..1
 * note 0..* MS
 
-Profile: HIVCareMedicationRequest
-Parent: MedicationRequest
-Id: hiv-med-req
-Title: "HIV Care Medication Request"
-Description: "This profile is for recording the Patient's ARV Dispensing quantity in days."
+Profile: ARVTreatment
+Parent: CarePlan
+Id: hiv-arv-treatment
+Title: "ARV Treatment"
+Description: "This profile is to record prescribed ARV regimen"
+* identifier 1..*
+* identifier ^slicing.discriminator.type = #pattern
+* identifier ^slicing.discriminator.path = "system"
+* identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.description = "Slice based on the type of identifier."
+* identifier contains
+    PLAC 1..1
+* identifier[PLAC].value 1..1
+* identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan" (exactly)
+* identifier[PLAC].type.coding.code = #PLAC
+* identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[PLAC].type.coding.display = "Placer identifier"
+* identifier[PLAC].type.text = "Unique ART number"
 * status 1..1
 * intent 1..1
-* medicationCodeableConcept from VSARVRegimen (required)
-* medicationCodeableConcept.text = "ARV Regimen"
 * subject 1..1
-* encounter 1..1 
+* encounter 1..1
+* period 1..1
+* activity 1..* 
+* activity.detail 0..1
+* activity.detail.scheduledPeriod 0..1
+* activity.detail.kind 0..1 MS
+* activity.detail.kind = #MedicationRequest
+* activity.detail.code 0..1 MS
+* activity.detail.code from VSARVMedicationRequest (required)
+* activity.detail.code.text = "HIV medication request"
+* activity.detail.reasonCode 0..1 MS
+* activity.detail.reasonCode from VSReasonSForARVRegimenChange (required)
+* activity.detail.reasonCode.text = "Regimen change reason"
+* activity.detail.status 1..1
+* activity.detail.productCodeableConcept 0..1 MS
+* activity.detail.productCodeableConcept from VSARVRegimen (required)
+* activity.detail.productCodeableConcept.text = "ARV regimen"
+* activity.detail.extension contains ARTRegimenSwitchedOrSubstituted named artRegimenSwitchedOrSubstituted 0..1 MS
 * note 0..1
+
+Extension: ARTRegimenSwitchedOrSubstituted
+Id: art-regimen-switched-or-substituted
+Title: "ART Regimen Switched Or Substituted"
+Description: "The ARV regimen has been switched to a new ARV regimen or has been substituted by another ARV regimen."
+* value[x] only boolean
