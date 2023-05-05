@@ -66,14 +66,12 @@ InstanceOf: TargetFacilityEncounter
 Usage: #example
 Title: "Target Facility Encounter example" 
 Description: "Target Facility Encounter example"
-* extension[next-visit].valueDateTime = "2022-10-22"
 * status = #finished
 * class.code = #AMB
 * class.system = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
 * subject = Reference(HIVPatientExample)
 * period.start = "2022-12-01"
 * period.end = "2023-01-20"
-* partOf = Reference(TransferringFacilityEncounterExample)
 * episodeOfCare = Reference(HIVEpisodeOfCareExample)
 
 Instance: HIVEpisodeOfCareExample
@@ -93,16 +91,6 @@ Description: "This resource is used for Management of a Patient's HIV Programme.
 * managingOrganization = Reference(HIVOrganizationExample)
 * period.start = "2021-05-18"
 * period.end = "2021-05-18"
-
-Instance: TransferringFacilityEncounterExample
-InstanceOf: TransferringFacilityEncounter
-Usage: #example
-Title: "Transferring Facility Encounter example" 
-Description: "Transferring Facility Encounter example"
-* status = #finished
-* class.code = #AMB
-* class.system = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
-* serviceProvider = Reference(HIVOrganizationExample)
 
 Instance: HIVDiagnosisExample
 InstanceOf: HIVDiagnosis

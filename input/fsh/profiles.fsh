@@ -9,20 +9,24 @@ Description: "A patient resource for an HIV Patient"
 * gender 1..1
 * birthDate 1..1
 * managingOrganization 1..1
-* extension contains PatientAgeInMonths named PAM 0..1
-* extension contains PatientAgeInYears named PAY 0..1
+* extension contains PatientAgeInMonths named PAM 0..1 MS
+* extension contains PatientAgeInYears named PAY 0..1 MS
 
 Extension: PatientAgeInMonths
 Id: patient-age-days
 Title: "Patient Age In Months"
 Description: "Age of the patient calculated in months."
 * value[x] only CodeableConcept
+* ^context[0].type = #element
+* ^context[0].expression = "Patient"
 
 Extension: PatientAgeInYears
 Id: patient-age-years
 Title: "Patient Age In Years"
 Description: "Age of the patient calculated in years."
 * value[x] only CodeableConcept
+* ^context[0].type = #element
+* ^context[0].expression = "Patient"
 
 Profile: HIVOrganization
 Parent: Organization
@@ -75,28 +79,11 @@ Parent: Encounter
 Id: target-facility-encounter
 Title: "Target Facility Encounter" 
 Description: "This profile represents the current facility at which the patient is receiving treatment."
-* extension contains HIVCareNextAppointment named next-visit 0..1 MS
 * status 1..1
 * class 1..1
 * subject 1..1
 * period 1..1
-* partOf 0..1 MS
 * episodeOfCare 1..*
-
-Extension: HIVCareNextAppointment
-Id: hiv-care-next-visit
-Title: "Next Appointment Date"
-Description: "A date representing the patient's next scheduled appointment."
-* value[x] only dateTime
-
-Profile: TransferringFacilityEncounter
-Parent: Encounter
-Id: transferring-facility-encounter
-Title: "Transferring Facility Encounter" 
-Description: "This profile represents the facility the patient is being transferred from."
-* status 1..1
-* class 1..1
-* serviceProvider 1..1
 
 Profile: HIVEpisodeOfCare
 Parent: EpisodeOfCare
