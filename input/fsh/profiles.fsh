@@ -355,3 +355,5 @@ Id: art-regimen-switched-or-substituted
 Title: "ART Regimen Switched Or Substituted"
 Description: "The ARV regimen has been switched to a new ARV regimen or has been substituted by another ARV regimen."
 * value[x] only boolean
+* ^context[0].type = #element
+* ^context[0].expression = "CarePlan"
