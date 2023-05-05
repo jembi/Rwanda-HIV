@@ -10,28 +10,13 @@ Description: "Organization example"
 * identifier[XX].type.coding.display = "Organization identifier"
 * identifier[XX].type.text = "HIV Organization identifier"
 * name = "HIV Test Services Health Facility"
-* address[+].country = "DISI country"
-* address[=].state = "DISI state 1"
-* address[=].district = "DISI district 1"
-* address[=].city = "DISI city 1"
-* address[=].line[+] = "DISI line 1"
-* address[=].line[+] = "DISI line 2"
-* address[=].line[+] = "DISI line 3"
-* address[=].postalCode = "DISI postal code"
+
 
 Instance: HIVPatientExample
 InstanceOf: HIVPatient
 Usage: #example
 Title: "Patient example"
 Description: "Patient example"
-* identifier[NID].value = "NID1234567"
-* identifier[NID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/nid"
-* identifier[MR].value = "ORG1-0765712"
-* identifier[MR].system = "http://openhie.org/fhir/rwanda-hiv/identifier/mr"
-* identifier[MR].type.coding.code = #MR
-* identifier[MR].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[MR].type.coding.display = "Medical record number"
-* identifier[MR].type.text = "Patient folder number"
 * name.use = #official
 * name.family = "Smith"
 * name.given[0] = "Jane"
@@ -42,40 +27,54 @@ Description: "Patient example"
 * telecom[1].value = "someone@example.com"
 * gender = #female
 * birthDate = "1990-12-12"
-* address.country = "South Africa"
-* address.state = "Western Province"
-* address.district = "City of Cape Town"
-* address.line[0] = "99"
-* address.line[1] = "Walmer Blvd"
-* address.line[2] = "Sunnydale"
-* address.city = "Cape Town"
-* contact[0].relationship = #N
-* contact[0].relationship.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0131"
-* contact[0].name.given = "John" 
-* contact[0].name.family = "Doe"
-* contact[0].telecom.system = #phone
-* contact[0].telecom.value = "+27829999999"
-* maritalStatus = #M
-* maritalStatus.coding.system = "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
 * managingOrganization = Reference(HIVOrganizationExample)
-* extension[KPS].valueCodeableConcept.text = "HIV key population"
-* extension[KPS].valueCodeableConcept.coding.code = $SCT#417284009
-* extension[KPS].valueCodeableConcept.coding.system = "http://snomed.info/sct"
-* extension[KPS].valueCodeableConcept.coding.display = "Current drug user"
+* extension[PAM].valueInteger = 388
+* extension[PAY].valueInteger = 32
+
+Instance: HIVPatientIsNewExample
+InstanceOf: HIVPatientIsNew
+Usage: #example
+Title: "Patient Is New example"
+Description: "Patient Is New example"
+* status = #final
+* code = $SCT#769681006
+* code.text = "New Patient Indication"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* valueBoolean = true
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.text = "additional notes here"
+* note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: PatientPregnantExample
+InstanceOf: PatientPregnancyStatus
+Usage: #example
+Title: "Patient Pregnant example"
+Description: "Patient Pregnant example"
+* status = #final
+* code = $SCT#250421003
+* code.text = "Pregnancy status"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* valueCodeableConcept = $SCT#250423000
+* valueCodeableConcept.text = "Pregnancy test result"
+* valueCodeableConcept.coding.display = "Pregnancy test positive"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.text = "additional notes here"
+* note.time = "2015-02-07T13:28:17-05:00"
 
 Instance: TargetFacilityEncounterExample
 InstanceOf: TargetFacilityEncounter
 Usage: #example
 Title: "Target Facility Encounter example" 
 Description: "Target Facility Encounter example"
-* extension[next-visit].valueDateTime = "2022-10-22"
 * status = #finished
 * class.code = #AMB
 * class.system = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
 * subject = Reference(HIVPatientExample)
 * period.start = "2022-12-01"
 * period.end = "2023-01-20"
-* partOf = Reference(TransferringFacilityEncounterExample)
 * episodeOfCare = Reference(HIVEpisodeOfCareExample)
 
 Instance: HIVEpisodeOfCareExample
@@ -95,16 +94,6 @@ Description: "This resource is used for Management of a Patient's HIV Programme.
 * managingOrganization = Reference(HIVOrganizationExample)
 * period.start = "2021-05-18"
 * period.end = "2021-05-18"
-
-Instance: TransferringFacilityEncounterExample
-InstanceOf: TransferringFacilityEncounter
-Usage: #example
-Title: "Transferring Facility Encounter example" 
-Description: "Transferring Facility Encounter example"
-* status = #finished
-* class.code = #AMB
-* class.system = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
-* serviceProvider = Reference(HIVOrganizationExample)
 
 Instance: HIVDiagnosisExample
 InstanceOf: HIVDiagnosis
@@ -159,10 +148,8 @@ Description: "HIV Service Request Location example"
 * identifier[XX].type.coding.display = "Organization identifier"
 * identifier[XX].type.text = "HIV Organization identifier"
 * name = "Laboratory Services"
-* address[+].country = "DISI country"
-* address[=].state = "DISI state 1"
+* address[+].state = "DISI state 1"
 * address[=].district = "DISI district 1"
-* address[=].city = "DISI city 1"
 * address[=].line[+] = "DISI line 1"
 * address[=].line[+] = "DISI line 2"
 * address[=].line[+] = "DISI line 3"
@@ -355,32 +342,37 @@ Description: "Date HIV Test Done example"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
 
-Instance: PatientPregnancyStatusExample
-InstanceOf: PatientPregnancyStatus
+Instance: ARVTreatmentExample
+InstanceOf: ARVTreatment
 Usage: #example
-Title: "Patient Pregnancy Status"
-Description: "This profile is to record the pregnany status for the patient."
-* status = #final
-* code = $SCT#250425007
-* code.text = "Pregnancy status"
-* code.coding.display = "Pregnancy test negative"
-* subject = Reference(HIVPatientExample)
-* encounter = Reference(TargetFacilityEncounterExample)
-* effectiveDateTime = "2022-12-10"
-* note.text = "Additional information..."
-* note.authorReference = Reference(HIVOrganizationExample)
-* note.time = "2015-02-07T13:28:17-05:00"
-
-Instance: HIVCareMedicationRequestExample
-InstanceOf: HIVCareMedicationRequest
-Usage: #example
-Title: "HIV Care Medication Request Example"
-Description: "HIV Care Medication Request Example"
+Title: "ARV CarePlan example"
+Description: "ARV CarePlan example"
+* identifier[PLAC].value = "facility1"
+* identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
+* identifier[PLAC].type.coding.code = #PLAC
+* identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[PLAC].type.coding.display = "Placer identifier"
+* identifier[PLAC].type.text = "Unique ART number"
 * status = #active
-* intent = #proposal
-* medicationCodeableConcept = $SCT#427314002
+* intent = #plan
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
-* note.text = "AZT + 3TC + DRV/r"
+* period.start = "2022-12-01"
+* period.end = "2022-12-01"
+* activity.detail.kind = #MedicationRequest
+* activity.detail.code = $LNC#45260-7 
+* activity.detail.code.text = "HIV medication request"
+* activity.detail.code.coding.display = "HIV ART medication"
+* activity.detail.reasonCode = $SCT#76018003
+* activity.detail.reasonCode.text = "Regimen change reason"
+* activity.detail.reasonCode.coding.display = "Virologic"
+* activity.detail.status = #in-progress
+* activity.detail.productCodeableConcept = $SCT#427314002
+* activity.detail.productCodeableConcept.coding.display = "Antiviral therapy"
+* activity.detail.productCodeableConcept.text = "ARV regimen"
+* activity.detail.extension[artRegimenSwitchedOrSubstituted].valueBoolean = false
+* activity.detail.scheduledPeriod.start = "2023-01-01"
+* activity.detail.scheduledPeriod.end = "2023-01-01"
+* note.text = "ABC + 3TC + LPV/r"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"

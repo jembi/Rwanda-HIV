@@ -3,49 +3,28 @@ Parent: Patient
 Id: hiv-patient
 Title: "Patient"
 Description: "A patient resource for an HIV Patient"
-* identifier 1..*
-* identifier ^slicing.discriminator.type = #pattern
-* identifier ^slicing.discriminator.path = "system"
-* identifier ^slicing.rules = #openAtEnd
-* identifier contains
-    NID 0..1 and
-    MR 1..1
-* identifier[NID].value 0..1 MS
-* identifier[NID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/nid" (exactly)
-* identifier[MR].value 1..1
-* identifier[MR].system = "http://openhie.org/fhir/rwanda-hiv/identifier/mr" (exactly)
-* identifier[MR].type.coding.code = #MR
-* identifier[MR].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[MR].type.coding.display = "Medical record number"
-* identifier[MR].type.text = "Patient folder number"
 * name.given 1..*
 * name.family 1..1
 * telecom 0..* MS
 * gender 1..1
 * birthDate 1..1
-* address 0..* MS
-* address.city 1..1
-* address.line 1..*
-* address.district 1..1
-* address.state 1..1
-* address.country 1..1
-* contact 0..* MS
-* contact.name.given 1..*
-* contact.name.family 1..1
-* contact.telecom 0..* MS
-* contact.relationship 1..1
-* maritalStatus 1..1 
 * managingOrganization 1..1
-* extension contains KeyPopulationStatus named KPS 1..1
+* extension contains PatientAgeInMonths named PAM 0..1 MS
+* extension contains PatientAgeInYears named PAY 0..1 MS
 
-Extension: KeyPopulationStatus
-Id: key-population-status
-Title: "Key HIV Population"
-Description: "Populations who are at higher risk for HIV."
-* value[x] only CodeableConcept
-* valueCodeableConcept from VSKeyPopulationSatus (required)
-* valueCodeableConcept.text = "HIV key population"
-* valueCodeableConcept.coding.display 1..1
+Extension: PatientAgeInMonths
+Id: patient-age-months
+Title: "Patient Age In Months"
+Description: "Age of the patient calculated in months."
+* value[x] only integer
+* ^context[0].type = #element
+* ^context[0].expression = "Patient"
+
+Extension: PatientAgeInYears
+Id: patient-age-years
+Title: "Patient Age In Years"
+Description: "Age of the patient calculated in years."
+* value[x] only integer
 * ^context[0].type = #element
 * ^context[0].expression = "Patient"
 
@@ -67,43 +46,31 @@ Description: "Organization providing HIV Testing Services."
 * identifier[XX].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[XX].type.coding.display = "Organization identifier"
 * identifier[XX].type.text = "HIV Organization identifier"
-* address 1..1
-* address.country 1..1
-* address.state 1..1
-* address.district 1..1
-* address.city 1..1
-* address.line 1..*
 * name 1..1
+
+Profile: HIVPatientIsNew
+Parent: Observation
+Id: hiv-patient-is-new
+Title: "HIV Patient Is New"
+Description: "This profile is to record whether an HIV patient is new."
+* status = #final
+* code = $SCT#769681006
+* code.text = "New Patient Indication"
+* subject 1..1
+* encounter 1..1
+* valueBoolean 1..1
+* note 0..* MS
 
 Profile: TargetFacilityEncounter
 Parent: Encounter
 Id: target-facility-encounter
 Title: "Target Facility Encounter" 
 Description: "This profile represents the current facility at which the patient is receiving treatment."
-* extension contains HIVCareNextAppointment named next-visit 0..1 MS
 * status 1..1
 * class 1..1
 * subject 1..1
 * period 1..1
-* partOf 0..1 MS
 * episodeOfCare 1..*
-
-Extension: HIVCareNextAppointment
-Id: hiv-care-next-visit
-Title: "Next Appointment Date"
-Description: "A date representing the patient's next scheduled appointment."
-* value[x] only dateTime
-* ^context[0].type = #element
-* ^context[0].expression = "Encounter"
-
-Profile: TransferringFacilityEncounter
-Parent: Encounter
-Id: transferring-facility-encounter
-Title: "Transferring Facility Encounter" 
-Description: "This profile represents the facility the patient is being transferred from."
-* status 1..1
-* class 1..1
-* serviceProvider 1..1
 
 Profile: HIVEpisodeOfCare
 Parent: EpisodeOfCare
@@ -197,10 +164,10 @@ Description: "What is the location of the organization responsible for conductin
 * identifier[XX].type.coding.display = "Organization identifier"
 * identifier[XX].type.text = "HIV Organization identifier"
 * address 1..1
-* address.country 1..1
+//* address.country 1..1
 * address.state 1..1
 * address.district 1..1
-* address.city 1..1
+//* address.city 1..1
 * name 1..1
 
 Profile: HIVServiceRequest
@@ -329,26 +296,64 @@ Description: "This profile is to record the date when HIV test was done for a pa
 
 Profile: PatientPregnancyStatus
 Parent: Observation
-Id: patient-pegnancy-staus
+Id: hiv-patient-pregnant
 Title: "Patient Pregnancy Status"
-Description: "This profile is to record the pregnany status for the patient."
+Description: "This profile is to record the pregnacy status for the patient."
 * status = #final
-* code from VSPatientPregnant (required)
+* code = $SCT#250421003
 * code.text = "Pregnancy status"
 * subject 1..1
 * encounter 1..1
+* valueCodeableConcept from VSPatientPregnant (required)
+* valueCodeableConcept.text = "Pregnancy test result"
 * effectiveDateTime 1..1
 * note 0..* MS
 
-Profile: HIVCareMedicationRequest
-Parent: MedicationRequest
-Id: hiv-med-req
-Title: "HIV Care Medication Request"
-Description: "This profile is for recording the Patient's ARV Dispensing quantity in days."
+Profile: ARVTreatment
+Parent: CarePlan
+Id: hiv-arv-treatment
+Title: "ARV Treatment"
+Description: "This profile is to record prescribed ARV regimen"
+* identifier 1..*
+* identifier ^slicing.discriminator.type = #pattern
+* identifier ^slicing.discriminator.path = "system"
+* identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.description = "Slice based on the type of identifier."
+* identifier contains
+    PLAC 1..1
+* identifier[PLAC].value 1..1
+* identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan" (exactly)
+* identifier[PLAC].type.coding.code = #PLAC
+* identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[PLAC].type.coding.display = "Placer identifier"
+* identifier[PLAC].type.text = "Unique ART number"
 * status 1..1
 * intent 1..1
-* medicationCodeableConcept from VSARVRegimen (required)
-* medicationCodeableConcept.text = "ARV Regimen"
 * subject 1..1
-* encounter 1..1 
+* encounter 1..1
+* period 1..1
+* activity 1..* 
+* activity.detail 0..1
+* activity.detail.scheduledPeriod 0..1
+* activity.detail.kind 0..1 MS
+* activity.detail.kind = #MedicationRequest
+* activity.detail.code 0..1 MS
+* activity.detail.code from VSARVMedicationRequest (required)
+* activity.detail.code.text = "HIV medication request"
+* activity.detail.reasonCode 0..1 MS
+* activity.detail.reasonCode from VSReasonSForARVRegimenChange (required)
+* activity.detail.reasonCode.text = "Regimen change reason"
+* activity.detail.status 1..1
+* activity.detail.productCodeableConcept 0..1 MS
+* activity.detail.productCodeableConcept from VSARVRegimen (required)
+* activity.detail.productCodeableConcept.text = "ARV regimen"
+* activity.detail.extension contains ARTRegimenSwitchedOrSubstituted named artRegimenSwitchedOrSubstituted 0..1 MS
 * note 0..1
+
+Extension: ARTRegimenSwitchedOrSubstituted
+Id: art-regimen-switched-or-substituted
+Title: "ART Regimen Switched Or Substituted"
+Description: "The ARV regimen has been switched to a new ARV regimen or has been substituted by another ARV regimen."
+* value[x] only boolean
+* ^context[0].type = #element
+* ^context[0].expression = "CarePlan.activity.detail"
