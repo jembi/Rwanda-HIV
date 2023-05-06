@@ -121,17 +121,32 @@ InstanceOf: VLSpecimen
 Usage: #example
 Title: "Viral Load Specimen example"
 Description: "Viral Load Specimen example"
-* identifier[USID].value = "abc123"
-* identifier[USID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/specimen-id" (exactly)
-* identifier[USID].type.coding.code = #USID
-* identifier[USID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[USID].type.coding.display = "Unique Specimen ID"
-* identifier[USID].type.text = "Specimen identifier"
+* extension[SampleReordered].valueBoolean = false
+* identifier[appSampleCode].value = "abc123"
+* identifier[appSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/app-sample-id" (exactly)
+* identifier[appSampleCode].type.coding.code = #USID
+* identifier[appSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[appSampleCode].type.coding.display = "Unique Specimen ID"
+* identifier[appSampleCode].type.text = "App sample identifier"
+* identifier[remoteSampleCode].value = "def456"
+* identifier[remoteSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/remote-sample-id" (exactly)
+* identifier[remoteSampleCode].type.coding.code = #USID
+* identifier[remoteSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[remoteSampleCode].type.coding.display = "Unique Specimen ID"
+* identifier[remoteSampleCode].type.text = "Remote sample identifier"
+* identifier[sampleCode].value = "ghi789"
+* identifier[sampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/sample-id" (exactly)
+* identifier[sampleCode].type.coding.code = #USID
+* identifier[sampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[sampleCode].type.coding.display = "Unique Specimen ID"
+* identifier[sampleCode].type.text = "Sample identifier"
 * type = $SCT#119361006
 * type.text = "Specimen Type"
 * type.coding.display = "Plasma specimen (specimen)"
 * subject = Reference(HIVPatientExample)
 * collection.collectedDateTime = "2022-07-28"
+* receivedTime = "2022-07-28"
+* processing.timeDateTime = "2022-07-28"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -347,7 +362,7 @@ InstanceOf: ARVTreatment
 Usage: #example
 Title: "ARV CarePlan example"
 Description: "ARV CarePlan example"
-* identifier[PLAC].value = "facility1"
+* identifier[PLAC].value = "UAN000123"
 * identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
 * identifier[PLAC].type.coding.code = #PLAC
 * identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -376,3 +391,17 @@ Description: "ARV CarePlan example"
 * note.text = "ABC + 3TC + LPV/r"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: LabOrderTaskActivityExample
+InstanceOf: LabOrderTaskActivity
+Usage: #example
+Title: "HIV Lab Order Task Activity"
+Description: "HIV lab order task activity."
+* extension[RevisedBy].valueInteger = 2
+* status = #active
+* reviewer.name = "Someone"
+* lastReviewDate = "2023-01-01"
+* editor.name = "Someone"
+* date = "2023-01-01"
+* endorser.name = "Someone"
+* approvalDate = "2023-01-01"

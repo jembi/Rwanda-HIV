@@ -3,11 +3,11 @@ Parent: Patient
 Id: hiv-patient
 Title: "Patient"
 Description: "A patient resource for an HIV Patient"
-* name.given 1..*
-* name.family 1..1
+* name.given 1..* MS
+* name.family 0..1 MS
 * telecom 0..* MS
 * gender 1..1
-* birthDate 1..1
+* birthDate 0..1 MS
 * managingOrganization 1..1
 * extension contains PatientAgeInMonths named PAM 0..1 MS
 * extension contains PatientAgeInYears named PAY 0..1 MS
@@ -131,19 +131,45 @@ Description: "The test sample that was collected for the initiated lab order."
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
 * identifier contains
-    USID 1..1
-* identifier[USID].value 1..1
-* identifier[USID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/specimen-id" (exactly)
-* identifier[USID].type.coding.code = #USID
-* identifier[USID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[USID].type.coding.display = "Unique Specimen ID"
-* identifier[USID].type.text = "Specimen identifier"
+    appSampleCode 1..1 and
+    remoteSampleCode 1..1 and
+    sampleCode 1..1
+* identifier[appSampleCode].value 1..1
+* identifier[appSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/app-sample-id" (exactly)
+* identifier[appSampleCode].type.coding.code = #USID
+* identifier[appSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[appSampleCode].type.coding.display = "Unique Specimen ID"
+* identifier[appSampleCode].type.text = "App sample identifier"
+* identifier[remoteSampleCode].value 1..1
+* identifier[remoteSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/remote-sample-id" (exactly)
+* identifier[remoteSampleCode].type.coding.code = #USID
+* identifier[remoteSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[remoteSampleCode].type.coding.display = "Unique Specimen ID"
+* identifier[remoteSampleCode].type.text = "Remote sample identifier"
+* identifier[sampleCode].value 1..1
+* identifier[sampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/sample-id" (exactly)
+* identifier[sampleCode].type.coding.code = #USID
+* identifier[sampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[sampleCode].type.coding.display = "Unique Specimen ID"
+* identifier[sampleCode].type.text = "Sample identifier"
 * type 1..1
 * type from VSSpecimenType (required)
 * type.text = "Specimen Type"
 * subject 1..1
-* collection.collectedDateTime 1..1
+* collection.collectedDateTime 0..1 MS
+* receivedTime 0..1 MS
+* processing 0..1 MS
+* processing.timeDateTime 1..1
 * note 0..* MS
+* extension contains SampleReordered named SampleReordered 0..1 MS
+
+Extension: SampleReordered
+Id: sample-reordered
+Title: "Sample reordered"
+Description: "The sample was reordered."
+* value[x] only boolean
+* ^context[0].type = #element
+* ^context[0].expression = "Specimen"
 
 Profile: HIVServiceRequestLocation
 Parent: Organization
@@ -357,3 +383,28 @@ Description: "The ARV regimen has been switched to a new ARV regimen or has been
 * value[x] only boolean
 * ^context[0].type = #element
 * ^context[0].expression = "CarePlan.activity.detail"
+
+Profile: LabOrderTaskActivity
+Parent: ActivityDefinition
+Id: hiv-lab-task-activity
+Title: "HIV Lab Order Task Activity"
+Description: "HIV lab order task activity."
+* status 1..1
+* reviewer 0..* MS
+* reviewer.name 1..1
+* lastReviewDate 0..1 MS
+* editor 0..* MS
+* editor.name 1..1
+* date 0..1 MS
+* endorser 0..* MS
+* endorser.name 1..1
+* approvalDate 0..1 MS
+* extension contains ResultRevisedBy named RevisedBy 0..1 MS
+
+Extension: ResultRevisedBy
+Id: revised-by-user-index
+Title: "HIV Viral Load Result Revised By"
+Description: "The user index for the person who reviewed the viral load result."
+* value[x] only integer
+* ^context[0].type = #element
+* ^context[0].expression = "ActivityDefinition"
