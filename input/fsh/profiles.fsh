@@ -171,7 +171,7 @@ Description: "The sample was reordered."
 * ^context[0].type = #element
 * ^context[0].expression = "Specimen"
 
-Profile: HIVServiceRequestLocation
+/*Profile: HIVServiceRequestLocation
 Parent: Organization
 Id: hiv-service-request-location
 Title: "Lab Order Request Location"
@@ -194,7 +194,7 @@ Description: "What is the location of the organization responsible for conductin
 * address.state 1..1
 * address.district 1..1
 //* address.city 1..1
-* name 1..1
+* name 1..1*/
 
 Profile: HIVServiceRequest
 Parent: ServiceRequest
@@ -253,11 +253,20 @@ Parent: Practitioner
 Id: hiv-practitioner
 Title: "Practitioner"
 Description: "The healthcare professional who has been assigned to a given lab task."
-* name 1..1
+* name 0..1 MS
 * name.given 1..*
 * name.family 1..1
-* telecom 1..*
+* telecom 0..*
 * telecom.system.value = #phone
+* extension contains ClinicianUserIndex named ClinicianUserIndex 1..1
+
+Extension: ClinicianUserIndex
+Id: clinician-user-index
+Title: "Clinician User Index"
+Description: "The user index for the person who is requesting or performing the service request."
+* value[x] only integer
+* ^context[0].type = #element
+* ^context[0].expression = "Practitioner"
 
 Profile: HIVLabTask
 Parent: Task

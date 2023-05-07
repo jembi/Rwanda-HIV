@@ -14,10 +14,10 @@ Description: "HIV Submit Lab Result Bundle Example"
 * entry[=].request.method = #PUT
 * entry[=].request.url = "DiagnosticReport/HIVLabResultsDiagnosticReportExample"
 
-* entry[+].fullUrl = "Practitioner/PractitionerExample"
-* entry[=].resource = PractitionerExample
+* entry[+].fullUrl = "Practitioner/PerformingPractitionerExample"
+* entry[=].resource = PerformingPractitionerExample
 * entry[=].request.method = #PUT
-* entry[=].request.url = "Practitioner/PractitionerExample"
+* entry[=].request.url = "Practitioner/PerformingPractitionerExample"
 
 * entry[+].fullUrl = "Specimen/VLSpecimenExample"
 * entry[=].resource = VLSpecimenExample
