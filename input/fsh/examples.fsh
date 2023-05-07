@@ -405,3 +405,35 @@ Description: "HIV lab order task activity."
 * date = "2023-01-01"
 * endorser.name = "Someone"
 * approvalDate = "2023-01-01"
+
+Instance: ARVAdherenceExample
+InstanceOf: ARVAdherence
+Usage: #example
+Title: "Patient's Adherence to ARV Treatment"
+Description: "ARV adherence."
+* status = #final
+* code = $SCT#386091000
+* code.text = "Treatment compliance"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* valueCodeableConcept = $LNC#LA6763-2
+* valueCodeableConcept.text = "ARV adherence"
+* valueCodeableConcept.coding.display = "Good = 95% adherence"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.text = "additional notes here"
+* note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: BreastfeedingExample
+InstanceOf: Breastfeeding
+Usage: #example
+Title: "Breastfeeding Patient"
+Description: "Breastfeeding patient."
+* status = #final
+* code = $SCT#413712001
+* code.text = "Breastfeeding"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* valueBoolean = true
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.text = "additional notes here"
+* note.time = "2015-02-07T13:28:17-05:00"
