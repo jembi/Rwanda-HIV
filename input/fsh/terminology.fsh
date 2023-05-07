@@ -142,3 +142,12 @@ Title: "ARV Treatment Medication Request"
 Description: "Codes used to represent a medication request for ART."
 * ^experimental = false
 *  $LNC#45260-7 "HIV ART medication"
+
+ValueSet: VSARVAdherence
+Id: vs-arv-adherence
+Title: "ARV Adherence"
+Description: "ARV Adherence"
+* ^experimental = false
+* $LNC#LA6763-2 "Good = 95% adherence"
+* $LNC#LA6764-0 "Fair 85-94% adherence"
+* $LNC#LA6765-7 "Poor <85% adherence"

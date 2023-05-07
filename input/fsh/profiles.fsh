@@ -408,3 +408,30 @@ Description: "The user index for the person who reviewed the viral load result."
 * value[x] only integer
 * ^context[0].type = #element
 * ^context[0].expression = "ActivityDefinition"
+
+Profile: ARVAdherence
+Parent: Observation
+Id: hiv-arv-adherence
+Title: "Patient's Adherence to ARV Treatment"
+Description: "ARV adherence."
+* status 1..1
+* code = $SCT#386091000
+* code.text = "Treatment compliance"
+* subject 1..1
+* encounter 1..1
+* valueCodeableConcept from VSARVAdherence (required)
+* valueCodeableConcept.text = "ARV adherence"
+* note 0..* MS
+
+Profile: Breastfeeding
+Parent: Observation
+Id: hiv-patient-breastfeeding
+Title: "Breastfeeding Patient"
+Description: "Breastfeeding patient."
+* status 1..1
+* code = $SCT#413712001
+* code.text = "Breastfeeding"
+* subject 1..1
+* encounter 1..1
+* valueBoolean 1..1
+* note 0..* MS
