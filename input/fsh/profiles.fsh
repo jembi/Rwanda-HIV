@@ -262,7 +262,7 @@ Description: "The healthcare professional who has been assigned to a given lab t
 
 Extension: ClinicianUserIndex
 Id: clinician-user-index
-Title: "Requesting Clinician"
+Title: "Clinician User Index"
 Description: "The user index for the person who is requesting or performing the service request."
 * value[x] only integer
 * ^context[0].type = #element
