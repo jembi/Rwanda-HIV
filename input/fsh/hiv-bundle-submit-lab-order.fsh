@@ -9,20 +9,27 @@ Description: "HIV Submit Lab Order Bundle Example"
 * entry[=].request.method = #PUT
 * entry[=].request.url = "Task/HIVLabOrderTaskExample"
 
+/*
 * entry[+].fullUrl = "Organization/HIVServiceRequestLocationExample"
 * entry[=].resource = HIVServiceRequestLocationExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "Organization/HIVServiceRequestLocationExample"
+*/
 
 * entry[+].fullUrl = "ServiceRequest/HIVServiceRequestExample"
 * entry[=].resource = HIVServiceRequestExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "ServiceRequest/HIVServiceRequestExample"
 
-* entry[+].fullUrl = "Practitioner/PractitionerExample"
-* entry[=].resource = PractitionerExample
+* entry[+].fullUrl = "Practitioner/RequestingPractitionerExample"
+* entry[=].resource = RequestingPractitionerExample
 * entry[=].request.method = #PUT
-* entry[=].request.url = "Practitioner/PractitionerExample"
+* entry[=].request.url = "Practitioner/RequestingPractitionerExample"
+
+* entry[+].fullUrl = "Practitioner/PerformingPractitionerExample"
+* entry[=].resource = PerformingPractitionerExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Practitioner/PerformingPractitionerExample"
 
 * entry[+].fullUrl = "Specimen/VLSpecimenExample"
 * entry[=].resource = VLSpecimenExample

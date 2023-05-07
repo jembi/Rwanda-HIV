@@ -151,7 +151,7 @@ Description: "Viral Load Specimen example"
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
 
-Instance: HIVServiceRequestLocationExample
+/*Instance: HIVServiceRequestLocationExample
 InstanceOf: HIVServiceRequestLocation
 Usage: #example
 Title: "HIV Service Request Location example"
@@ -168,17 +168,29 @@ Description: "HIV Service Request Location example"
 * address[=].line[+] = "DISI line 1"
 * address[=].line[+] = "DISI line 2"
 * address[=].line[+] = "DISI line 3"
-* address[=].postalCode = "DISI postal code"
+* address[=].postalCode = "DISI postal code"*/
 
-Instance: PractitionerExample
+Instance: RequestingPractitionerExample
 InstanceOf: HIVPractitioner
 Usage: #example
 Title: "Practitioner example"
 Description: "Practitioner example"
+* extension[ClinicianUserIndex].valueInteger = 2
 * name.given = "James"
 * name.family = "Smith"
 * telecom.system = #phone
 * telecom.value = "27537652509"
+
+Instance: PerformingPractitionerExample
+InstanceOf: HIVPractitioner
+Usage: #example
+Title: "Practitioner example"
+Description: "Practitioner example"
+* extension[ClinicianUserIndex].valueInteger = 6
+* name.given = "Amy"
+* name.family = "White"
+* telecom.system = #phone
+* telecom.value = "27537687534"
 
 Instance: HIVServiceRequestExample
 InstanceOf: HIVServiceRequest
@@ -199,8 +211,8 @@ Description: "HIV Lab Order example"
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
 * occurrenceDateTime = "2012-01-05"
-* requester = Reference(PractitionerExample)
-* performer = Reference(HIVServiceRequestLocationExample)
+* requester = Reference(RequestingPractitionerExample)
+* performer = Reference(PerformingPractitionerExample)
 * reasonCode = $SCT#428450006
 * reasonCode.text = "Reason"
 * reasonCode.coding.display = "Repeat laboratory specimen sent"
@@ -316,7 +328,7 @@ Description: "HIV Lab Results Diagnostic Report example"
 * code.coding.display = "HIV 1 RNA [#/volume] (viral load) in Specimen by NAA with probe detection"
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
-* performer = Reference(PractitionerExample)
+* performer = Reference(PerformingPractitionerExample)
 * result = Reference(HIVTestResultExample)
 * conclusion = "Some conclusion text"
 
