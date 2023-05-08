@@ -545,8 +545,10 @@ Description: "Indication that a patient does not consent to receiving SMS messag
 * status = #rejected
 * provision.type = #deny
 * patient = Reference(HIVPatientExample)
-* scope = #patient-privacy
+* scope.coding.code = #patient-privacy
+* scope.coding.system = "http://terminology.hl7.org/CodeSystem/consentscope"
 * category = $LNC#59284-0
+* policy.authority = "http://someauthorityurl.com"
 
 Instance: ReceiveSMSMessagesExample
 InstanceOf: ReceiveSMSMessages
@@ -556,5 +558,56 @@ Description: "Indication that a patient does consent to receiving SMS messages."
 * status = #active
 * provision.type = #permit
 * patient = Reference(HIVPatientExample)
-* scope = #patient-privacy
+* scope.coding.code = #patient-privacy
+* scope.coding.system = "http://terminology.hl7.org/CodeSystem/consentscope"
 * category = $LNC#59284-0
+* policy.authority = "http://someauthorityurl.com"
+
+Instance: RepeatHIVTestResultExample
+InstanceOf: RepeatHIVTestResult
+Usage: #example
+Title: "Repeat Viral Load Suppression example" 
+Description: "Repeat Viral Load Suppression example"
+* status = #final
+* code = $SCT#398579006
+* code.text = "Viral Load Result"
+* code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* valueInteger = 1001
+* note.text = "Viral load not suppressed"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(HIVOrganizationExample)
+
+Instance: ResultDisptachedTaskExample
+InstanceOf: ResultDisptachedTask
+Usage: #example
+Title: "Result Dispatched"
+Description: "Result Dispatched"
+* status = #completed
+* intent = #order
+* executionPeriod.start = "2022-07-28"
+* executionPeriod.end = "2022-07-30"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.text = "additional notes here"
+* note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: SuspendTreatmentHIVTestResultExample
+InstanceOf: SuspendTreatmentHIVTestResult
+Usage: #example
+Title: "Suspend Treatment Lab Results"
+Description: "Suspend treatment lab results."
+* status = #final
+* code = $SCT#398579006
+* code.text = "Viral Load Result"
+* code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* valueInteger = 1001
+* note.text = "Viral load not suppressed"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(HIVOrganizationExample)

@@ -629,5 +629,48 @@ Description: "Indication whether a patient should receive SMS messages."
 * provision 1..1
 * provision.type 1..1
 * patient 1..1
-* scope = #patient-privacy
+* scope.coding.code = #patient-privacy
+* scope.coding.system = "http://terminology.hl7.org/CodeSystem/consentscope"
 * category = $LNC#59284-0
+* policy 1..*
+* policy.authority 1..1
+
+Profile: RepeatHIVTestResult
+Parent: Observation
+Id: viral-load-repeat-test-result
+Title: "Repeat Lab Results"
+Description: "Repeat lab results."
+* status 1..1
+* code from VSVLResultCode (required)
+* code.text = "Viral Load Result"
+* subject 1..1
+* encounter 1..1
+* effectiveDateTime 1..1
+* valueInteger 1..1
+* performer 1..*
+* note 0..* MS
+
+Profile: ResultDisptachedTask
+Parent: Task
+Id: result-dispatched-to-facility
+Title: "Result Dispatched"
+Description: "Result Dispatched"
+* status 1..1
+* intent 1..1
+* executionPeriod 1..1
+* note 0..* MS
+
+Profile: SuspendTreatmentHIVTestResult
+Parent: Observation
+Id: viral-load-suspend-treatment-test-result
+Title: "Suspend Treatment Lab Results"
+Description: "Suspend treatment lab results."
+* status 1..1
+* code from VSVLResultCode (required)
+* code.text = "Viral Load Result"
+* subject 1..1
+* encounter 1..1
+* effectiveDateTime 1..1
+* valueInteger 1..1
+* performer 1..*
+* note 0..* MS
