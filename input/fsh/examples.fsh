@@ -11,7 +11,6 @@ Description: "Organization example"
 * identifier[XX].type.text = "HIV Organization identifier"
 * name = "HIV Test Services Health Facility"
 
-
 Instance: HIVPatientExample
 InstanceOf: HIVPatient
 Usage: #example
@@ -123,19 +122,19 @@ Title: "Viral Load Specimen example"
 Description: "Viral Load Specimen example"
 * extension[SampleReordered].valueBoolean = false
 * identifier[appSampleCode].value = "abc123"
-* identifier[appSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/app-sample-id" (exactly)
+* identifier[appSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/app-sample-code" (exactly)
 * identifier[appSampleCode].type.coding.code = #USID
 * identifier[appSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[appSampleCode].type.coding.display = "Unique Specimen ID"
 * identifier[appSampleCode].type.text = "App sample identifier"
 * identifier[remoteSampleCode].value = "def456"
-* identifier[remoteSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/remote-sample-id" (exactly)
+* identifier[remoteSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/remote-sample-code" (exactly)
 * identifier[remoteSampleCode].type.coding.code = #USID
 * identifier[remoteSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[remoteSampleCode].type.coding.display = "Unique Specimen ID"
 * identifier[remoteSampleCode].type.text = "Remote sample identifier"
 * identifier[sampleCode].value = "ghi789"
-* identifier[sampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/sample-id" (exactly)
+* identifier[sampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/sample-code" (exactly)
 * identifier[sampleCode].type.coding.code = #USID
 * identifier[sampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[sampleCode].type.coding.display = "Unique Specimen ID"
@@ -150,25 +149,6 @@ Description: "Viral Load Specimen example"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
-
-/*Instance: HIVServiceRequestLocationExample
-InstanceOf: HIVServiceRequestLocation
-Usage: #example
-Title: "HIV Service Request Location example"
-Description: "HIV Service Request Location example"
-* identifier[XX].value = "facility2"
-* identifier[XX].system = "http://openhie.org/fhir/rwanda-hiv/identifier/hiv-service-request-location"
-* identifier[XX].type.coding.code = #XX
-* identifier[XX].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[XX].type.coding.display = "Organization identifier"
-* identifier[XX].type.text = "HIV Organization identifier"
-* name = "Laboratory Services"
-* address[+].state = "DISI state 1"
-* address[=].district = "DISI district 1"
-* address[=].line[+] = "DISI line 1"
-* address[=].line[+] = "DISI line 2"
-* address[=].line[+] = "DISI line 3"
-* address[=].postalCode = "DISI postal code"*/
 
 Instance: RequestingPractitionerExample
 InstanceOf: HIVPractitioner
@@ -214,7 +194,7 @@ Description: "HIV Lab Order example"
 * requester = Reference(RequestingPractitionerExample)
 * performer = Reference(PerformingPractitionerExample)
 * reasonCode = $SCT#428450006
-* reasonCode.text = "Reason"
+* reasonCode.text = "Reason for testing"
 * reasonCode.coding.display = "Repeat laboratory specimen sent"
 * specimen = Reference(VLSpecimenExample)
 * note.authorReference = Reference(HIVOrganizationExample)
@@ -226,7 +206,8 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "Lab Order example"
 Description: "Lab Order example"
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-id"
+* extension[ResultStatusIndex].valueInteger = 1
+* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -237,8 +218,6 @@ Description: "Lab Order example"
 * intent = #order
 * executionPeriod.start = "2022-07-28"
 * lastModified = "2022-07-28"
-* requester = Reference(HIVOrganizationExample)
-* owner = Reference(HIVOrganizationExample)
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -248,7 +227,8 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "Lab Result Task example"
 Description: "Lab Result Task example"
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-id"
+* extension[ResultStatusIndex].valueInteger = 4
+* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -260,8 +240,6 @@ Description: "Lab Result Task example"
 * intent = #order
 * executionPeriod.end = "2022-07-30"
 * lastModified = "2022-07-30"
-* requester = Reference(HIVOrganizationExample)
-* owner = Reference(HIVOrganizationExample)
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -275,7 +253,8 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "HIV Lab Order Cancellation  example"
 Description: "HIV Lab Order Cancellation Task example"
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-id"
+* extension[ResultStatusIndex].valueInteger = 2
+* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -289,8 +268,6 @@ Description: "HIV Lab Order Cancellation Task example"
 * intent = #order
 * executionPeriod.end = "2022-07-30"
 * lastModified = "2022-07-30"
-* requester = Reference(HIVOrganizationExample)
-* owner = Reference(HIVOrganizationExample)
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -300,7 +277,8 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "HIV Lab Order Rejection  example"
 Description: "HIV Lab Order Rejection Task example"
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-id"
+* extension[ResultStatusIndex].valueInteger = 3
+* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -308,14 +286,12 @@ Description: "HIV Lab Order Rejection Task example"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn = Reference(HIVServiceRequestExample)
 * status = #rejected
-* statusReason = $SCT#135839007
+* statusReason = $SCT#123840003
 * statusReason.text = "Reason For Canceling/Rejecting the Lab Order"
-* statusReason.coding.display = "Sample rejected (finding)"
+* statusReason.coding.display = "Sample contaminated"
 * intent = #order
 * executionPeriod.end = "2022-07-30"
 * lastModified = "2022-07-30"
-* requester = Reference(HIVOrganizationExample)
-* owner = Reference(HIVOrganizationExample)
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -325,6 +301,7 @@ InstanceOf: HIVDiagnosticReport
 Usage: #example
 Title: "HIV Lab Results Diagnostic Report example"
 Description: "HIV Lab Results Diagnostic Report example"
+* extension[TestedByIndex].valueInteger = 7
 * basedOn = Reference(HIVServiceRequestExample)
 * status = #final
 * code = $LNC#25836-8 
@@ -334,13 +311,26 @@ Description: "HIV Lab Results Diagnostic Report example"
 * encounter = Reference(TargetFacilityEncounterExample)
 * performer = Reference(PerformingPractitionerExample)
 * result = Reference(HIVTestResultExample)
+* resultsInterpreter = Reference(ResultsInterpreterExample)
 * conclusion = "Some conclusion text"
+
+Instance: ResultsInterpreterExample
+InstanceOf: HIVPractitioner
+Usage: #example
+Title: "Results Interpreter example"
+Description: "Results interpreter example"
+* extension[ClinicianUserIndex].valueInteger = 11
+* name.given = "Jhon"
+* name.family = "Smith"
+* telecom.system = #phone
+* telecom.value = "27539887534"
 
 Instance: HIVTestResultExample
 InstanceOf: HIVTestResult
 Usage: #example
 Title: "Viral Load Suppression example" 
 Description: "Viral Load Suppression example"
+* extension[ResultEnteredManually].valueBoolean = false
 * status = #final
 * code = $SCT#398579006
 * code.text = "Viral Load Result"
@@ -467,3 +457,206 @@ Description: "HIV lab order task activity."
 * endorser.name = "Someone"
 * approvalDate = "2023-01-01"
 * specimenRequirement = Reference(SpecimenConservationExample)
+
+Instance: SampleDisptachedToLabTaskExample
+InstanceOf: SampleDisptachedToLabTask
+Usage: #example
+Title: "Sample Dispatched to Lab Task"
+Description: "Sample dispatched to lab task."
+* status = #completed
+* intent = #order
+* executionPeriod.start = "2022-07-28"
+* executionPeriod.end = "2022-07-30"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.text = "additional notes here"
+* note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: PerformingOrganizationExample
+InstanceOf: PerformingOrganization
+Usage: #example
+Title: "Performing Organization"
+Description: "Organization responsible for carrying out the HIV testing services."
+* extension[ProvinceIndex].valueInteger = 4
+* extension[DistrictIndex].valueInteger = 9
+* identifier[OrgID].value = "laboratory1"
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
+* identifier[OrgID].type.coding.code = #XX
+* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[OrgID].type.coding.display = "Organization identifier"
+* identifier[OrgID].type.text = "Performing Organization identifier"
+* name = "A Laboratory name"
+* address[+].state = "A province name"
+* address[=].district = "A district name"
+
+Instance: RequestingOrganizationExample
+InstanceOf: RequestingOrganization
+Usage: #example
+Title: "Requesting Organization"
+Description: "Organization requesting for HIV testing services."
+* identifier[OrgID].value = "facility5"
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
+* identifier[OrgID].type.coding.code = #XX
+* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[OrgID].type.coding.display = "Organization identifier"
+* identifier[OrgID].type.text = "Requesting Organization identifier"
+* name = "A facility name"
+
+Instance: FundingOrganizationExample
+InstanceOf: FundingOrganization
+Usage: #example
+Title: "Funding Organization"
+Description: "Funding organization."
+* extension[FundingOrganizationIndex].valueInteger = 1
+* identifier[OrgID].value = "funder1"
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
+* identifier[OrgID].type.coding.code = #XX
+* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[OrgID].type.coding.display = "Organization identifier"
+* identifier[OrgID].type.text = "Funding Organization identifier"
+* name = "A funding organization name"
+
+Instance: ImplementingPartnerOrganizationExample
+InstanceOf: ImplementingPartnerOrganization
+Usage: #example
+Title: "Implementing Partner Organization"
+Description: "Implementing partner organization."
+* extension[ImplementingPartnerOrganizationIndex].valueInteger = 14
+* identifier[OrgID].value = "implementing-partner-org1"
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
+* identifier[OrgID].type.coding.code = #XX
+* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[OrgID].type.coding.display = "Organization identifier"
+* identifier[OrgID].type.text = "Implementing Partner Organization identifier"
+* name = "An implementing partner organization name"
+
+Instance: DoNotReceiveSMSMessagesExample
+InstanceOf: ReceiveSMSMessages
+Usage: #example
+Title: "Do Not Receive SMS Messages"
+Description: "Indication that a patient does not consent to receiving SMS messages."
+* status = #rejected
+* provision.type = #deny
+* patient = Reference(HIVPatientExample)
+* scope.coding.code = #patient-privacy
+* scope.coding.system = "http://terminology.hl7.org/CodeSystem/consentscope"
+* category.coding.code = #59284-0
+* category.coding.system = "http://loinc.org"
+* policyRule.coding.code = #699237001
+* policyRule.coding.system = "http://snomed.info/sct"
+* policyRule.coding.display = "Consent given for communication by short message service text messaging"
+* policyRule.text = "Consent policy"
+
+Instance: ReceiveSMSMessagesExample
+InstanceOf: ReceiveSMSMessages
+Usage: #example
+Title: "Receive SMS Messages"
+Description: "Indication that a patient does consent to receiving SMS messages."
+* status = #active
+* provision.type = #permit
+* patient = Reference(HIVPatientExample)
+* scope.coding.code = #patient-privacy
+* scope.coding.system = "http://terminology.hl7.org/CodeSystem/consentscope"
+* category.coding.code = #59284-0
+* category.coding.system = "http://loinc.org"
+* policyRule.coding.code = #699237001
+* policyRule.coding.system = "http://snomed.info/sct"
+* policyRule.coding.display = "Consent given for communication by short message service text messaging"
+* policyRule.text = "Consent policy"
+
+Instance: RepeatHIVTestResultExample
+InstanceOf: RepeatHIVTestResult
+Usage: #example
+Title: "Repeat Viral Load Suppression example" 
+Description: "Repeat Viral Load Suppression example"
+* status = #final
+* code = $SCT#398579006
+* code.text = "Viral Load Result"
+* code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* valueInteger = 1001
+* note.text = "Viral load not suppressed"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(HIVOrganizationExample)
+
+Instance: ResultDisptachedTaskExample
+InstanceOf: ResultDisptachedTask
+Usage: #example
+Title: "Result Dispatched"
+Description: "Result Dispatched"
+* status = #completed
+* intent = #order
+* executionPeriod.start = "2022-07-28"
+* executionPeriod.end = "2022-07-30"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.text = "additional notes here"
+* note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: SuspendTreatmentHIVTestResultExample
+InstanceOf: SuspendTreatmentHIVTestResult
+Usage: #example
+Title: "Suspend Treatment Lab Results"
+Description: "Suspend treatment lab results."
+* status = #final
+* code = $SCT#398579006
+* code.text = "Viral Load Result"
+* code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* valueInteger = 1001
+* note.text = "Viral load not suppressed"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(HIVOrganizationExample)
+
+Instance: TestingPlatformExample
+InstanceOf: TestingPlatform
+Usage: #example
+Title: "Testing Platform"
+Description: "The device platform used for testing."
+* deviceName.name = "My testing platform"
+* deviceName.type = #manufacturer-name
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: HIVTestResultViralLoadLogExample
+InstanceOf: HIVTestResultViralLoadLog
+Usage: #example
+Title: "Viral Load Log"
+Description: "Viral Load Log"
+* status = #final
+* code = $SCT#398579006
+* code.text = "Viral Load Result"
+* code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* valueQuantity.value = 2.55
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(HIVOrganizationExample)
+* derivedFrom = Reference(HIVTestResultExample)
+
+Instance: HIVTestResultAbsoluteDecimalExample
+InstanceOf: HIVTestResultAbsoluteDecimal
+Usage: #example
+Title: "Viral Load Result Absolute Decimal"
+Description: "Viral load result absolute decimal"
+* status = #final
+* code = $SCT#398579006
+* code.text = "Viral Load Result"
+* code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* valueQuantity.value = 2.55
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(HIVOrganizationExample)
+* derivedFrom = Reference(HIVTestResultExample)

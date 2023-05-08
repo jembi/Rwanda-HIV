@@ -1,12 +1,19 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../src-generated/schemas/fhir-single.xsd" lang="en">
   <a name="scope">  </a>
 	<p>
-    This is our FHIR Implementation Guide. It contains the specifications developed by our community. 
-   </p>
-	<blockquote class="stu-note">
-	<strong>This documentation and set of artefacts are still undergoing development.</strong>
-	This content is only for demonstrative purposes.
-	</blockquote>
+    This is a solution FHIR Implementation Guide (IG) for the Rwandan VLSM data exchange.
+  </p>
+
+  <p>
+    This data elements in ths FHIR IG have been informed by the <a href="https://docs.google.com/spreadsheets/d/1qLBm8MADOujHmf-7AgJmdy5DqK_eBhvU9XI9M6-2s9g/edit#gid=0" target="_blank">Rwandan VLSM minimum dataset (MDS)</a>.
+  </p>
+
+  <blockquote class="stu-note">
+    <p>
+      This FHIR IG is not intended for production use until all partner reviews have been completed.
+    </p>
+  </blockquote>
+
 	<h3>Download</h3> <a name="download"></a>
   <p>You can also download:</p>
   <ul>
