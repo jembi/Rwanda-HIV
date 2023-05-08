@@ -286,6 +286,7 @@ Description: "Assists with tracking the state of the lab order and its completio
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * identifier[FILL].type.text = "Lab order number"
+* instantiatesCanonical 1..1
 * basedOn only Reference(ServiceRequest)
 * status 1..1
 * statusReason from VSReasonForSampleCancellationOrRejection
@@ -398,6 +399,7 @@ Parent: ActivityDefinition
 Id: hiv-lab-task-activity
 Title: "HIV Lab Order Task Activity"
 Description: "HIV lab order task activity."
+* url 1..1
 * status 1..1
 * reviewer 0..* MS
 * reviewer.name 1..1
@@ -408,6 +410,7 @@ Description: "HIV lab order task activity."
 * endorser 0..* MS
 * endorser.name 1..1
 * approvalDate 0..1 MS
+* specimenRequirement 1..*
 * extension contains ResultRevisedBy named RevisedBy 0..1 MS
 
 Extension: ResultRevisedBy
@@ -428,6 +431,7 @@ Description: "ARV adherence."
 * code.text = "Treatment compliance"
 * subject 1..1
 * encounter 1..1
+* valueCodeableConcept 1..1
 * valueCodeableConcept from VSARVAdherence (required)
 * valueCodeableConcept.text = "ARV adherence"
 * note 0..* MS
@@ -444,3 +448,19 @@ Description: "Breastfeeding patient."
 * encounter 1..1
 * valueBoolean 1..1
 * note 0..* MS
+
+Profile: SpecimenConservation
+Parent: SpecimenDefinition
+Id: specimen-preservation
+Title: "Specimen Conservation"
+Description: "Specimen conservation information."
+* typeTested 1..*
+* typeTested.type 1..1
+* typeTested.type from VSSpecimenType (required)
+* typeTested.preference 1..1
+* typeTested.handling 1..*
+* typeTested.handling.temperatureRange 1..1
+* typeTested.handling.temperatureRange.low 1..1
+* typeTested.handling.temperatureRange.high 1..1
+* typeTested.handling.maxDuration 1..1
+* typeTested.handling.instruction 0..1 MS

@@ -231,6 +231,7 @@ Description: "Lab Order example"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[FILL].type.coding.display = "Filler Identifier"
+* instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn = Reference(HIVServiceRequestExample)
 * status = #requested
 * intent = #order
@@ -253,6 +254,7 @@ Description: "Lab Result Task example"
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * identifier[FILL].type.text = "Lab order number"
+* instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn = Reference(HIVServiceRequestExample)
 * status = #completed
 * intent = #order
@@ -278,6 +280,7 @@ Description: "HIV Lab Order Cancellation Task example"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[FILL].type.coding.display = "Filler Identifier"
+* instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn = Reference(HIVServiceRequestExample)
 * status = #cancelled
 * statusReason = $SCT#281264009
@@ -302,6 +305,7 @@ Description: "HIV Lab Order Rejection Task example"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[FILL].type.coding.display = "Filler Identifier"
+* instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn = Reference(HIVServiceRequestExample)
 * status = #rejected
 * statusReason = $SCT#135839007
@@ -404,19 +408,17 @@ Description: "ARV CarePlan example"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
 
-Instance: LabOrderTaskActivityExample
-InstanceOf: LabOrderTaskActivity
+Instance: SpecimenConservationExample
+InstanceOf: SpecimenConservation
 Usage: #example
-Title: "HIV Lab Order Task Activity"
-Description: "HIV lab order task activity."
-* extension[RevisedBy].valueInteger = 2
-* status = #active
-* reviewer.name = "Someone"
-* lastReviewDate = "2023-01-01"
-* editor.name = "Someone"
-* date = "2023-01-01"
-* endorser.name = "Someone"
-* approvalDate = "2023-01-01"
+Title: "Specimen Conservation"
+Description: "Specimen conservation information."
+* typeTested.type = $SCT#119361006
+* typeTested.preference = #preferred
+* typeTested.handling.temperatureRange.low.value = 5
+* typeTested.handling.temperatureRange.high.value = 10
+* typeTested.handling.maxDuration.value = 20
+* typeTested.handling.instruction = "Comments regarding the specimen conservation."
 
 Instance: ARVAdherenceExample
 InstanceOf: ARVAdherence
@@ -449,3 +451,19 @@ Description: "Breastfeeding patient."
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: LabOrderTaskActivityExample
+InstanceOf: LabOrderTaskActivity
+Usage: #example
+Title: "HIV Lab Order Task Activity"
+Description: "HIV lab order task activity."
+* extension[RevisedBy].valueInteger = 2
+* url.value = "http://openhie.org/fhir/rwanda-hiv/hiv-lab-task-activity-defintion"
+* status = #active
+* reviewer.name = "Someone"
+* lastReviewDate = "2023-01-01"
+* editor.name = "Someone"
+* date = "2023-01-01"
+* endorser.name = "Someone"
+* approvalDate = "2023-01-01"
+* specimenRequirement = Reference(SpecimenConservationExample)
