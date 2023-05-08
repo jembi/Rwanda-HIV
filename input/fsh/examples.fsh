@@ -547,8 +547,12 @@ Description: "Indication that a patient does not consent to receiving SMS messag
 * patient = Reference(HIVPatientExample)
 * scope.coding.code = #patient-privacy
 * scope.coding.system = "http://terminology.hl7.org/CodeSystem/consentscope"
-* category = $LNC#59284-0
-* policy.authority = "http://someauthorityurl.com"
+* category.coding.code = #59284-0
+* category.coding.system = "http://loinc.org"
+* policyRule.coding.code = #699237001
+* policyRule.coding.system = "http://snomed.info/sct"
+* policyRule.coding.display = "Consent given for communication by short message service text messaging"
+* policyRule.text = "Consent policy"
 
 Instance: ReceiveSMSMessagesExample
 InstanceOf: ReceiveSMSMessages
@@ -560,8 +564,12 @@ Description: "Indication that a patient does consent to receiving SMS messages."
 * patient = Reference(HIVPatientExample)
 * scope.coding.code = #patient-privacy
 * scope.coding.system = "http://terminology.hl7.org/CodeSystem/consentscope"
-* category = $LNC#59284-0
-* policy.authority = "http://someauthorityurl.com"
+* category.coding.code = #59284-0
+* category.coding.system = "http://loinc.org"
+* policyRule.coding.code = #699237001
+* policyRule.coding.system = "http://snomed.info/sct"
+* policyRule.coding.display = "Consent given for communication by short message service text messaging"
+* policyRule.text = "Consent policy"
 
 Instance: RepeatHIVTestResultExample
 InstanceOf: RepeatHIVTestResult
