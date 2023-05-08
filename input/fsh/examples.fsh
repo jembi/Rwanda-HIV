@@ -306,7 +306,7 @@ Description: "HIV Lab Order Rejection Task example"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn = Reference(HIVServiceRequestExample)
 * status = #rejected
-* statusReason = $SCT#135839007
+* statusReason = $SCT#123840003
 * statusReason.text = "Reason For Canceling/Rejecting the Lab Order"
 * statusReason.coding.display = "Sample rejected (finding)"
 * intent = #order
@@ -338,6 +338,7 @@ InstanceOf: HIVTestResult
 Usage: #example
 Title: "Viral Load Suppression example" 
 Description: "Viral Load Suppression example"
+* extension[ResultEnteredManually].valueBoolean = false
 * status = #final
 * code = $SCT#398579006
 * code.text = "Viral Load Result"

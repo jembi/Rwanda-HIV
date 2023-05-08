@@ -232,10 +232,10 @@ Description: "A service request that initiates the need for the lab to collect t
 
 Profile: HIVTestResult
 Parent: Observation
-Id: hiv-test-results
+Id: viral-load-test-result
 Title: "Lab Results"
 Description: "The result of the lab test which determines whether the patient is infected with HIV or not."
-* status = #final
+* status 1..1
 * code from VSVLResultCode (required)
 * code.text = "Viral Load Result"
 * subject 1..1
@@ -247,6 +247,15 @@ Description: "The result of the lab test which determines whether the patient is
 * interpretation.text = "Viral Load Suppression Status"
 * performer 1..*
 * note 0..* MS
+* extension contains ResultEnteredManually named ResultEnteredManually 0..1 MS
+
+Extension: ResultEnteredManually
+Id: result-entered-manually
+Title: "Test Result Entered Manually"
+Description: "The test result was entered manually."
+* value[x] only boolean
+* ^context[0].type = #element
+* ^context[0].expression = "Observation"
 
 Profile: HIVPractitioner
 Parent: Practitioner
