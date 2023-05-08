@@ -331,7 +331,19 @@ Description: "HIV Lab Results Diagnostic Report example"
 * encounter = Reference(TargetFacilityEncounterExample)
 * performer = Reference(PerformingPractitionerExample)
 * result = Reference(HIVTestResultExample)
+* resultsInterpreter = Reference(ResultsInterpreterExample)
 * conclusion = "Some conclusion text"
+
+Instance: ResultsInterpreterExample
+InstanceOf: HIVPractitioner
+Usage: #example
+Title: "Results Interpreter example"
+Description: "Results interpreter example"
+* extension[ClinicianUserIndex].valueInteger = 11
+* name.given = "Jhon"
+* name.family = "Smith"
+* telecom.system = #phone
+* telecom.value = "27539887534"
 
 Instance: HIVTestResultExample
 InstanceOf: HIVTestResult
@@ -619,3 +631,52 @@ Description: "Suspend treatment lab results."
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
 * performer = Reference(HIVOrganizationExample)
+
+Instance: TestingPlatformExample
+InstanceOf: TestingPlatform
+Usage: #example
+Title: "Testing Platform"
+Description: "The device platform used for testing."
+* deviceName.name = "My testing platform"
+* deviceName.type = #manufacturer-name
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: HIVTestResultViralLoadLogExample
+InstanceOf: HIVTestResultViralLoadLog
+Usage: #example
+Title: "Viral Load Log"
+Description: "Viral Load Log"
+* status = #final
+* code = $SCT#398579006
+* code.text = "Viral Load Result"
+* code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* valueQuantity.value = 2.55
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(HIVOrganizationExample)
+* derivedFrom = Reference(HIVTestResultExample)
+
+Instance: HIVTestResultAbsoluteDecimalExample
+InstanceOf: HIVTestResultAbsoluteDecimal
+Usage: #example
+Title: "Viral Load Result Absolute Decimal"
+Description: "Viral load result absolute decimal"
+* status = #final
+* code = $SCT#398579006
+* code.text = "Viral Load Result"
+* code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* valueQuantity.value = 2.55
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(HIVOrganizationExample)
+* derivedFrom = Reference(HIVTestResultExample)

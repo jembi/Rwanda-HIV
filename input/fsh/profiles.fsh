@@ -332,6 +332,7 @@ Description: "A report as a result of the lab task being completed."
 * encounter 1..1
 * performer 1..*
 * result 1..1
+* resultsInterpreter 1..*
 * conclusion 0..1 MS
 * extension contains TestedByIndex named TestedByIndex 1..1
 
@@ -675,4 +676,46 @@ Description: "Suspend treatment lab results."
 * effectiveDateTime 1..1
 * valueInteger 1..1
 * performer 1..*
+* note 0..* MS
+
+Profile: TestingPlatform
+Parent: Device
+Id: device-for-testing
+Title: "Testing Platform"
+Description: "The device platform used for testing."
+* deviceName 1..1
+* note 0..* MS
+
+Profile: HIVTestResultViralLoadLog
+Parent: Observation
+Id: viral-load-log
+Title: "Viral Load Log"
+Description: "Viral Load Log"
+* status 1..1
+* code from VSVLResultCode (required)
+* code.text = "Viral Load Result"
+* subject 1..1
+* encounter 1..1
+* effectiveDateTime 1..1
+* valueQuantity 1..1
+* valueQuantity.value 1..1
+* performer 1..*
+* derivedFrom 1..1
+* note 0..* MS
+
+Profile: HIVTestResultAbsoluteDecimal
+Parent: Observation
+Id: viral-load-test-result-absolute-decimal
+Title: "Viral Load Result Absolute Decimal"
+Description: "Viral load result absolute decimal"
+* status 1..1
+* code from VSVLResultCode (required)
+* code.text = "Viral Load Result"
+* subject 1..1
+* encounter 1..1
+* effectiveDateTime 1..1
+* valueQuantity 1..1
+* valueQuantity.value 1..1
+* performer 1..*
+* derivedFrom 1..1
 * note 0..* MS
