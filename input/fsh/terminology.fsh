@@ -147,3 +147,11 @@ Description: "ARV Adherence"
 * $LNC#LA6763-2 "Good = 95% adherence"
 * $LNC#LA6764-0 "Fair 85-94% adherence"
 * $LNC#LA6765-7 "Poor <85% adherence"
+
+ValueSet: VSPatientConsentForSMSNotifications
+Id: vs-patient-consent-for-sms-notifications
+Title: "Patient Consent for SMS Notifications"
+Description: "Patient Consent for SMS Notifications"
+* ^experimental = false
+* $SCT#699237001 "Consent given for communication by short message service text messaging"
+* $SCT#398227009 "Inadequate consent"

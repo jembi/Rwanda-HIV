@@ -541,9 +541,8 @@ Description: "Indication that a patient does not consent to receiving SMS messag
 * scope.coding.system = "http://terminology.hl7.org/CodeSystem/consentscope"
 * category.coding.code = #59284-0
 * category.coding.system = "http://loinc.org"
-* policyRule.coding.code = #699237001
-* policyRule.coding.system = "http://snomed.info/sct"
-* policyRule.coding.display = "Consent given for communication by short message service text messaging"
+* policyRule = $SCT#398227009
+* policyRule.coding.display = "Inadequate consent"
 * policyRule.text = "Consent policy"
 
 Instance: ReceiveSMSMessagesExample
@@ -558,8 +557,7 @@ Description: "Indication that a patient does consent to receiving SMS messages."
 * scope.coding.system = "http://terminology.hl7.org/CodeSystem/consentscope"
 * category.coding.code = #59284-0
 * category.coding.system = "http://loinc.org"
-* policyRule.coding.code = #699237001
-* policyRule.coding.system = "http://snomed.info/sct"
+* policyRule = $SCT#699237001
 * policyRule.coding.display = "Consent given for communication by short message service text messaging"
 * policyRule.text = "Consent policy"
 

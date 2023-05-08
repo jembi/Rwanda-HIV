@@ -609,8 +609,8 @@ Description: "Indication whether a patient should receive SMS messages."
 * scope.coding.system = "http://terminology.hl7.org/CodeSystem/consentscope"
 * category.coding.code = #59284-0
 * category.coding.system = "http://loinc.org"
-* policyRule.coding.code = #699237001
-* policyRule.coding.system = "http://snomed.info/sct"
+* policyRule 1..1
+* policyRule from VSPatientConsentForSMSNotifications (required)
 * policyRule.text = "Consent policy"
 
 Profile: RepeatHIVTestResult
