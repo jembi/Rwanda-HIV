@@ -308,7 +308,7 @@ Description: "HIV Lab Order Rejection Task example"
 * status = #rejected
 * statusReason = $SCT#123840003
 * statusReason.text = "Reason For Canceling/Rejecting the Lab Order"
-* statusReason.coding.display = "Sample rejected (finding)"
+* statusReason.coding.display = "Sample contaminated"
 * intent = #order
 * executionPeriod.end = "2022-07-30"
 * lastModified = "2022-07-30"
@@ -536,3 +536,17 @@ Description: "Implementing partner organization."
 * identifier[OrgID].type.coding.display = "Organization identifier"
 * identifier[OrgID].type.text = "Implementing Partner Organization identifier"
 * name = "An implementing partner organization name"
+
+
+Instance: ReceiveSMSMessagesExample
+InstanceOf: ReceiveSMSMessages
+Usage: #example
+Title: "Receive SMS Messages"
+Description: "Indication whether a patient should receive SMS messages."
+* status = #revoked
+* doNotPerform = true
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.text = "additional notes here"
+* note.time = "2015-02-07T13:28:17-05:00"

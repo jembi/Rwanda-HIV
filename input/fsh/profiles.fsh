@@ -619,3 +619,14 @@ Description: "The user index for the person who tested the viral load specimen."
 * value[x] only integer
 * ^context[0].type = #element
 * ^context[0].expression = "DiagnosticReport"
+
+Profile: ReceiveSMSMessages
+Parent: CommunicationRequest
+Id: receive-sms-messages
+Title: "Receive SMS Messages"
+Description: "Indication whether a patient should receive SMS messages."
+* status 1..1
+* doNotPerform 0..1 MS
+* subject 1..1
+* encounter 1..1
+* note 0..* MS
