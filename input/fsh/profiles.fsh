@@ -628,4 +628,4 @@ Description: "Indication whether a patient should receive SMS messages."
 * status 1..1
 * provision 1..1
 * provision.type 1..1
-* subject 1..1
+* patient 1..1

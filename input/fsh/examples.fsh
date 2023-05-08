@@ -544,7 +544,7 @@ Title: "Do Not Receive SMS Messages"
 Description: "Indication that a patient does not consent to receiving SMS messages."
 * status = #rejected
 * provision.type = #deny
-* subject = Reference(HIVPatientExample)
+* patient = Reference(HIVPatientExample)
 
 Instance: ReceiveSMSMessagesExample
 InstanceOf: ReceiveSMSMessages
@@ -553,4 +553,4 @@ Title: "Receive SMS Messages"
 Description: "Indication that a patient does consent to receiving SMS messages."
 * status = #active
 * provision.type = #permit
-* subject = Reference(HIVPatientExample)
+* patient = Reference(HIVPatientExample)
