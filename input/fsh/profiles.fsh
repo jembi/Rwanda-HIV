@@ -135,19 +135,19 @@ Description: "The test sample that was collected for the initiated lab order."
     remoteSampleCode 1..1 and
     sampleCode 1..1
 * identifier[appSampleCode].value 1..1
-* identifier[appSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/app-sample-id" (exactly)
+* identifier[appSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/app-sample-code" (exactly)
 * identifier[appSampleCode].type.coding.code = #USID
 * identifier[appSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[appSampleCode].type.coding.display = "Unique Specimen ID"
 * identifier[appSampleCode].type.text = "App sample identifier"
 * identifier[remoteSampleCode].value 1..1
-* identifier[remoteSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/remote-sample-id" (exactly)
+* identifier[remoteSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/remote-sample-code" (exactly)
 * identifier[remoteSampleCode].type.coding.code = #USID
 * identifier[remoteSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[remoteSampleCode].type.coding.display = "Unique Specimen ID"
 * identifier[remoteSampleCode].type.text = "Remote sample identifier"
 * identifier[sampleCode].value 1..1
-* identifier[sampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/sample-id" (exactly)
+* identifier[sampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/sample-code" (exactly)
 * identifier[sampleCode].type.coding.code = #USID
 * identifier[sampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[sampleCode].type.coding.display = "Unique Specimen ID"
@@ -207,8 +207,8 @@ Description: "A service request that initiates the need for the lab to collect t
 * identifier ^slicing.rules = #openAtEnd
 * identifier ^slicing.description = "Slice based on the type of identifier"
 * identifier contains
-    PLAC 1..1 
-* identifier[PLAC].value 1..1
+    PLAC 0..1 MS
+* identifier[PLAC].value 0..1 MS
 * identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/lab-order-identifier" (exactly)
 * identifier[PLAC].type.coding.code = #PLAC
 * identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -221,12 +221,12 @@ Description: "A service request that initiates the need for the lab to collect t
 * code.text = "Test Type"
 * subject 1..1
 * encounter 1..1
-* occurrenceDateTime 1..1
+* occurrenceDateTime 0..1 MS
 * requester 1..1
-* performer 1..*
+* performer 1..1
 * reasonCode 1..*
-* reasonCode from VSReasonForAssessmentOrTestNotPerformed (required)
-* reasonCode.text = "Reason"
+* reasonCode from VSReasonForAssessment (required)
+* reasonCode.text = "Reason for testing"
 * specimen 1..1
 * note 0..* MS
 
@@ -268,6 +268,14 @@ Description: "The user index for the person who is requesting or performing the 
 * ^context[0].type = #element
 * ^context[0].expression = "Practitioner"
 
+Extension: ResultStatusIndex
+Id: result-status-index
+Title: "Result Status Index"
+Description: "The result status index."
+* value[x] only integer
+* ^context[0].type = #element
+* ^context[0].expression = "Task"
+
 Profile: HIVLabTask
 Parent: Task
 Id: hiv-lab-task
@@ -281,7 +289,7 @@ Description: "Assists with tracking the state of the lab order and its completio
 * identifier contains
     FILL 1..1
 * identifier[FILL].value 1..1
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-id" (exactly)
+* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number" (exactly)
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[FILL].type.coding.display = "Filler Identifier"
@@ -289,18 +297,18 @@ Description: "Assists with tracking the state of the lab order and its completio
 * instantiatesCanonical 1..1
 * basedOn only Reference(ServiceRequest)
 * status 1..1
-* statusReason from VSReasonForSampleCancellationOrRejection
+* statusReason 0..1 MS
+* statusReason from VSReasonForSampleCancellationOrRejection (required)
 * statusReason.text = "Reason For Canceling/Rejecting the Lab Order"
 * intent = #order
-* executionPeriod 1..1
-* lastModified 0..1 MS
-* requester 0..1 MS
-* owner 0..1 MS
+* executionPeriod 0..1 MS
+* lastModified 1..1
 * note 0..* MS
 * output 0..* MS
 * output.type.coding.code from VSVLResultCode (required)
 * output.type.text = "Viral Load Result"
 * output.valueReference 1..1
+* extension contains ResultStatusIndex named ResultStatusIndex 0..1 MS
 
 Profile: HIVDiagnosticReport
 Parent: DiagnosticReport
@@ -308,7 +316,7 @@ Id: hiv-diagnostic-report
 Title: "Diagnostic Report"
 Description: "A report as a result of the lab task being completed."
 * basedOn only Reference(ServiceRequest)
-* status = #final
+* status 1..1
 * code from VSTestTypes (required)
 * code.text = "Test Type"
 * subject 1..1
@@ -316,6 +324,7 @@ Description: "A report as a result of the lab task being completed."
 * performer 1..*
 * result 1..1
 * conclusion 0..1 MS
+* extension contains TestedByIndex named TestedByIndex 1..1
 
 Profile: DateHIVTestDone
 Parent: Observation
@@ -464,3 +473,140 @@ Description: "Specimen conservation information."
 * typeTested.handling.temperatureRange.high 1..1
 * typeTested.handling.maxDuration 1..1
 * typeTested.handling.instruction 0..1 MS
+
+Profile: SampleDisptachedToLabTask
+Parent: Task
+Id: sample-dispatched-to-lab
+Title: "Sample Dispatched to Lab Task"
+Description: "Sample dispatched to lab task."
+* status 1..1
+* intent 1..1
+* executionPeriod 1..1
+* note 0..* MS
+
+Profile: PerformingOrganization
+Parent: Organization
+Id: performing-organization
+Title: "Performing Organization"
+Description: "Organization responsible for carrying out the HIV testing services."
+* identifier 1..*
+* identifier ^slicing.discriminator.type = #pattern
+* identifier ^slicing.discriminator.path = "system"
+* identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.description = "Slice based on the type of identifier."
+* identifier contains
+    OrgID 1..1
+* identifier[OrgID].value 1..1
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
+* identifier[OrgID].type.coding.code = #XX
+* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[OrgID].type.coding.display = "Organization identifier"
+* identifier[OrgID].type.text = "Performing Organization identifier"
+* name 1..1
+* address 0..* MS
+* address.state 1..1
+* address.district 1..1
+* extension contains PerformingOrganizationProvinceIndex named ProvinceIndex 1..1
+* extension contains PerformingOrganizationDistrictIndex named DistrictIndex 1..1
+
+Extension: PerformingOrganizationProvinceIndex
+Id: performing-organization-province-index
+Title: "Performing Organization Province"
+Description: "The province index for the performing organization."
+* value[x] only integer
+* ^context[0].type = #element
+* ^context[0].expression = "Organization"
+
+Extension: PerformingOrganizationDistrictIndex
+Id: performing-organization-district-index
+Title: "Performing Organization District"
+Description: "The district index for the performing organization."
+* value[x] only integer
+* ^context[0].type = #element
+* ^context[0].expression = "Organization"
+
+Profile: RequestingOrganization
+Parent: Organization
+Id: requesting-organization
+Title: "Requesting Organization"
+Description: "Organization requesting for HIV testing services."
+* identifier 1..*
+* identifier ^slicing.discriminator.type = #pattern
+* identifier ^slicing.discriminator.path = "system"
+* identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.description = "Slice based on the type of identifier."
+* identifier contains
+    OrgID 1..1
+* identifier[OrgID].value 1..1
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
+* identifier[OrgID].type.coding.code = #XX
+* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[OrgID].type.coding.display = "Organization identifier"
+* identifier[OrgID].type.text = "Requesting Organization identifier"
+* name 1..1
+
+Profile: FundingOrganization
+Parent: Organization
+Id: funding-source
+Title: "Funding Organization"
+Description: "Funding organization."
+* identifier 1..*
+* identifier ^slicing.discriminator.type = #pattern
+* identifier ^slicing.discriminator.path = "system"
+* identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.description = "Slice based on the type of identifier."
+* identifier contains
+    OrgID 0..1 MS
+* identifier[OrgID].value 0..1 MS
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
+* identifier[OrgID].type.coding.code = #XX
+* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[OrgID].type.coding.display = "Organization identifier"
+* identifier[OrgID].type.text = "Funding Organization identifier"
+* name 1..1
+* extension contains FundingOrganizationIndex named FundingOrganizationIndex 1..1
+
+Extension: FundingOrganizationIndex
+Id: funding-source-index
+Title: "Funding Organization"
+Description: "The index for the funding organization."
+* value[x] only integer
+* ^context[0].type = #element
+* ^context[0].expression = "Organization"
+
+Profile: ImplementingPartnerOrganization
+Parent: Organization
+Id: implementing-partner
+Title: "Implementing Partner Organization"
+Description: "Implementing partner organization."
+* identifier 1..*
+* identifier ^slicing.discriminator.type = #pattern
+* identifier ^slicing.discriminator.path = "system"
+* identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.description = "Slice based on the type of identifier."
+* identifier contains
+    OrgID 0..1 MS
+* identifier[OrgID].value 0..1 MS
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
+* identifier[OrgID].type.coding.code = #XX
+* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[OrgID].type.coding.display = "Organization identifier"
+* identifier[OrgID].type.text = "Implementing Partner Organization identifier"
+* name 1..1
+* extension contains ImplementingPartnerOrganizationIndex named ImplementingPartnerOrganizationIndex 1..1
+
+Extension: ImplementingPartnerOrganizationIndex
+Id: implementing-partner-index
+Title: "Implementing Partner Organization"
+Description: "The index for the implementing partner organization."
+* value[x] only integer
+* ^context[0].type = #element
+* ^context[0].expression = "Organization"
+
+Extension: TestedByIndex
+Id: tested-by-user-index
+Title: "HIV Viral Load Result Tested By"
+Description: "The user index for the person who tested the viral load specimen."
+* value[x] only integer
+* ^context[0].type = #element
+* ^context[0].expression = "DiagnosticReport"

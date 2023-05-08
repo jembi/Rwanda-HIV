@@ -123,19 +123,19 @@ Title: "Viral Load Specimen example"
 Description: "Viral Load Specimen example"
 * extension[SampleReordered].valueBoolean = false
 * identifier[appSampleCode].value = "abc123"
-* identifier[appSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/app-sample-id" (exactly)
+* identifier[appSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/app-sample-code" (exactly)
 * identifier[appSampleCode].type.coding.code = #USID
 * identifier[appSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[appSampleCode].type.coding.display = "Unique Specimen ID"
 * identifier[appSampleCode].type.text = "App sample identifier"
 * identifier[remoteSampleCode].value = "def456"
-* identifier[remoteSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/remote-sample-id" (exactly)
+* identifier[remoteSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/remote-sample-code" (exactly)
 * identifier[remoteSampleCode].type.coding.code = #USID
 * identifier[remoteSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[remoteSampleCode].type.coding.display = "Unique Specimen ID"
 * identifier[remoteSampleCode].type.text = "Remote sample identifier"
 * identifier[sampleCode].value = "ghi789"
-* identifier[sampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/sample-id" (exactly)
+* identifier[sampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/sample-code" (exactly)
 * identifier[sampleCode].type.coding.code = #USID
 * identifier[sampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[sampleCode].type.coding.display = "Unique Specimen ID"
@@ -214,7 +214,7 @@ Description: "HIV Lab Order example"
 * requester = Reference(RequestingPractitionerExample)
 * performer = Reference(PerformingPractitionerExample)
 * reasonCode = $SCT#428450006
-* reasonCode.text = "Reason"
+* reasonCode.text = "Reason for testing"
 * reasonCode.coding.display = "Repeat laboratory specimen sent"
 * specimen = Reference(VLSpecimenExample)
 * note.authorReference = Reference(HIVOrganizationExample)
@@ -226,7 +226,8 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "Lab Order example"
 Description: "Lab Order example"
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-id"
+* extension[ResultStatusIndex].valueInteger = 1
+* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -237,8 +238,6 @@ Description: "Lab Order example"
 * intent = #order
 * executionPeriod.start = "2022-07-28"
 * lastModified = "2022-07-28"
-* requester = Reference(HIVOrganizationExample)
-* owner = Reference(HIVOrganizationExample)
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -248,7 +247,8 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "Lab Result Task example"
 Description: "Lab Result Task example"
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-id"
+* extension[ResultStatusIndex].valueInteger = 4
+* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -260,8 +260,6 @@ Description: "Lab Result Task example"
 * intent = #order
 * executionPeriod.end = "2022-07-30"
 * lastModified = "2022-07-30"
-* requester = Reference(HIVOrganizationExample)
-* owner = Reference(HIVOrganizationExample)
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -275,7 +273,8 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "HIV Lab Order Cancellation  example"
 Description: "HIV Lab Order Cancellation Task example"
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-id"
+* extension[ResultStatusIndex].valueInteger = 2
+* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -289,8 +288,6 @@ Description: "HIV Lab Order Cancellation Task example"
 * intent = #order
 * executionPeriod.end = "2022-07-30"
 * lastModified = "2022-07-30"
-* requester = Reference(HIVOrganizationExample)
-* owner = Reference(HIVOrganizationExample)
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -300,7 +297,8 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "HIV Lab Order Rejection  example"
 Description: "HIV Lab Order Rejection Task example"
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-id"
+* extension[ResultStatusIndex].valueInteger = 3
+* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -314,8 +312,6 @@ Description: "HIV Lab Order Rejection Task example"
 * intent = #order
 * executionPeriod.end = "2022-07-30"
 * lastModified = "2022-07-30"
-* requester = Reference(HIVOrganizationExample)
-* owner = Reference(HIVOrganizationExample)
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -325,6 +321,7 @@ InstanceOf: HIVDiagnosticReport
 Usage: #example
 Title: "HIV Lab Results Diagnostic Report example"
 Description: "HIV Lab Results Diagnostic Report example"
+* extension[TestedByIndex].valueInteger = 7
 * basedOn = Reference(HIVServiceRequestExample)
 * status = #final
 * code = $LNC#25836-8 
@@ -467,3 +464,74 @@ Description: "HIV lab order task activity."
 * endorser.name = "Someone"
 * approvalDate = "2023-01-01"
 * specimenRequirement = Reference(SpecimenConservationExample)
+
+Instance: SampleDisptachedToLabTaskExample
+InstanceOf: SampleDisptachedToLabTask
+Usage: #example
+Title: "Sample Dispatched to Lab Task"
+Description: "Sample dispatched to lab task."
+* status = #completed
+* intent = #order
+* executionPeriod.start = "2022-07-28"
+* executionPeriod.end = "2022-07-30"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.text = "additional notes here"
+* note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: PerformingOrganizationExample
+InstanceOf: PerformingOrganization
+Usage: #example
+Title: "Performing Organization"
+Description: "Organization responsible for carrying out the HIV testing services."
+* extension[ProvinceIndex].valueInteger = 4
+* extension[DistrictIndex].valueInteger = 9
+* identifier[OrgID].value = "laboratory1"
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
+* identifier[OrgID].type.coding.code = #XX
+* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[OrgID].type.coding.display = "Organization identifier"
+* identifier[OrgID].type.text = "Performing Organization identifier"
+* name = "A Laboratory name"
+* address[+].state = "A province name"
+* address[=].district = "A district name"
+
+Instance: RequestingOrganizationExample
+InstanceOf: RequestingOrganization
+Usage: #example
+Title: "Requesting Organization"
+Description: "Organization requesting for HIV testing services."
+* identifier[OrgID].value = "facility5"
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
+* identifier[OrgID].type.coding.code = #XX
+* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[OrgID].type.coding.display = "Organization identifier"
+* identifier[OrgID].type.text = "Requesting Organization identifier"
+* name = "A facility name"
+
+Instance: FundingOrganizationExample
+InstanceOf: FundingOrganization
+Usage: #example
+Title: "Funding Organization"
+Description: "Funding organization."
+* extension[FundingOrganizationIndex].valueInteger = 1
+* identifier[OrgID].value = "funder1"
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
+* identifier[OrgID].type.coding.code = #XX
+* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[OrgID].type.coding.display = "Organization identifier"
+* identifier[OrgID].type.text = "Funding Organization identifier"
+* name = "A funding organization name"
+
+Instance: ImplementingPartnerOrganizationExample
+InstanceOf: ImplementingPartnerOrganization
+Usage: #example
+Title: "Implementing Partner Organization"
+Description: "Implementing partner organization."
+* extension[ImplementingPartnerOrganizationIndex].valueInteger = 14
+* identifier[OrgID].value = "implementing-partner-org1"
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
+* identifier[OrgID].type.coding.code = #XX
+* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[OrgID].type.coding.display = "Organization identifier"
+* identifier[OrgID].type.text = "Implementing Partner Organization identifier"
+* name = "An implementing partner organization name"
