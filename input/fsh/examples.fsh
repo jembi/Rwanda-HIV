@@ -11,7 +11,6 @@ Description: "Organization example"
 * identifier[XX].type.text = "HIV Organization identifier"
 * name = "HIV Test Services Health Facility"
 
-
 Instance: HIVPatientExample
 InstanceOf: HIVPatient
 Usage: #example
@@ -150,25 +149,6 @@ Description: "Viral Load Specimen example"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
-
-/*Instance: HIVServiceRequestLocationExample
-InstanceOf: HIVServiceRequestLocation
-Usage: #example
-Title: "HIV Service Request Location example"
-Description: "HIV Service Request Location example"
-* identifier[XX].value = "facility2"
-* identifier[XX].system = "http://openhie.org/fhir/rwanda-hiv/identifier/hiv-service-request-location"
-* identifier[XX].type.coding.code = #XX
-* identifier[XX].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[XX].type.coding.display = "Organization identifier"
-* identifier[XX].type.text = "HIV Organization identifier"
-* name = "Laboratory Services"
-* address[+].state = "DISI state 1"
-* address[=].district = "DISI district 1"
-* address[=].line[+] = "DISI line 1"
-* address[=].line[+] = "DISI line 2"
-* address[=].line[+] = "DISI line 3"
-* address[=].postalCode = "DISI postal code"*/
 
 Instance: RequestingPractitionerExample
 InstanceOf: HIVPractitioner

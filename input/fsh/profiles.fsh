@@ -171,31 +171,6 @@ Description: "The sample was reordered."
 * ^context[0].type = #element
 * ^context[0].expression = "Specimen"
 
-/*Profile: HIVServiceRequestLocation
-Parent: Organization
-Id: hiv-service-request-location
-Title: "Lab Order Request Location"
-Description: "What is the location of the organization responsible for conducting the examination of the individual's sample?"
-* identifier 1..*
-* identifier ^slicing.discriminator.type = #pattern
-* identifier ^slicing.discriminator.path = "system"
-* identifier ^slicing.rules = #openAtEnd
-* identifier ^slicing.description = "Slice based on the type of identifier."
-* identifier contains
-    XX 1..1
-* identifier[XX].value 1..1
-* identifier[XX].system = "http://openhie.org/fhir/rwanda-hiv/identifier/hiv-service-request-location" (exactly)
-* identifier[XX].type.coding.code = #XX
-* identifier[XX].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[XX].type.coding.display = "Organization identifier"
-* identifier[XX].type.text = "HIV Organization identifier"
-* address 1..1
-//* address.country 1..1
-* address.state 1..1
-* address.district 1..1
-//* address.city 1..1
-* name 1..1*/
-
 Profile: HIVServiceRequest
 Parent: ServiceRequest
 Id: HIV-lab-order
