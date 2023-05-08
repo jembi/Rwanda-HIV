@@ -537,16 +537,20 @@ Description: "Implementing partner organization."
 * identifier[OrgID].type.text = "Implementing Partner Organization identifier"
 * name = "An implementing partner organization name"
 
+Instance: DoNotReceiveSMSMessagesExample
+InstanceOf: ReceiveSMSMessages
+Usage: #example
+Title: "Do Not Receive SMS Messages"
+Description: "Indication that a patient does not consent to receiving SMS messages."
+* status = #rejected
+* provision.type = #deny
+* subject = Reference(HIVPatientExample)
 
 Instance: ReceiveSMSMessagesExample
 InstanceOf: ReceiveSMSMessages
 Usage: #example
 Title: "Receive SMS Messages"
-Description: "Indication whether a patient should receive SMS messages."
-* status = #revoked
-* doNotPerform = true
+Description: "Indication that a patient does consent to receiving SMS messages."
+* status = #active
+* provision.type = #permit
 * subject = Reference(HIVPatientExample)
-* encounter = Reference(TargetFacilityEncounterExample)
-* note.authorReference = Reference(HIVOrganizationExample)
-* note.text = "additional notes here"
-* note.time = "2015-02-07T13:28:17-05:00"
