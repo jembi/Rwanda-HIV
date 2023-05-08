@@ -629,3 +629,5 @@ Description: "Indication whether a patient should receive SMS messages."
 * provision 1..1
 * provision.type 1..1
 * patient 1..1
+* scope = #patient-privacy
+* category = $LNC#59284-0

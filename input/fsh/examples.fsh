@@ -545,6 +545,8 @@ Description: "Indication that a patient does not consent to receiving SMS messag
 * status = #rejected
 * provision.type = #deny
 * patient = Reference(HIVPatientExample)
+* scope = #patient-privacy
+* category = $LNC#59284-0
 
 Instance: ReceiveSMSMessagesExample
 InstanceOf: ReceiveSMSMessages
@@ -554,3 +556,5 @@ Description: "Indication that a patient does consent to receiving SMS messages."
 * status = #active
 * provision.type = #permit
 * patient = Reference(HIVPatientExample)
+* scope = #patient-privacy
+* category = $LNC#59284-0
