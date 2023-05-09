@@ -69,57 +69,7 @@ Description: "This profile represents the current facility at which the patient 
 * status 1..1
 * class 1..1
 * subject 1..1
-* period 1..1
-* episodeOfCare 1..*
-
-Profile: HIVEpisodeOfCare
-Parent: EpisodeOfCare
-Id: hiv-episode-of-care
-Title: "Patient Enrollment Type"
-Description: "This profile is used to enrol the patient into HIV care."
-* identifier 1..*
-* identifier ^slicing.discriminator.type = #pattern
-* identifier ^slicing.discriminator.path = "system"
-* identifier ^slicing.rules = #openAtEnd
-* identifier contains
-    PI 1..1
-* identifier[PI].value 1..1
-* identifier[PI].system = "http://openhie.org/fhir/rwanda-hiv/identifier/enrollment-unique-id" (exactly)
-* identifier[PI].type.coding.code = #PI
-* identifier[PI].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[PI].type.coding.display = "Patient internal identifier"
-* identifier[PI].type.text = "Enrollment identifier"
-* status 1..1
-* diagnosis 1..* 
-* diagnosis.condition 1..1 
-* patient 1..1
-* managingOrganization 1..1
-* period 1..1 
-
-Profile: HIVDiagnosis
-Parent: Condition
-Id: hiv-diagnosis
-Title: "Diagnosis"
-Description: "This profile represents the confirmation of HIV diagnosis."
-* identifier 1..*
-* identifier ^slicing.discriminator.type = #pattern
-* identifier ^slicing.discriminator.path = "system"
-* identifier ^slicing.rules = #openAtEnd
-* identifier contains
-    PI 1..1
-* identifier[PI].value 1..1
-* identifier[PI].system = "http://openhie.org/fhir/rwanda-hiv/identifier/hiv-diagnosis" (exactly)
-* identifier[PI].type.coding.code = #PI
-* identifier[PI].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[PI].type.coding.display = "Patient internal identifier"
-* identifier[PI].type.text = "HIV positive testing identifier"
-* code 1..1
-* code from VSCondition (required)
-* code.text = "Diagnosis"
-* subject 1..1
-* encounter 1..1
-* recordedDate 1..1
-* note 0..* MS
+* actualPeriod 1..1
 
 Profile: VLSpecimen
 Parent: Specimen
@@ -193,16 +143,29 @@ Description: "A service request that initiates the need for the lab to collect t
 * intent = #order
 * code 1..1
 * code from VSTestTypes (required)
-* code.text = "Test Type"
+* code.concept.text = "Test Type"
 * subject 1..1
 * encounter 1..1
 * occurrenceDateTime 0..1 MS
 * requester 1..1
 * performer 1..1
-* reasonCode 1..*
-* reasonCode from VSReasonForAssessment (required)
-* reasonCode.text = "Reason for testing"
+* reason only Reference (Observation)
 * specimen 1..1
+* note 0..* MS
+
+Profile: ReasonForHIVTesting
+Parent: Observation
+Id: reason-for-hiv-testing
+Title: "Reason for HIV testing"
+Description: "The reason for HIV testing."
+* status 1..1
+* code from ReasonForHIVTestingCode (required)
+* code.text = "HIV Test"
+* subject 1..1
+* encounter 1..1
+* effectiveDateTime 1..1
+* valueCodeableConcept from VSReasonForAssessment (required)
+* valueCodeableConcept.text = "Reason for testing"
 * note 0..* MS
 
 Profile: HIVTestResult
@@ -283,7 +246,7 @@ Description: "Assists with tracking the state of the lab order and its completio
 * status 1..1
 * statusReason 0..1 MS
 * statusReason from VSReasonForSampleCancellationOrRejection (required)
-* statusReason.text = "Reason For Canceling/Rejecting the Lab Order"
+* statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
 * intent = #order
 * executionPeriod 0..1 MS
 * lastModified 1..1
@@ -363,7 +326,42 @@ Description: "This profile is to record prescribed ARV regimen"
 * encounter 1..1
 * period 1..1
 * activity 1..* 
-* activity.detail 0..1
+* activity.plannedActivityReference 1..1
+* activity.plannedActivityReference only Reference (MedicationRequest)
+* activity.plannedActivityReference.extension contains ARTRegimenSwitchedOrSubstituted named artRegimenSwitchedOrSubstituted 0..1 MS
+* note 0..* MS
+
+Profile: ARVRegimenMedicationRequest
+Parent: MedicationRequest
+Id: arv-regimen-medication-request
+Title: "ARV Regimen Medication Request"
+Description: "ARV Regimen Medication Request"
+* status 1..1
+* intent 1..1
+* medication from VSARVRegimen (required)
+* medication.concept.text = "ARV regimen"
+* subject 1..1
+* encounter 1..1
+* reason 0..* MS
+* reason only Reference(Observation)
+* note 0..* MS
+
+Profile: ARVRegimenChange
+Parent: Observation
+Id: arv-regimen-change
+Title: "ARV Regimen Change"
+Description: "ARV regimen change."
+* status 1..1
+* code from VSARVRegimenChange (required)
+* code.text = "ARV Regimen Change"
+* subject 1..1
+* encounter 1..1
+* effectiveDateTime 1..1
+* valueCodeableConcept from VSReasonsForARVRegimenChange (required)
+* valueCodeableConcept.text = "Regimen change reason"
+* note 0..* MS
+
+/** activity.detail 0..1
 * activity.detail.scheduledPeriod 0..1
 * activity.detail.kind 0..1 MS
 * activity.detail.kind = #MedicationRequest
@@ -377,8 +375,8 @@ Description: "This profile is to record prescribed ARV regimen"
 * activity.detail.productCodeableConcept 0..1 MS
 * activity.detail.productCodeableConcept from VSARVRegimen (required)
 * activity.detail.productCodeableConcept.text = "ARV regimen"
-* activity.detail.extension contains ARTRegimenSwitchedOrSubstituted named artRegimenSwitchedOrSubstituted 0..1 MS
-* note 0..1
+* activity.detail.extension contains ARTRegimenSwitchedOrSubstituted named artRegimenSwitchedOrSubstituted 0..1 MS*/
+
 
 Extension: ARTRegimenSwitchedOrSubstituted
 Id: art-regimen-switched-or-substituted
@@ -448,6 +446,7 @@ Parent: SpecimenDefinition
 Id: specimen-preservation
 Title: "Specimen Conservation"
 Description: "Specimen conservation information."
+* status 1..1
 * typeTested 1..*
 * typeTested.type 1..1
 * typeTested.type from VSSpecimenType (required)
@@ -488,9 +487,10 @@ Description: "Organization responsible for carrying out the HIV testing services
 * identifier[OrgID].type.coding.display = "Organization identifier"
 * identifier[OrgID].type.text = "Performing Organization identifier"
 * name 1..1
-* address 0..* MS
-* address.state 1..1
-* address.district 1..1
+* contact 0..* MS
+* contact.address 1..1
+* contact.address.state 1..1
+* contact.address.district 1..1
 * extension contains PerformingOrganizationProvinceIndex named ProvinceIndex 1..1
 * extension contains PerformingOrganizationDistrictIndex named DistrictIndex 1..1
 
@@ -602,16 +602,14 @@ Id: receive-sms-messages
 Title: "Receive SMS Messages"
 Description: "Indication whether a patient should receive SMS messages."
 * status 1..1
-* provision 1..1
-* provision.type 1..1
-* patient 1..1
-* scope.coding.code = #patient-privacy
-* scope.coding.system = "http://terminology.hl7.org/CodeSystem/consentscope"
+* decision 1..1
+* subject 1..1
+* subject only Reference(Patient)
 * category.coding.code = #59284-0
 * category.coding.system = "http://loinc.org"
-* policyRule 1..1
-* policyRule from VSPatientConsentForSMSNotifications (required)
-* policyRule.text = "Consent policy"
+* regulatoryBasis 1..1
+* regulatoryBasis from VSPatientConsentForSMSNotifications (required)
+* regulatoryBasis.text = "Consent policy"
 
 Profile: RepeatHIVTestResult
 Parent: Observation
@@ -658,7 +656,7 @@ Parent: Device
 Id: device-for-testing
 Title: "Testing Platform"
 Description: "The device platform used for testing."
-* deviceName 1..1
+* manufacturer 1..1
 * note 0..* MS
 
 Profile: HIVTestResultViralLoadLog

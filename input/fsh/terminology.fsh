@@ -89,7 +89,7 @@ Description:  "Used by the observation to indicate whether a patient is pregnant
 * $SCT#250425007 "Pregnancy test negative"
 * $SCT#250423000 "Pregnancy test positive"
 
-ValueSet: VSReasonSForARVRegimenChange
+ValueSet: VSReasonsForARVRegimenChange
 Id: vs-reason-arv-regimen-change
 Title: "Reasons for ARV Regimen Change"
 Description:  "Used by the careplan to indicate the reason why a patient had their ARV regimen changed."
@@ -155,3 +155,17 @@ Description: "Patient Consent for SMS Notifications"
 * ^experimental = false
 * $SCT#699237001 "Consent given for communication by short message service text messaging"
 * $SCT#398227009 "Inadequate consent"
+
+ValueSet: ReasonForHIVTestingCode
+Id: vs-reason-for-hiv-testing
+Title: "Reason for HIV Testing Code"
+Description: "A code used to indicate that a HIV test was done."
+* ^experimental = false
+* $SCT#165813002 "Human immunodeficiency virus antibody test"
+
+ValueSet: VSARVRegimenChange
+Id: vs-arv-regimen-change
+Title: "ARV Regimen Change"
+Description: "ARV regimen change."
+* ^experimental = false
+* $SCT#182838006 "Change of medication"
