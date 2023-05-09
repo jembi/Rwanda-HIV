@@ -74,46 +74,6 @@ Description: "Target Facility Encounter example"
 * subject = Reference(HIVPatientExample)
 * period.start = "2022-12-01"
 * period.end = "2023-01-20"
-* episodeOfCare = Reference(HIVEpisodeOfCareExample)
-
-Instance: HIVEpisodeOfCareExample
-InstanceOf: HIVEpisodeOfCare
-Usage: #example
-Title: "HIV Episode Of Care"
-Description: "This resource is used for Management of a Patient's HIV Programme."
-* identifier[PI].value = "abc123"
-* identifier[PI].system = "http://openhie.org/fhir/rwanda-hiv/identifier/enrollment-unique-id" (exactly)
-* identifier[PI].type.coding.code = #PI
-* identifier[PI].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[PI].type.coding.display = "Patient internal identifier"
-* identifier[PI].type.text = "Enrollment identifier"
-* status = #active
-* diagnosis.condition = Reference(HIVDiagnosisExample)
-* patient = Reference(HIVPatientExample)
-* managingOrganization = Reference(HIVOrganizationExample)
-* period.start = "2021-05-18"
-* period.end = "2021-05-18"
-
-Instance: HIVDiagnosisExample
-InstanceOf: HIVDiagnosis
-Usage: #example
-Title: "HIV Condition example"
-Description: "Showing a confirmed HIV diagnosis"
-* identifier[PI].value = "abc123"
-* identifier[PI].system = "http://openhie.org/fhir/rwanda-hiv/identifier/hiv-diagnosis"
-* identifier[PI].type.coding.code = #PI
-* identifier[PI].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[PI].type.coding.display = "Patient internal identifier"
-* identifier[PI].type.text = "HIV positive testing identifier"
-* code = $SCT#86406008
-* code.text = "Diagnosis"
-* code.coding.display = "Human immunodeficiency virus infection"
-* subject = Reference(HIVPatientExample)
-* encounter = Reference(TargetFacilityEncounterExample)
-* recordedDate = "2021-05-18"
-* note.text = "Additional information regarding the HIV diagnosis"
-* note.authorReference = Reference(HIVOrganizationExample)
-* note.time = "2015-02-07T13:28:17-05:00"
 
 Instance: VLSpecimenExample
 InstanceOf: VLSpecimen

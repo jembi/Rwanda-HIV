@@ -70,56 +70,6 @@ Description: "This profile represents the current facility at which the patient 
 * class 1..1
 * subject 1..1
 * period 1..1
-* episodeOfCare 1..*
-
-Profile: HIVEpisodeOfCare
-Parent: EpisodeOfCare
-Id: hiv-episode-of-care
-Title: "Patient Enrollment Type"
-Description: "This profile is used to enrol the patient into HIV care."
-* identifier 1..*
-* identifier ^slicing.discriminator.type = #pattern
-* identifier ^slicing.discriminator.path = "system"
-* identifier ^slicing.rules = #openAtEnd
-* identifier contains
-    PI 1..1
-* identifier[PI].value 1..1
-* identifier[PI].system = "http://openhie.org/fhir/rwanda-hiv/identifier/enrollment-unique-id" (exactly)
-* identifier[PI].type.coding.code = #PI
-* identifier[PI].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[PI].type.coding.display = "Patient internal identifier"
-* identifier[PI].type.text = "Enrollment identifier"
-* status 1..1
-* diagnosis 1..* 
-* diagnosis.condition 1..1 
-* patient 1..1
-* managingOrganization 1..1
-* period 1..1 
-
-Profile: HIVDiagnosis
-Parent: Condition
-Id: hiv-diagnosis
-Title: "Diagnosis"
-Description: "This profile represents the confirmation of HIV diagnosis."
-* identifier 1..*
-* identifier ^slicing.discriminator.type = #pattern
-* identifier ^slicing.discriminator.path = "system"
-* identifier ^slicing.rules = #openAtEnd
-* identifier contains
-    PI 1..1
-* identifier[PI].value 1..1
-* identifier[PI].system = "http://openhie.org/fhir/rwanda-hiv/identifier/hiv-diagnosis" (exactly)
-* identifier[PI].type.coding.code = #PI
-* identifier[PI].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[PI].type.coding.display = "Patient internal identifier"
-* identifier[PI].type.text = "HIV positive testing identifier"
-* code 1..1
-* code from VSCondition (required)
-* code.text = "Diagnosis"
-* subject 1..1
-* encounter 1..1
-* recordedDate 1..1
-* note 0..* MS
 
 Profile: VLSpecimen
 Parent: Specimen
