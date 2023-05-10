@@ -68,7 +68,7 @@ InstanceOf: TargetFacilityEncounter
 Usage: #example
 Title: "Target Facility Encounter example" 
 Description: "Target Facility Encounter example"
-* status = #finished
+* status = #completed
 * class.coding.code = #AMB
 * class.coding.system = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
 * subject = Reference(HIVPatientExample)
@@ -495,7 +495,7 @@ InstanceOf: ReceiveSMSMessages
 Usage: #example
 Title: "Do Not Receive SMS Messages"
 Description: "Indication that a patient does not consent to receiving SMS messages."
-* status = #rejected
+* status = #inactive
 * decision = #deny
 * subject = Reference(HIVPatientExample)
 * category.coding.code = #59284-0
