@@ -344,7 +344,7 @@ Description: "ARV Regimen Medication Request"
 * reason 0..* MS
 * reason only Reference(Observation)
 * note 0..* MS
-* extension contains ARTRegimenSwitchedOrSubstituted named artRegimenSwitchedOrSubstituted 0..1 MS
+//* extension contains ARTRegimenSwitchedOrSubstituted named artRegimenSwitchedOrSubstituted 0..1 MS
 
 Profile: ARVRegimenChange
 Parent: Observation
@@ -360,31 +360,30 @@ Description: "ARV regimen change."
 * valueCodeableConcept from VSReasonsForARVRegimenChange (required)
 * valueCodeableConcept.text = "Regimen change reason"
 * note 0..* MS
+* derivedFrom 1..1
+* derivedFrom only Reference(Observation)
 
-/** activity.detail 0..1
-* activity.detail.scheduledPeriod 0..1
-* activity.detail.kind 0..1 MS
-* activity.detail.kind = #MedicationRequest
-* activity.detail.code 0..1 MS
-* activity.detail.code from VSARVMedicationRequest (required)
-* activity.detail.code.text = "HIV medication request"
-* activity.detail.reasonCode 0..1 MS
-* activity.detail.reasonCode from VSReasonSForARVRegimenChange (required)
-* activity.detail.reasonCode.text = "Regimen change reason"
-* activity.detail.status 1..1
-* activity.detail.productCodeableConcept 0..1 MS
-* activity.detail.productCodeableConcept from VSARVRegimen (required)
-* activity.detail.productCodeableConcept.text = "ARV regimen"
-* activity.detail.extension contains ARTRegimenSwitchedOrSubstituted named artRegimenSwitchedOrSubstituted 0..1 MS*/
+Profile: ARTRegimenSwitchedOrSubstituted
+Parent: Observation
+Id: art-regimen-switched-or-substituted
+Title: "ART Regimen Switched Or Substituted"
+Description: "The ARV regimen has been switched to a new ARV regimen or has been substituted by another ARV regimen."
+* status 1..1
+* code from VSARVRegimenChange (required)
+* code.text = "ARV Regimen Change"
+* subject 1..1
+* encounter 1..1
+* effectiveDateTime 1..1
+* valueBoolean 1..1
+* note 0..* MS
 
-
-Extension: ARTRegimenSwitchedOrSubstituted
+/*Extension: ARTRegimenSwitchedOrSubstituted
 Id: art-regimen-switched-or-substituted
 Title: "ART Regimen Switched Or Substituted"
 Description: "The ARV regimen has been switched to a new ARV regimen or has been substituted by another ARV regimen."
 * value[x] only boolean
 * ^context[0].type = #element
-* ^context[0].expression = "CarePlan.activity.detail"
+* ^context[0].expression = "CarePlan.activity.detail"*/
 
 Profile: LabOrderTaskActivity
 Parent: ActivityDefinition

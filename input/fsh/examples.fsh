@@ -338,22 +338,7 @@ Description: "ARV CarePlan example"
 * encounter = Reference(TargetFacilityEncounterExample)
 * period.start = "2022-12-01"
 * period.end = "2022-12-01"
-/** activity.detail.kind = #MedicationRequest
-* activity.detail.code = $LNC#45260-7 
-* activity.detail.code.text = "HIV medication request"
-* activity.detail.code.coding.display = "HIV ART medication"
-* activity.detail.reasonCode = $SCT#76018003
-* activity.detail.reasonCode.text = "Regimen change reason"
-* activity.detail.reasonCode.coding.display = "Virologic"
-* activity.detail.status = #in-progress
-* activity.detail.productCodeableConcept = $SCT#427314002
-* activity.detail.productCodeableConcept.coding.display = "Antiviral therapy"
-* activity.detail.productCodeableConcept.text = "ARV regimen"
-* activity.detail.extension[artRegimenSwitchedOrSubstituted].valueBoolean = false
-* activity.detail.scheduledPeriod.start = "2023-01-01"
-* activity.detail.scheduledPeriod.end = "2023-01-01"*/
 * activity.plannedActivityReference = Reference(ARVRegimenMedicationRequestExample)
-* activity.plannedActivityReference.extension[artRegimenSwitchedOrSubstituted].valueBoolean = false
 * note.text = "Some comments"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -627,7 +612,7 @@ Description: "ARV Regimen Medication Request"
 * medication[0].concept.text = "ARV regimen"
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
-* reason.reference = Reference(ARVRegimenChangeExample)
+* reason.reference = Reference(ARTRegimenSwitchedOrSubstitutedExample)
 
 Instance: ReasonForHIVTestingExample
 InstanceOf: ReasonForHIVTesting
@@ -663,6 +648,24 @@ Description: "ARV regimen change."
 * valueCodeableConcept = $SCT#271737000
 * valueCodeableConcept.text = "Regimen change reason"
 * valueCodeableConcept.coding.display = "Anemia"
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+* derivedFrom = Reference(ARTRegimenSwitchedOrSubstitutedExample)
+
+Instance: ARTRegimenSwitchedOrSubstitutedExample
+InstanceOf: ARTRegimenSwitchedOrSubstituted
+Usage: #example
+Title: "ART Regimen Switched Or Substituted"
+Description: "The ARV regimen has been switched to a new ARV regimen or has been substituted by another ARV regimen."
+* status = #final
+* code = $SCT#182838006
+* code.text = "ARV Regimen Change"
+* code.coding.display = "Change of medication"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* valueBoolean = true
 * note.text = "Some comments"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
