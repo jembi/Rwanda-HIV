@@ -328,7 +328,6 @@ Description: "This profile is to record prescribed ARV regimen"
 * activity 1..* 
 * activity.plannedActivityReference 1..1
 * activity.plannedActivityReference only Reference (MedicationRequest)
-* activity.plannedActivityReference.extension contains ARTRegimenSwitchedOrSubstituted named artRegimenSwitchedOrSubstituted 0..1 MS
 * note 0..* MS
 
 Profile: ARVRegimenMedicationRequest
@@ -345,6 +344,7 @@ Description: "ARV Regimen Medication Request"
 * reason 0..* MS
 * reason only Reference(Observation)
 * note 0..* MS
+* extension contains ARTRegimenSwitchedOrSubstituted named artRegimenSwitchedOrSubstituted 0..1 MS
 
 Profile: ARVRegimenChange
 Parent: Observation
