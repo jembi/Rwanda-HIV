@@ -271,6 +271,9 @@ Description: "HIV Lab Results Diagnostic Report example"
 * result = Reference(HIVTestResultExample)
 * resultsInterpreter = Reference(ResultsInterpreterExample)
 * conclusion = "Some conclusion text"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.text = "additional notes here"
+* note.time = "2015-02-07T13:28:17-05:00"
 
 Instance: ResultsInterpreterExample
 InstanceOf: HIVPractitioner
@@ -409,10 +412,10 @@ InstanceOf: SampleDisptachedToLabTask
 Usage: #example
 Title: "Sample Dispatched to Lab Task"
 Description: "Sample dispatched to lab task."
-* status = #completed
+* status = #in-progress
 * intent = #order
-* executionPeriod.start = "2022-07-28"
-* executionPeriod.end = "2022-07-30"
+* authoredOn = "2022-07-28"
+* completionTime = "2022-07-28"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -526,10 +529,9 @@ InstanceOf: ResultDisptachedTask
 Usage: #example
 Title: "Result Dispatched"
 Description: "Result Dispatched"
-* status = #completed
+* status = #in-progress
 * intent = #order
-* executionPeriod.start = "2022-07-28"
-* executionPeriod.end = "2022-07-30"
+* authoredOn = "2022-07-28"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -600,11 +602,11 @@ Description: "Viral load result absolute decimal"
 * performer = Reference(HIVOrganizationExample)
 * derivedFrom = Reference(HIVTestResultExample)
 
-Instance: ARVRegimenMedicationRequestExample
+Instance: ARVRegimenMedicationRequestRegimenChangedExample
 InstanceOf: ARVRegimenMedicationRequest
 Usage: #example
-Title: "ARV Regimen Medication Request"
-Description: "ARV Regimen Medication Request"
+Title: "ARV Regimen Medication Request: Regimen Changed"
+Description: "ARV Regimen Medication Request: Regimen Changed."
 * status = #completed
 * intent = #order
 * medication[0].concept = $SCT#427314002
@@ -613,7 +615,6 @@ Description: "ARV Regimen Medication Request"
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
 * reason.reference = Reference(ARTRegimenSwitchedOrSubstitutedExample)
-* authoredOn = "2022-11-30"
 
 Instance: ReasonForHIVTestingExample
 InstanceOf: ReasonForHIVTesting
@@ -653,6 +654,36 @@ Description: "ARV regimen change."
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
 * derivedFrom = Reference(ARTRegimenSwitchedOrSubstitutedExample)
+
+Instance: ARVRegimenMedicationRequestInitiatedARTExample
+InstanceOf: ARVRegimenMedicationRequest
+Usage: #example
+Title: "ARV Regimen Medication Request: Initiated ART"
+Description: "ARV Regimen Medication Request: Initiated ART"
+* status = #completed
+* intent = #order
+* medication[0].concept = $SCT#427314002
+* medication[0].concept.coding.display = "Antiviral therapy"
+* medication[0].concept.text = "ARV regimen"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* reason.reference = Reference(ARTInitiatedExample)
+
+Instance: ARTInitiatedExample
+InstanceOf: ARTInitiated
+Usage: #example
+Title: "ART Initiated"
+Description: "ART initiated."
+* status = #final
+* code = $LNC#47241-5
+* code.text = "ART initiated"
+* code.coding.display = "Date determined medically eligible and ready to start HIV treatment"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
 
 Instance: ARTRegimenSwitchedOrSubstitutedExample
 InstanceOf: ARTRegimenSwitchedOrSubstituted

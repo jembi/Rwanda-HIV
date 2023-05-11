@@ -1,5 +1,5 @@
 Alias: $LNC = http://loinc.org
-Alias: $SCT = http://snomed.info/sct 
+Alias: $SCT = http://snomed.info/sct
 
 ValueSet: VSSpecimenType
 Id: vs-specimen-type

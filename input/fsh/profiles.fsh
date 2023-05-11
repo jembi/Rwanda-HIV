@@ -277,6 +277,7 @@ Description: "A report as a result of the lab task being completed."
 * result 1..1
 * resultsInterpreter 1..*
 * conclusion 0..1 MS
+* note 0..* MS
 * extension contains TestedByIndex named TestedByIndex 1..1
 
 Profile: DateHIVTestDone
@@ -349,9 +350,7 @@ Description: "ARV Regimen Medication Request"
 * encounter 1..1
 * reason 0..* MS
 * reason only Reference(Observation)
-* authoredOn 1..1
 * note 0..* MS
-//* extension contains ARTRegimenSwitchedOrSubstituted named artRegimenSwitchedOrSubstituted 0..1 MS
 
 Profile: ARVRegimenChange
 Parent: Observation
@@ -370,6 +369,20 @@ Description: "ARV regimen change."
 * derivedFrom 1..1
 * derivedFrom only Reference(Observation)
 
+Profile: ARTInitiated
+Parent: Observation
+Id: art-initiated
+Title: "ART Initiated"
+Description: "ART initiated."
+* status 1..1
+* code.coding.code = #47241-5
+* code.coding.system = "http://loinc.org"
+* code.text = "ART initiated"
+* subject 1..1
+* encounter 1..1
+* effectiveDateTime 1..1
+* note 0..* MS
+
 Profile: ARTRegimenSwitchedOrSubstituted
 Parent: Observation
 Id: art-regimen-switched-or-substituted
@@ -383,14 +396,6 @@ Description: "The ARV regimen has been switched to a new ARV regimen or has been
 * effectiveDateTime 1..1
 * valueBoolean 1..1
 * note 0..* MS
-
-/*Extension: ARTRegimenSwitchedOrSubstituted
-Id: art-regimen-switched-or-substituted
-Title: "ART Regimen Switched Or Substituted"
-Description: "The ARV regimen has been switched to a new ARV regimen or has been substituted by another ARV regimen."
-* value[x] only boolean
-* ^context[0].type = #element
-* ^context[0].expression = "CarePlan.activity.detail"*/
 
 Profile: LabOrderTaskActivity
 Parent: ActivityDefinition
@@ -465,13 +470,14 @@ Description: "Specimen conservation information."
 * typeTested.handling.instruction 0..1 MS
 
 Profile: SampleDisptachedToLabTask
-Parent: Task
+Parent: Transport
 Id: sample-dispatched-to-lab
 Title: "Sample Dispatched to Lab Task"
 Description: "Sample dispatched to lab task."
 * status 1..1
 * intent 1..1
-* executionPeriod 1..1
+* authoredOn 1..1
+* completionTime 0..1 MS
 * note 0..* MS
 
 Profile: PerformingOrganization
@@ -637,13 +643,13 @@ Description: "Repeat lab results."
 * note 0..* MS
 
 Profile: ResultDisptachedTask
-Parent: Task
+Parent: Transport
 Id: result-dispatched-to-facility
 Title: "Result Dispatched"
 Description: "Result Dispatched"
 * status 1..1
 * intent 1..1
-* executionPeriod 1..1
+* authoredOn 1..1
 * note 0..* MS
 
 Profile: SuspendTreatmentHIVTestResult
