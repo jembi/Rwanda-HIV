@@ -6,10 +6,9 @@
 # │  specific packageId is also provided in this file.                                             │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 
-
 id: openhie.fhir.rwanda.hiv
 canonical: http://openhie.org/fhir/rwanda-hiv
-url: http://openhie.org/fhir/rwanda-hiv
+url: http://openhie.org/fhir/rwanda-hiv/ImplementationGuide/openhie.fhir.rwanda.hiv
 name: RwandaHIV
 title: "HL7 FHIR Implementation Guide: Rwanda HIV"
 description: A FHIR Implementation Guide - Rwanda HIV
@@ -21,7 +20,7 @@ version: 0.1.0
 # Although fhirVersions is 0..* in the ImplementationGuide resource
 # it can be a single item OR and array here (but so far SUSHI only
 # supports 4.0.1 anyway).
-fhirVersion: 4.0.1
+fhirVersion: 5.0.0
 
 # The following two lines correspond to items that used to be in
 # ig.ini but were moved to IG.definition.parameter. For

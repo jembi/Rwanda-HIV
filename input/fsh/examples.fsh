@@ -68,52 +68,12 @@ InstanceOf: TargetFacilityEncounter
 Usage: #example
 Title: "Target Facility Encounter example" 
 Description: "Target Facility Encounter example"
-* status = #finished
-* class.code = #AMB
-* class.system = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+* status = #completed
+* class.coding.code = #AMB
+* class.coding.system = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
 * subject = Reference(HIVPatientExample)
-* period.start = "2022-12-01"
-* period.end = "2023-01-20"
-* episodeOfCare = Reference(HIVEpisodeOfCareExample)
-
-Instance: HIVEpisodeOfCareExample
-InstanceOf: HIVEpisodeOfCare
-Usage: #example
-Title: "HIV Episode Of Care"
-Description: "This resource is used for Management of a Patient's HIV Programme."
-* identifier[PI].value = "abc123"
-* identifier[PI].system = "http://openhie.org/fhir/rwanda-hiv/identifier/enrollment-unique-id" (exactly)
-* identifier[PI].type.coding.code = #PI
-* identifier[PI].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[PI].type.coding.display = "Patient internal identifier"
-* identifier[PI].type.text = "Enrollment identifier"
-* status = #active
-* diagnosis.condition = Reference(HIVDiagnosisExample)
-* patient = Reference(HIVPatientExample)
-* managingOrganization = Reference(HIVOrganizationExample)
-* period.start = "2021-05-18"
-* period.end = "2021-05-18"
-
-Instance: HIVDiagnosisExample
-InstanceOf: HIVDiagnosis
-Usage: #example
-Title: "HIV Condition example"
-Description: "Showing a confirmed HIV diagnosis"
-* identifier[PI].value = "abc123"
-* identifier[PI].system = "http://openhie.org/fhir/rwanda-hiv/identifier/hiv-diagnosis"
-* identifier[PI].type.coding.code = #PI
-* identifier[PI].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[PI].type.coding.display = "Patient internal identifier"
-* identifier[PI].type.text = "HIV positive testing identifier"
-* code = $SCT#86406008
-* code.text = "Diagnosis"
-* code.coding.display = "Human immunodeficiency virus infection"
-* subject = Reference(HIVPatientExample)
-* encounter = Reference(TargetFacilityEncounterExample)
-* recordedDate = "2021-05-18"
-* note.text = "Additional information regarding the HIV diagnosis"
-* note.authorReference = Reference(HIVOrganizationExample)
-* note.time = "2015-02-07T13:28:17-05:00"
+* actualPeriod.start = "2022-12-01"
+* actualPeriod.end = "2023-01-20"
 
 Instance: VLSpecimenExample
 InstanceOf: VLSpecimen
@@ -185,17 +145,15 @@ Description: "HIV Lab Order example"
 * identifier[PLAC].type.text = "HIV lab service request identifier"
 * status = #completed
 * intent = #order
-* code = $LNC#25836-8
-* code.text = "Test Type"
-* code.coding.display = "HIV 1 RNA [#/volume] (viral load) in Specimen by NAA with probe detection"
+* code.concept = $LNC#25836-8
+* code.concept.text = "Test Type"
+* code.concept.coding.display = "HIV 1 RNA [#/volume] (viral load) in Specimen by NAA with probe detection"
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
 * occurrenceDateTime = "2012-01-05"
 * requester = Reference(RequestingPractitionerExample)
 * performer = Reference(PerformingPractitionerExample)
-* reasonCode = $SCT#428450006
-* reasonCode.text = "Reason for testing"
-* reasonCode.coding.display = "Repeat laboratory specimen sent"
+* reason.reference = Reference(ReasonForHIVTestingExample)
 * specimen = Reference(VLSpecimenExample)
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
@@ -262,9 +220,9 @@ Description: "HIV Lab Order Cancellation Task example"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn = Reference(HIVServiceRequestExample)
 * status = #cancelled
-* statusReason = $SCT#281264009
-* statusReason.text = "Reason For Canceling/Rejecting the Lab Order"
-* statusReason.coding.display = "Inappropriate bottle or container for sample (finding)"
+* statusReason.concept = $SCT#281264009
+* statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
+* statusReason.concept.coding.display = "Inappropriate bottle or container for sample (finding)"
 * intent = #order
 * executionPeriod.end = "2022-07-30"
 * lastModified = "2022-07-30"
@@ -286,9 +244,9 @@ Description: "HIV Lab Order Rejection Task example"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn = Reference(HIVServiceRequestExample)
 * status = #rejected
-* statusReason = $SCT#123840003
-* statusReason.text = "Reason For Canceling/Rejecting the Lab Order"
-* statusReason.coding.display = "Sample contaminated"
+* statusReason.concept = $SCT#123840003
+* statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
+* statusReason.concept.coding.display = "Sample contaminated"
 * intent = #order
 * executionPeriod.end = "2022-07-30"
 * lastModified = "2022-07-30"
@@ -313,6 +271,9 @@ Description: "HIV Lab Results Diagnostic Report example"
 * result = Reference(HIVTestResultExample)
 * resultsInterpreter = Reference(ResultsInterpreterExample)
 * conclusion = "Some conclusion text"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.text = "additional notes here"
+* note.time = "2015-02-07T13:28:17-05:00"
 
 Instance: ResultsInterpreterExample
 InstanceOf: HIVPractitioner
@@ -347,27 +308,11 @@ Description: "Viral Load Suppression example"
 * note.time = "2015-02-07T13:28:17-05:00"
 * performer = Reference(HIVOrganizationExample)
 
-Instance: DateHIVTestDoneExample
-InstanceOf: DateHIVTestDone
-Usage: #example
-Title: "Date HIV Test Done example"
-Description: "Date HIV Test Done example"
-* status = #final
-* code = $SCT#315124004
-* code.text = "Viral Load Examination"
-* code.coding.display = "Human immunodeficiency virus viral load"
-* subject = Reference(HIVPatientExample)
-* encounter = Reference(TargetFacilityEncounterExample)
-* effectiveDateTime = "2022-12-10"
-* note.text = "Additional information regarding the HIV test"
-* note.authorReference = Reference(HIVOrganizationExample)
-* note.time = "2015-02-07T13:28:17-05:00"
-
-Instance: ARVTreatmentExample
+Instance: ARVTreatmentRegimenChangedExample
 InstanceOf: ARVTreatment
 Usage: #example
-Title: "ARV CarePlan example"
-Description: "ARV CarePlan example"
+Title: "ARV CarePlan example: Regimen Changed"
+Description: "ARV CarePlan example: regimen changed."
 * identifier[PLAC].value = "UAN000123"
 * identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
 * identifier[PLAC].type.coding.code = #PLAC
@@ -380,21 +325,30 @@ Description: "ARV CarePlan example"
 * encounter = Reference(TargetFacilityEncounterExample)
 * period.start = "2022-12-01"
 * period.end = "2022-12-01"
-* activity.detail.kind = #MedicationRequest
-* activity.detail.code = $LNC#45260-7 
-* activity.detail.code.text = "HIV medication request"
-* activity.detail.code.coding.display = "HIV ART medication"
-* activity.detail.reasonCode = $SCT#76018003
-* activity.detail.reasonCode.text = "Regimen change reason"
-* activity.detail.reasonCode.coding.display = "Virologic"
-* activity.detail.status = #in-progress
-* activity.detail.productCodeableConcept = $SCT#427314002
-* activity.detail.productCodeableConcept.coding.display = "Antiviral therapy"
-* activity.detail.productCodeableConcept.text = "ARV regimen"
-* activity.detail.extension[artRegimenSwitchedOrSubstituted].valueBoolean = false
-* activity.detail.scheduledPeriod.start = "2023-01-01"
-* activity.detail.scheduledPeriod.end = "2023-01-01"
-* note.text = "ABC + 3TC + LPV/r"
+* activity.plannedActivityReference = Reference(ARVRegimenMedicationRequestRegimenChangedExample)
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: ARVTreatmentInitiatedExample
+InstanceOf: ARVTreatment
+Usage: #example
+Title: "ARV CarePlan example: ART Initiated"
+Description: "ARV CarePlan example: ART initiated."
+* identifier[PLAC].value = "UAN000123"
+* identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
+* identifier[PLAC].type.coding.code = #PLAC
+* identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[PLAC].type.coding.display = "Placer identifier"
+* identifier[PLAC].type.text = "Unique ART number"
+* status = #active
+* intent = #plan
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* period.start = "2022-12-01"
+* period.end = "2022-12-01"
+* activity.plannedActivityReference = Reference(ARVRegimenMedicationRequestInitiatedARTExample)
+* note.text = "Some comments"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
 
@@ -403,6 +357,7 @@ InstanceOf: SpecimenConservation
 Usage: #example
 Title: "Specimen Conservation"
 Description: "Specimen conservation information."
+* status = #active
 * typeTested.type = $SCT#119361006
 * typeTested.preference = #preferred
 * typeTested.handling.temperatureRange.low.value = 5
@@ -448,7 +403,7 @@ Usage: #example
 Title: "HIV Lab Order Task Activity"
 Description: "HIV lab order task activity."
 * extension[RevisedBy].valueInteger = 2
-* url.value = "http://openhie.org/fhir/rwanda-hiv/hiv-lab-task-activity-defintion"
+//* url.value = "http://openhie.org/fhir/rwanda-hiv/hiv-lab-task-activity-defintion"
 * status = #active
 * reviewer.name = "Someone"
 * lastReviewDate = "2023-01-01"
@@ -456,17 +411,19 @@ Description: "HIV lab order task activity."
 * date = "2023-01-01"
 * endorser.name = "Someone"
 * approvalDate = "2023-01-01"
-* specimenRequirement = Reference(SpecimenConservationExample)
+* specimenRequirement = Canonical(SpecimenConservationExample)
 
 Instance: SampleDisptachedToLabTaskExample
 InstanceOf: SampleDisptachedToLabTask
 Usage: #example
 Title: "Sample Dispatched to Lab Task"
 Description: "Sample dispatched to lab task."
-* status = #completed
+* status = #in-progress
 * intent = #order
-* executionPeriod.start = "2022-07-28"
-* executionPeriod.end = "2022-07-30"
+* authoredOn = "2022-07-28"
+* completionTime = "2022-07-28"
+* requestedLocation = Reference(TransportRequestedLocationExample)
+* currentLocation = Reference(TransportCurrentLocationExample)
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -485,8 +442,8 @@ Description: "Organization responsible for carrying out the HIV testing services
 * identifier[OrgID].type.coding.display = "Organization identifier"
 * identifier[OrgID].type.text = "Performing Organization identifier"
 * name = "A Laboratory name"
-* address[+].state = "A province name"
-* address[=].district = "A district name"
+* contact.address[+].state = "A province name"
+* contact.address[=].district = "A district name"
 
 Instance: RequestingOrganizationExample
 InstanceOf: RequestingOrganization
@@ -534,16 +491,14 @@ InstanceOf: ReceiveSMSMessages
 Usage: #example
 Title: "Do Not Receive SMS Messages"
 Description: "Indication that a patient does not consent to receiving SMS messages."
-* status = #rejected
-* provision.type = #deny
-* patient = Reference(HIVPatientExample)
-* scope.coding.code = #patient-privacy
-* scope.coding.system = "http://terminology.hl7.org/CodeSystem/consentscope"
+* status = #inactive
+* decision = #deny
+* subject = Reference(HIVPatientExample)
 * category.coding.code = #59284-0
 * category.coding.system = "http://loinc.org"
-* policyRule = $SCT#398227009
-* policyRule.coding.display = "Inadequate consent"
-* policyRule.text = "Consent policy"
+* regulatoryBasis = $SCT#398227009
+* regulatoryBasis.coding.display = "Inadequate consent"
+* regulatoryBasis.text = "Consent policy"
 
 Instance: ReceiveSMSMessagesExample
 InstanceOf: ReceiveSMSMessages
@@ -551,15 +506,13 @@ Usage: #example
 Title: "Receive SMS Messages"
 Description: "Indication that a patient does consent to receiving SMS messages."
 * status = #active
-* provision.type = #permit
-* patient = Reference(HIVPatientExample)
-* scope.coding.code = #patient-privacy
-* scope.coding.system = "http://terminology.hl7.org/CodeSystem/consentscope"
+* decision = #permit
+* subject = Reference(HIVPatientExample)
 * category.coding.code = #59284-0
 * category.coding.system = "http://loinc.org"
-* policyRule = $SCT#699237001
-* policyRule.coding.display = "Consent given for communication by short message service text messaging"
-* policyRule.text = "Consent policy"
+* regulatoryBasis = $SCT#699237001
+* regulatoryBasis.coding.display = "Consent given for communication by short message service text messaging"
+* regulatoryBasis.text = "Consent policy"
 
 Instance: RepeatHIVTestResultExample
 InstanceOf: RepeatHIVTestResult
@@ -584,10 +537,11 @@ InstanceOf: ResultDisptachedTask
 Usage: #example
 Title: "Result Dispatched"
 Description: "Result Dispatched"
-* status = #completed
+* status = #in-progress
 * intent = #order
-* executionPeriod.start = "2022-07-28"
-* executionPeriod.end = "2022-07-30"
+* authoredOn = "2022-07-28"
+* requestedLocation = Reference(TransportRequestedLocationExample)
+* currentLocation = Reference(TransportCurrentLocationExample)
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -615,8 +569,7 @@ InstanceOf: TestingPlatform
 Usage: #example
 Title: "Testing Platform"
 Description: "The device platform used for testing."
-* deviceName.name = "My testing platform"
-* deviceName.type = #manufacturer-name
+* manufacturer = "My testing platform"
 * note.text = "Some comments"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -658,3 +611,119 @@ Description: "Viral load result absolute decimal"
 * note.time = "2015-02-07T13:28:17-05:00"
 * performer = Reference(HIVOrganizationExample)
 * derivedFrom = Reference(HIVTestResultExample)
+
+Instance: ARVRegimenMedicationRequestRegimenChangedExample
+InstanceOf: ARVRegimenMedicationRequest
+Usage: #example
+Title: "ARV Regimen Medication Request: Regimen Changed"
+Description: "ARV Regimen Medication Request: Regimen Changed."
+* status = #completed
+* intent = #order
+* medication[0].concept = $SCT#427314002
+* medication[0].concept.coding.display = "Antiviral therapy"
+* medication[0].concept.text = "ARV regimen"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* reason.reference = Reference(ARTRegimenSwitchedOrSubstitutedExample)
+
+Instance: ReasonForHIVTestingExample
+InstanceOf: ReasonForHIVTesting
+Usage: #example
+Title: "Reason for HIV testing"
+Description: "The reason for HIV testing."
+* status = #final
+* code = $SCT#165813002
+* code.text = "HIV Test"
+* code.coding.display = "Human immunodeficiency virus antibody test"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* valueCodeableConcept = $SCT#2528003
+* valueCodeableConcept.text = "Reason for testing"
+* valueCodeableConcept.coding.display = "Viremia"
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: ARVRegimenChangeExample
+InstanceOf: ARVRegimenChange
+Usage: #example
+Title: "ARV Regimen Change"
+Description: "ARV regimen change."
+* status = #final
+* code = $SCT#182838006
+* code.text = "ARV Regimen Change"
+* code.coding.display = "Change of medication"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* valueCodeableConcept = $SCT#271737000
+* valueCodeableConcept.text = "Regimen change reason"
+* valueCodeableConcept.coding.display = "Anemia"
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+* derivedFrom = Reference(ARTRegimenSwitchedOrSubstitutedExample)
+
+Instance: ARVRegimenMedicationRequestInitiatedARTExample
+InstanceOf: ARVRegimenMedicationRequest
+Usage: #example
+Title: "ARV Regimen Medication Request: Initiated ART"
+Description: "ARV Regimen Medication Request: Initiated ART"
+* status = #completed
+* intent = #order
+* medication[0].concept = $SCT#427314002
+* medication[0].concept.coding.display = "Antiviral therapy"
+* medication[0].concept.text = "ARV regimen"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* reason.reference = Reference(ARTInitiatedExample)
+
+Instance: ARTInitiatedExample
+InstanceOf: ARTInitiated
+Usage: #example
+Title: "ART Initiated"
+Description: "ART initiated."
+* status = #final
+* code = $LNC#47241-5
+* code.text = "ART initiated"
+* code.coding.display = "Date determined medically eligible and ready to start HIV treatment"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: ARTRegimenSwitchedOrSubstitutedExample
+InstanceOf: ARTRegimenSwitchedOrSubstituted
+Usage: #example
+Title: "ART Regimen Switched Or Substituted"
+Description: "The ARV regimen has been switched to a new ARV regimen or has been substituted by another ARV regimen."
+* status = #final
+* code = $SCT#182838006
+* code.text = "ARV Regimen Change"
+* code.coding.display = "Change of medication"
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* valueBoolean = true
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: TransportRequestedLocationExample
+InstanceOf: TransportLocation
+Usage: #example
+Title: "Transport Requested Location"
+Description: "Transport requested location."
+* status = #active
+* name = "Requested location name"
+
+Instance: TransportCurrentLocationExample
+InstanceOf: TransportLocation
+Usage: #example
+Title: "Transport Current Location"
+Description: "Transport current location."
+* status = #active
+* name = "Current location name"
