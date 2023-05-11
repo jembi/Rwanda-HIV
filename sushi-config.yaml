@@ -8,7 +8,7 @@
 
 id: openhie.fhir.rwanda.hiv
 canonical: http://openhie.org/fhir/rwanda-hiv
-url: http://openhie.org/fhir/rwanda-hiv
+url: http://openhie.org/fhir/rwanda-hiv/ImplementationGuide/openhie.fhir.rwanda.hiv
 name: RwandaHIV
 title: "HL7 FHIR Implementation Guide: Rwanda HIV"
 description: A FHIR Implementation Guide - Rwanda HIV
