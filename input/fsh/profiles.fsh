@@ -34,7 +34,7 @@ Id: hiv-organization
 Title: "HIV Organization"
 Description: "Organization providing HIV Testing Services."
 * identifier 1..*
-* identifier ^slicing.discriminator.type = #exists
+* identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
 * identifier ^slicing.description = "Slice based on the type of identifier."
@@ -77,7 +77,7 @@ Id: viral-load-specimen
 Title: "Viral Load Specimen"
 Description: "The test sample that was collected for the initiated lab order."
 * identifier 1..*
-* identifier ^slicing.discriminator.type = #exists
+* identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
 * identifier contains
@@ -127,7 +127,7 @@ Id: HIV-lab-order
 Title: "Lab Order"
 Description: "A service request that initiates the need for the lab to collect the test sample."
 * identifier 1..*
-* identifier ^slicing.discriminator.type = #exists
+* identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
 * identifier ^slicing.description = "Slice based on the type of identifier"
@@ -229,7 +229,7 @@ Id: hiv-lab-task
 Title: "Lab Task"
 Description: "Assists with tracking the state of the lab order and its completion status."
 * identifier 1..*
-* identifier ^slicing.discriminator.type = #exists
+* identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
 * identifier ^slicing.description = "Slice based on the type of identifier."
@@ -308,7 +308,7 @@ Id: hiv-arv-treatment
 Title: "ARV Treatment"
 Description: "This profile is to record prescribed ARV regimen"
 * identifier 1..*
-* identifier ^slicing.discriminator.type = #exists
+* identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
 * identifier ^slicing.description = "Slice based on the type of identifier."
@@ -473,7 +473,7 @@ Id: performing-organization
 Title: "Performing Organization"
 Description: "Organization responsible for carrying out the HIV testing services."
 * identifier 1..*
-* identifier ^slicing.discriminator.type = #exists
+* identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
 * identifier ^slicing.description = "Slice based on the type of identifier."
@@ -515,7 +515,7 @@ Id: requesting-organization
 Title: "Requesting Organization"
 Description: "Organization requesting for HIV testing services."
 * identifier 1..*
-* identifier ^slicing.discriminator.type = #exists
+* identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
 * identifier ^slicing.description = "Slice based on the type of identifier."
@@ -535,7 +535,7 @@ Id: funding-source
 Title: "Funding Organization"
 Description: "Funding organization."
 * identifier 1..*
-* identifier ^slicing.discriminator.type = #exists
+* identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
 * identifier ^slicing.description = "Slice based on the type of identifier."
@@ -564,7 +564,7 @@ Id: implementing-partner
 Title: "Implementing Partner Organization"
 Description: "Implementing partner organization."
 * identifier 1..*
-* identifier ^slicing.discriminator.type = #exists
+* identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
 * identifier ^slicing.description = "Slice based on the type of identifier."
