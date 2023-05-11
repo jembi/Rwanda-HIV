@@ -158,3 +158,13 @@ Description: "HIV Submit Lab Order Bundle Example"
 * entry[=].resource = ImplementingPartnerOrganizationExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "Organization/ImplementingPartnerOrganizationExample"
+
+* entry[+].fullUrl = "Location/TransportRequestedLocationExample"
+* entry[=].resource = TransportRequestedLocationExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Location/TransportRequestedLocationExample"
+
+* entry[+].fullUrl = "Location/TransportCurrentLocationExample"
+* entry[=].resource = TransportCurrentLocationExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Location/TransportCurrentLocationExample"

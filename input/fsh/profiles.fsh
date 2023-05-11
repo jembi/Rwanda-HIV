@@ -465,6 +465,8 @@ Description: "Sample dispatched to lab task."
 * intent 1..1
 * authoredOn 1..1
 * completionTime 0..1 MS
+* requestedLocation 1..1
+* currentLocation 1..1
 * note 0..* MS
 
 Profile: PerformingOrganization
@@ -637,6 +639,8 @@ Description: "Result Dispatched"
 * status 1..1
 * intent 1..1
 * authoredOn 1..1
+* requestedLocation 1..1
+* currentLocation 1..1
 * note 0..* MS
 
 Profile: SuspendTreatmentHIVTestResult
@@ -695,3 +699,11 @@ Description: "Viral load result absolute decimal"
 * performer 1..*
 * derivedFrom 1..1
 * note 0..* MS
+
+Profile: TransportLocation
+Parent: Location
+Id: transport-location
+Title: "Transport Location"
+Description: "Transport location."
+* status 1..1
+* name 1..1

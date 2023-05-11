@@ -422,6 +422,8 @@ Description: "Sample dispatched to lab task."
 * intent = #order
 * authoredOn = "2022-07-28"
 * completionTime = "2022-07-28"
+* requestedLocation = Reference(TransportRequestedLocationExample)
+* currentLocation = Reference(TransportCurrentLocationExample)
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -538,6 +540,8 @@ Description: "Result Dispatched"
 * status = #in-progress
 * intent = #order
 * authoredOn = "2022-07-28"
+* requestedLocation = Reference(TransportRequestedLocationExample)
+* currentLocation = Reference(TransportCurrentLocationExample)
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -707,3 +711,19 @@ Description: "The ARV regimen has been switched to a new ARV regimen or has been
 * note.text = "Some comments"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: TransportRequestedLocationExample
+InstanceOf: TransportLocation
+Usage: #example
+Title: "Transport Requested Location"
+Description: "Transport requested location."
+* status = #active
+* name = "Requested location name"
+
+Instance: TransportCurrentLocationExample
+InstanceOf: TransportLocation
+Usage: #example
+Title: "Transport Current Location"
+Description: "Transport current location."
+* status = #active
+* name = "Current location name"
