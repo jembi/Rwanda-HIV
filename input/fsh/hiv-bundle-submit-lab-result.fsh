@@ -28,3 +28,8 @@ Description: "HIV Submit Lab Result Bundle Example"
 * entry[=].resource = HIVTestResultExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "Observation/HIVTestResultExample"
+
+* entry[+].fullUrl = "ActivityDefinition/LabOrderTaskActivityExample"
+* entry[=].resource = LabOrderTaskActivityExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "ActivityDefinition/LabOrderTaskActivityExample"
