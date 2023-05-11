@@ -136,7 +136,7 @@ Description: "A service request that initiates the need for the lab to collect t
 * identifier ^slicing.ordered = false
 * identifier ^slicing.description = "Slice based on the type of identifier."
 * identifier contains
-    PLAC 0..1 MS
+    PLAC 0..1
 * identifier[PLAC].value 0..1 MS
 * identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/lab-order-identifier" (exactly)
 * identifier[PLAC].type.coding.code = #PLAC
