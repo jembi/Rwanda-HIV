@@ -37,6 +37,7 @@ Description: "Organization providing HIV Testing Services."
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.ordered = false
 * identifier ^slicing.description = "Slice based on the type of identifier."
 * identifier contains
     XX 1..1
@@ -80,6 +81,8 @@ Description: "The test sample that was collected for the initiated lab order."
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.ordered = false
+* identifier ^slicing.description = "Slice based on the type of identifier."
 * identifier contains
     appSampleCode 1..1 and
     remoteSampleCode 1..1 and
@@ -130,7 +133,8 @@ Description: "A service request that initiates the need for the lab to collect t
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
-* identifier ^slicing.description = "Slice based on the type of identifier"
+* identifier ^slicing.ordered = false
+* identifier ^slicing.description = "Slice based on the type of identifier."
 * identifier contains
     PLAC 0..1 MS
 * identifier[PLAC].value 0..1 MS
@@ -232,6 +236,7 @@ Description: "Assists with tracking the state of the lab order and its completio
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.ordered = false
 * identifier ^slicing.description = "Slice based on the type of identifier."
 * identifier contains
     FILL 1..1
@@ -311,6 +316,7 @@ Description: "This profile is to record prescribed ARV regimen"
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.ordered = false
 * identifier ^slicing.description = "Slice based on the type of identifier."
 * identifier contains
     PLAC 1..1
@@ -476,6 +482,7 @@ Description: "Organization responsible for carrying out the HIV testing services
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.ordered = false
 * identifier ^slicing.description = "Slice based on the type of identifier."
 * identifier contains
     OrgID 1..1
@@ -518,6 +525,7 @@ Description: "Organization requesting for HIV testing services."
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.ordered = false
 * identifier ^slicing.description = "Slice based on the type of identifier."
 * identifier contains
     OrgID 1..1
@@ -538,6 +546,7 @@ Description: "Funding organization."
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.ordered = false
 * identifier ^slicing.description = "Slice based on the type of identifier."
 * identifier contains
     OrgID 0..1 MS
@@ -567,6 +576,7 @@ Description: "Implementing partner organization."
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #openAtEnd
+* identifier ^slicing.ordered = false
 * identifier ^slicing.description = "Slice based on the type of identifier."
 * identifier contains
     OrgID 0..1 MS
