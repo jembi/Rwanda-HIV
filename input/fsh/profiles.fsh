@@ -389,7 +389,6 @@ Parent: ActivityDefinition
 Id: hiv-lab-task-activity
 Title: "HIV Lab Order Task Activity"
 Description: "HIV lab order task activity."
-//* url 1..1
 * status 1..1
 * reviewer 0..* MS
 * reviewer.name 1..1
@@ -545,7 +544,7 @@ Description: "Funding organization."
 * identifier ^slicing.ordered = false
 * identifier ^slicing.description = "Slice based on the type of identifier."
 * identifier contains
-    OrgID 0..1 MS
+    OrgID 0..1
 * identifier[OrgID].value 0..1 MS
 * identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
 * identifier[OrgID].type.coding.code = #XX
@@ -575,7 +574,7 @@ Description: "Implementing partner organization."
 * identifier ^slicing.ordered = false
 * identifier ^slicing.description = "Slice based on the type of identifier."
 * identifier contains
-    OrgID 0..1 MS
+    OrgID 0..1
 * identifier[OrgID].value 0..1 MS
 * identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
 * identifier[OrgID].type.coding.code = #XX
