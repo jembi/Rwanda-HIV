@@ -4,10 +4,10 @@ Usage: #example
 Title: "HIV Submit Lab Order Bundle Example"
 Description: "HIV Submit Lab Order Bundle Example"
 * type = #transaction
-* entry[+].fullUrl = "Patient/HIVPatient"
-* entry[=].resource = HIVPatient
+* entry[+].fullUrl = "Patient/HIVPatientExample"
+* entry[=].resource = HIVPatientExample
 * entry[=].request.method = #PUT
-* entry[=].request.url = "Patient/HIVPatient"
+* entry[=].request.url = "Patient/HIVPatientExample"
 
 * entry[+].fullUrl = "Task/HIVLabOrderTaskExample"
 * entry[=].resource = HIVLabOrderTaskExample
