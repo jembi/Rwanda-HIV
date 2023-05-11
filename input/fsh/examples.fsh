@@ -308,11 +308,11 @@ Description: "Viral Load Suppression example"
 * note.time = "2015-02-07T13:28:17-05:00"
 * performer = Reference(HIVOrganizationExample)
 
-Instance: ARVTreatmentExample
+Instance: ARVTreatmentRegimenChangedExample
 InstanceOf: ARVTreatment
 Usage: #example
-Title: "ARV CarePlan example"
-Description: "ARV CarePlan example"
+Title: "ARV CarePlan example: Regimen Changed"
+Description: "ARV CarePlan example: regimen changed."
 * identifier[PLAC].value = "UAN000123"
 * identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
 * identifier[PLAC].type.coding.code = #PLAC
@@ -325,7 +325,29 @@ Description: "ARV CarePlan example"
 * encounter = Reference(TargetFacilityEncounterExample)
 * period.start = "2022-12-01"
 * period.end = "2022-12-01"
-* activity.plannedActivityReference = Reference(ARVRegimenMedicationRequestExample)
+* activity.plannedActivityReference = Reference(ARVRegimenMedicationRequestRegimenChangedExample)
+* note.text = "Some comments"
+* note.authorReference = Reference(HIVOrganizationExample)
+* note.time = "2015-02-07T13:28:17-05:00"
+
+Instance: ARVTreatmentInitiatedExample
+InstanceOf: ARVTreatment
+Usage: #example
+Title: "ARV CarePlan example: ART Initiated"
+Description: "ARV CarePlan example: ART initiated."
+* identifier[PLAC].value = "UAN000123"
+* identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
+* identifier[PLAC].type.coding.code = #PLAC
+* identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[PLAC].type.coding.display = "Placer identifier"
+* identifier[PLAC].type.text = "Unique ART number"
+* status = #active
+* intent = #plan
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* period.start = "2022-12-01"
+* period.end = "2022-12-01"
+* activity.plannedActivityReference = Reference(ARVRegimenMedicationRequestInitiatedARTExample)
 * note.text = "Some comments"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"

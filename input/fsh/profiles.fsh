@@ -273,12 +273,12 @@ Description: "A report as a result of the lab task being completed."
 * code.text = "Test Type"
 * subject 1..1
 * encounter 1..1
-* performer 1..*
-* result 1..1
+* performer 0..* MS
+* result 0..1 MS
 * resultsInterpreter 1..*
 * conclusion 0..1 MS
 * note 0..* MS
-* extension contains TestedByIndex named TestedByIndex 1..1
+* extension contains TestedByIndex named TestedByIndex 0..1 MS
 
 Profile: PatientPregnancyStatus
 Parent: Observation
