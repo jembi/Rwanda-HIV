@@ -389,7 +389,7 @@ Parent: ActivityDefinition
 Id: hiv-lab-task-activity
 Title: "HIV Lab Order Task Activity"
 Description: "HIV lab order task activity."
-* url 1..1
+//* url 1..1
 * status 1..1
 * reviewer 0..* MS
 * reviewer.name 1..1

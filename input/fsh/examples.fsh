@@ -403,7 +403,7 @@ Usage: #example
 Title: "HIV Lab Order Task Activity"
 Description: "HIV lab order task activity."
 * extension[RevisedBy].valueInteger = 2
-* url.value = "http://openhie.org/fhir/rwanda-hiv/hiv-lab-task-activity-defintion"
+//* url.value = "http://openhie.org/fhir/rwanda-hiv/hiv-lab-task-activity-defintion"
 * status = #active
 * reviewer.name = "Someone"
 * lastReviewDate = "2023-01-01"
