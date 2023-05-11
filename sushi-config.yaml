@@ -6,7 +6,7 @@
 # │  specific packageId is also provided in this file.                                             │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 
-id: openhie.fhir.rwanda.hiv
+id: http://openhie.org/fhir/rwanda-hiv
 canonical: http://openhie.org/fhir/rwanda-hiv
 url: http://openhie.org/fhir/rwanda-hiv
 name: RwandaHIV
