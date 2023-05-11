@@ -280,19 +280,6 @@ Description: "A report as a result of the lab task being completed."
 * note 0..* MS
 * extension contains TestedByIndex named TestedByIndex 1..1
 
-Profile: DateHIVTestDone
-Parent: Observation
-Id: date-hiv-test-done
-Title: "Date HIV Test Done"
-Description: "This profile is to record the date when HIV test was done for a patient."
-* status = #final
-* code from VSHIVTestDone (required)
-* code.text = "Viral Load Examination"
-* subject 1..1
-* encounter 1..1
-* effectiveDateTime 1..1
-* note 0..* MS
-
 Profile: PatientPregnancyStatus
 Parent: Observation
 Id: hiv-patient-pregnant
