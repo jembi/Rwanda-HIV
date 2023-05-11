@@ -349,6 +349,7 @@ Description: "ARV Regimen Medication Request"
 * encounter 1..1
 * reason 0..* MS
 * reason only Reference(Observation)
+* authoredOn 1..1
 * note 0..* MS
 //* extension contains ARTRegimenSwitchedOrSubstituted named artRegimenSwitchedOrSubstituted 0..1 MS
 

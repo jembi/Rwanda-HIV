@@ -613,6 +613,7 @@ Description: "ARV Regimen Medication Request"
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
 * reason.reference = Reference(ARTRegimenSwitchedOrSubstitutedExample)
+* authoredOn = "2022-11-30"
 
 Instance: ReasonForHIVTestingExample
 InstanceOf: ReasonForHIVTesting
