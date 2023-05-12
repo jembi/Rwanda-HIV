@@ -606,14 +606,11 @@ Id: receive-sms-messages
 Title: "Receive SMS Messages"
 Description: "Indication whether a patient should receive SMS messages."
 * status 1..1
-* decision 1..1
 * subject 1..1
 * subject only Reference(Patient)
-* category.coding.code = #59284-0
-* category.coding.system = "http://loinc.org"
-* regulatoryBasis 1..1
-* regulatoryBasis from VSPatientConsentForSMSNotifications (required)
-* regulatoryBasis.text = "Consent policy"
+* category = $LNC#89057-4
+* category.text = "Patient consent for SMS messages"
+* decision 1..1
 
 Profile: RepeatHIVTestResult
 Parent: Observation
