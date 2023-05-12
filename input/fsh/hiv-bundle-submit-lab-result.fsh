@@ -14,11 +14,6 @@ Description: "HIV Submit Lab Result Bundle Example"
 * entry[=].request.method = #PUT
 * entry[=].request.url = "DiagnosticReport/HIVLabResultsDiagnosticReportExample"
 
-* entry[+].fullUrl = "Practitioner/PerformingPractitionerExample"
-* entry[=].resource = PerformingPractitionerExample
-* entry[=].request.method = #PUT
-* entry[=].request.url = "Practitioner/PerformingPractitionerExample"
-
 * entry[+].fullUrl = "Specimen/VLSpecimenExample"
 * entry[=].resource = VLSpecimenExample
 * entry[=].request.method = #PUT
@@ -28,6 +23,16 @@ Description: "HIV Submit Lab Result Bundle Example"
 * entry[=].resource = HIVTestResultExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "Observation/HIVTestResultExample"
+
+* entry[+].fullUrl = "Observation/HIVTestResultViralLoadLogExample"
+* entry[=].resource = HIVTestResultViralLoadLogExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Observation/HIVTestResultViralLoadLogExample"
+
+* entry[+].fullUrl = "Observation/HIVTestResultAbsoluteDecimalExample"
+* entry[=].resource = HIVTestResultAbsoluteDecimalExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Observation/HIVTestResultAbsoluteDecimalExample"
 
 * entry[+].fullUrl = "ActivityDefinition/LabOrderTaskActivityExample"
 * entry[=].resource = LabOrderTaskActivityExample
