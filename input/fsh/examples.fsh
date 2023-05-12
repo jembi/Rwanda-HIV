@@ -491,13 +491,11 @@ Usage: #example
 Title: "Do Not Receive SMS Messages"
 Description: "Indication that a patient does not consent to receiving SMS messages."
 * status = #inactive
-* decision = #deny
 * subject = Reference(HIVPatientExample)
-* category.coding.code = #59284-0
-* category.coding.system = "http://loinc.org"
-* regulatoryBasis = $SCT#398227009
-* regulatoryBasis.coding.display = "Inadequate consent"
-* regulatoryBasis.text = "Consent policy"
+* category = $LNC#89057-4
+* category.coding.display = "Permission to receive text messages"
+* category.text = "Patient consent for SMS messages"
+* decision = #deny
 
 Instance: ReceiveSMSMessagesExample
 InstanceOf: ReceiveSMSMessages
@@ -505,13 +503,11 @@ Usage: #example
 Title: "Receive SMS Messages"
 Description: "Indication that a patient does consent to receiving SMS messages."
 * status = #active
-* decision = #permit
 * subject = Reference(HIVPatientExample)
-* category.coding.code = #59284-0
-* category.coding.system = "http://loinc.org"
-* regulatoryBasis = $SCT#699237001
-* regulatoryBasis.coding.display = "Consent given for communication by short message service text messaging"
-* regulatoryBasis.text = "Consent policy"
+* category = $LNC#89057-4
+* category.coding.display = "Permission to receive text messages"
+* category.text = "Patient consent for SMS messages"
+* decision = #permit
 
 Instance: RepeatHIVTestResultExample
 InstanceOf: RepeatHIVTestResult

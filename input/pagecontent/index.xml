@@ -9,9 +9,14 @@
   </p>
 
   <blockquote class="stu-note">
-    <p>
-      This FHIR IG is not intended for production use until all partner reviews have been completed.
-    </p>
+    <ul>
+      <li>
+        This FHIR IG is not intended for production use until all partner reviews have been completed.
+      </li>
+      <li>
+        The API contract for <a href="https://docs.deforay.com/vlsm/vl-api" target="_blank">VLSM Viral Load (VL) v1.1</a> was used as the basis for the MDS data elements.
+      </li>
+    </ul>
   </blockquote>
 
 	<h3>Download</h3> <a name="download"></a>
