@@ -247,7 +247,7 @@ Description: "Assists with tracking the state of the lab order and its completio
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * identifier[FILL].type.text = "Lab order number"
 * instantiatesCanonical 1..1
-* basedOn only Reference(ServiceRequest)
+* basedOn //only Reference(ServiceRequest)
 * status 1..1
 * statusReason 0..1 MS
 * statusReason from VSReasonForSampleCancellationOrRejection (required)

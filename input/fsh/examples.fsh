@@ -171,7 +171,9 @@ Description: "Lab Order example"
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
-* basedOn = Reference(HIVServiceRequestExample)
+* basedOn[0] = Reference(HIVServiceRequestExample)
+* basedOn[1] = Reference(SampleDisptachedToLabTaskExample)
+* basedOn[2] = Reference(ResultDisptachedTaskExample)
 * status = #requested
 * intent = #order
 * executionPeriod.start = "2022-07-28"
@@ -193,7 +195,9 @@ Description: "Lab Result Task example"
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * identifier[FILL].type.text = "Lab order number"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
-* basedOn = Reference(HIVServiceRequestExample)
+* basedOn[0] = Reference(HIVServiceRequestExample)
+* basedOn[1] = Reference(SampleDisptachedToLabTaskExample)
+* basedOn[2] = Reference(ResultDisptachedTaskExample)
 * status = #completed
 * intent = #order
 * executionPeriod.end = "2022-07-30"
@@ -218,7 +222,9 @@ Description: "HIV Lab Order Cancellation Task example"
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
-* basedOn = Reference(HIVServiceRequestExample)
+* basedOn[0] = Reference(HIVServiceRequestExample)
+* basedOn[1] = Reference(SampleDisptachedToLabTaskExample)
+* basedOn[2] = Reference(ResultDisptachedTaskExample)
 * status = #cancelled
 * statusReason.concept = $SCT#281264009
 * statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
@@ -242,7 +248,9 @@ Description: "HIV Lab Order Rejection Task example"
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
-* basedOn = Reference(HIVServiceRequestExample)
+* basedOn[0] = Reference(HIVServiceRequestExample)
+* basedOn[1] = Reference(SampleDisptachedToLabTaskExample)
+* basedOn[2] = Reference(ResultDisptachedTaskExample)
 * status = #rejected
 * statusReason.concept = $SCT#123840003
 * statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
