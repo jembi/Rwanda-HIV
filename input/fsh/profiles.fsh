@@ -153,7 +153,7 @@ Description: "A service request that initiates the need for the lab to collect t
 * occurrenceDateTime 0..1 MS
 * requester 1..1
 * performer 1..1
-* reason only Reference (Observation)
+* reason 1..*
 * specimen 1..1
 * note 0..* MS
 
@@ -336,7 +336,7 @@ Description: "ARV Regimen Medication Request"
 * subject 1..1
 * encounter 1..1
 * reason 0..* MS
-* reason only Reference(Observation)
+* reason 1..*
 * note 0..* MS
 
 Profile: ARVRegimenChange
