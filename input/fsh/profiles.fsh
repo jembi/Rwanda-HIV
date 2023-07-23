@@ -1,8 +1,8 @@
 Profile: HIVPatient
 Parent: Patient
 Id: hiv-patient
-Title: "Patient"
-Description: "A patient resource for an HIV Patient"
+Title: "HIV Patient"
+Description: "Is used to document demographics and other administrative information about a HIV individual receiving care or other health-related services."
 * name.given 1..* MS
 * name.family 0..1 MS
 * telecom 0..* MS
@@ -52,8 +52,8 @@ Description: "Organization providing HIV Testing Services."
 Profile: HIVPatientIsNew
 Parent: Observation
 Id: hiv-patient-is-new
-Title: "HIV Patient Is New"
-Description: "This profile is to record whether an HIV patient is new."
+Title: "HIV Patient Is New Observation"
+Description: "Represents whether this is a new patient."
 * status = #final
 * code = $SCT#769681006
 * code.text = "New Patient Indication"
@@ -66,7 +66,7 @@ Profile: TargetFacilityEncounter
 Parent: Encounter
 Id: target-facility-encounter
 Title: "Target Facility Encounter" 
-Description: "This profile represents the current facility at which the patient is receiving treatment."
+Description: "Represents the current facility at which the patient is receiving health services."
 * status 1..1
 * class 1..1
 * subject 1..1
@@ -76,7 +76,7 @@ Profile: VLSpecimen
 Parent: Specimen
 Id: viral-load-specimen
 Title: "Viral Load Specimen"
-Description: "The test sample that was collected for the initiated lab order."
+Description: "Represents the VL test sample that was collected for the service request."
 * identifier 1..*
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
@@ -119,7 +119,7 @@ Description: "The test sample that was collected for the initiated lab order."
 Extension: SampleReordered
 Id: sample-reordered
 Title: "Sample reordered"
-Description: "The sample was reordered."
+Description: "An indication whether the sample was reordered."
 * value[x] only boolean
 * ^context[0].type = #element
 * ^context[0].expression = "Specimen"
@@ -127,8 +127,8 @@ Description: "The sample was reordered."
 Profile: HIVServiceRequest
 Parent: ServiceRequest
 Id: HIV-lab-order
-Title: "Lab Order"
-Description: "A service request that initiates the need for the lab to collect the test sample."
+Title: "HIV VL Service Request"
+Description: "Represents the record of request for the HIV VL lab order."
 * identifier 1..*
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
@@ -160,10 +160,11 @@ Description: "A service request that initiates the need for the lab to collect t
 Profile: ReasonForHIVTesting
 Parent: Observation
 Id: reason-for-hiv-testing
-Title: "Reason for HIV testing"
-Description: "The reason for HIV testing."
+Title: "Reason for HIV testing Observation"
+Description: "Represents the reason for HIV VL testing services."
 * status 1..1
-* code from ReasonForHIVTestingCode (required)
+* code.coding.code = #165813002
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "HIV Test"
 * subject 1..1
 * encounter 1..1
@@ -175,10 +176,11 @@ Description: "The reason for HIV testing."
 Profile: HIVTestResult
 Parent: Observation
 Id: viral-load-test-result
-Title: "Lab Results"
-Description: "The result of the lab test which determines whether the patient is infected with HIV or not."
+Title: "HIV VL Lab Result Observation"
+Description: "Represents the result of the VL test."
 * status 1..1
-* code from VSVLResultCode (required)
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * subject 1..1
 * encounter 1..1
@@ -194,7 +196,7 @@ Description: "The result of the lab test which determines whether the patient is
 Extension: ResultEnteredManually
 Id: result-entered-manually
 Title: "Test Result Entered Manually"
-Description: "The test result was entered manually."
+Description: "An indication whether the test result was entered manually."
 * value[x] only boolean
 * ^context[0].type = #element
 * ^context[0].expression = "Observation"
@@ -203,7 +205,9 @@ Profile: HIVPractitioner
 Parent: Practitioner
 Id: hiv-practitioner
 Title: "Practitioner"
-Description: "The healthcare professional who has been assigned to a given lab task."
+Description: 
+    "Represents the practitioners: (1) who requested the VL lab order, (2) who must perform the VL examination 
+    and (3) who is responsible for interpreting the results."
 * name 0..1 MS
 * name.given 1..*
 * name.family 1..1
@@ -230,8 +234,11 @@ Description: "The result status index."
 Profile: HIVLabTask
 Parent: Task
 Id: hiv-lab-task
-Title: "Lab Task"
-Description: "Assists with tracking the state of the lab order and its completion status."
+Title: "HIV VL Lab Order Task"
+Description: 
+        "Is primarily used to track the progress of a HIV VL lab order. More specifically, the lab order ID for the 
+        service request is documented in this profile and is also used to document other key data such as the reason(s) for sample cancellation or 
+        rejection and the type of output that, when applicable, will be produced by the task."
 * identifier 1..*
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
@@ -257,7 +264,8 @@ Description: "Assists with tracking the state of the lab order and its completio
 * lastModified 1..1
 * note 0..* MS
 * output 0..* MS
-* output.type.coding.code from VSVLResultCode (required)
+* output.type.coding.code = #398579006
+* output.type.coding.system = "http://snomed.info/sct"
 * output.type.text = "Viral Load Result"
 * output.valueReference 1..1
 * extension contains ResultStatusIndex named ResultStatusIndex 0..1 MS
@@ -265,8 +273,8 @@ Description: "Assists with tracking the state of the lab order and its completio
 Profile: HIVDiagnosticReport
 Parent: DiagnosticReport
 Id: hiv-diagnostic-report
-Title: "Diagnostic Report"
-Description: "A report as a result of the lab task being completed."
+Title: "HIV Viral Load Diagnostic Report"
+Description: "Represents the findings and interpretations for a VL test."
 * basedOn only Reference(ServiceRequest)
 * status 1..1
 * code from VSTestTypes (required)
@@ -283,8 +291,8 @@ Description: "A report as a result of the lab task being completed."
 Profile: PatientPregnancyStatus
 Parent: Observation
 Id: hiv-patient-pregnant
-Title: "Patient Pregnancy Status"
-Description: "This profile is to record the pregnacy status for the patient."
+Title: "Patient Pregnancy Status Observation"
+Description: "Represents the pregnancy status of a patient."
 * status = #final
 * code = $SCT#250421003
 * code.text = "Pregnancy status"
@@ -298,8 +306,8 @@ Description: "This profile is to record the pregnacy status for the patient."
 Profile: ARVTreatment
 Parent: CarePlan
 Id: hiv-arv-treatment
-Title: "ARV Treatment"
-Description: "This profile is to record prescribed ARV regimen"
+Title: "ARV Treatment CarePlan"
+Description: "Represents a patient’s Antiretroviral Therapy (ART) treatment record, starting from ART initiation."
 * identifier 1..*
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
@@ -328,7 +336,7 @@ Profile: ARVRegimenMedicationRequest
 Parent: MedicationRequest
 Id: arv-regimen-medication-request
 Title: "ARV Regimen Medication Request"
-Description: "ARV Regimen Medication Request"
+Description: "Represents a prescription request for an ARV regimen for a patient."
 * status 1..1
 * intent 1..1
 * medication from VSARVRegimen (required)
@@ -342,10 +350,11 @@ Description: "ARV Regimen Medication Request"
 Profile: ARVRegimenChange
 Parent: Observation
 Id: arv-regimen-change
-Title: "ARV Regimen Change"
-Description: "ARV regimen change."
+Title: "ARV Regimen Change Observation"
+Description: "Represents a patient whose ARV regimen was changed."
 * status 1..1
-* code from VSARVRegimenChange (required)
+* code.coding.code = #182838006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "ARV Regimen Change"
 * subject 1..1
 * encounter 1..1
@@ -359,8 +368,8 @@ Description: "ARV regimen change."
 Profile: ARTInitiated
 Parent: Observation
 Id: art-initiated
-Title: "ART Initiated"
-Description: "ART initiated."
+Title: "ART Initiated Observation"
+Description: "Represents a patient who is initiated on ART."
 * status 1..1
 * code.coding.code = #47241-5
 * code.coding.system = "http://loinc.org"
@@ -373,10 +382,11 @@ Description: "ART initiated."
 Profile: ARTRegimenSwitchedOrSubstituted
 Parent: Observation
 Id: art-regimen-switched-or-substituted
-Title: "ART Regimen Switched Or Substituted"
-Description: "The ARV regimen has been switched to a new ARV regimen or has been substituted by another ARV regimen."
+Title: "ART Regimen Switched Or Substituted Observation"
+Description: "Represents a patient whose ARV regimen has been switched to a new ARV regimen or has been substituted by another ARV regimen."
 * status 1..1
-* code from VSARVRegimenChange (required)
+* code.coding.code = #182838006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "ARV Regimen Change"
 * subject 1..1
 * encounter 1..1
@@ -387,8 +397,8 @@ Description: "The ARV regimen has been switched to a new ARV regimen or has been
 Profile: LabOrderTaskActivity
 Parent: ActivityDefinition
 Id: hiv-lab-task-activity
-Title: "HIV Lab Order Task Activity"
-Description: "HIV lab order task activity."
+Title: "HIV Lab Order Activity Definition"
+Description: "Represents more specific information regarding the task’s lab order request."
 * status 1..1
 * reviewer 0..* MS
 * reviewer.name 1..1
@@ -413,8 +423,8 @@ Description: "The user index for the person who reviewed the viral load result."
 Profile: ARVAdherence
 Parent: Observation
 Id: hiv-arv-adherence
-Title: "Patient's Adherence to ARV Treatment"
-Description: "ARV adherence."
+Title: "Adherence to ARV Treatment Observation"
+Description: "Represents a patient’s adherence to ARV treatment."
 * status 1..1
 * code = $SCT#386091000
 * code.text = "Treatment compliance"
@@ -428,8 +438,8 @@ Description: "ARV adherence."
 Profile: Breastfeeding
 Parent: Observation
 Id: hiv-patient-breastfeeding
-Title: "Breastfeeding Patient"
-Description: "Breastfeeding patient."
+Title: "Breastfeeding Patient Observation"
+Description: "Represents a breastfeeding patient."
 * status 1..1
 * code = $SCT#413712001
 * code.text = "Breastfeeding"
@@ -442,7 +452,10 @@ Profile: SpecimenConservation
 Parent: SpecimenDefinition
 Id: specimen-preservation
 Title: "Specimen Conservation"
-Description: "Specimen conservation information."
+Description: 
+    "Is used to store specimen conservation data for the VL lab order. In other words, this profile is useful for documenting the ideal 
+    preservation and/or transportation temperatures (low/high) of the specimen before it gets tested. In addition, this resource is used 
+    to document the maximum preservation time for these temperatures and also includes preservation instructions."
 * status 1..1
 * typeTested 1..*
 * typeTested.type 1..1
@@ -455,11 +468,11 @@ Description: "Specimen conservation information."
 * typeTested.handling.maxDuration 1..1
 * typeTested.handling.instruction 0..1 MS
 
-Profile: SampleDisptachedToLabTask
+Profile: SampleDispatchedToLab
 Parent: Transport
 Id: sample-dispatched-to-lab
-Title: "Sample Dispatched to Lab Task"
-Description: "Sample dispatched to lab task."
+Title: "Sample Dispatched"
+Description: "Represents the transport request for the VL specimen to be sent to the lab."
 * status 1..1
 * intent 1..1
 * authoredOn 1..1
@@ -603,8 +616,8 @@ Description: "The user index for the person who tested the viral load specimen."
 Profile: ReceiveSMSMessages
 Parent: Consent
 Id: receive-sms-messages
-Title: "Receive SMS Messages"
-Description: "Indication whether a patient should receive SMS messages."
+Title: "Receive SMS Messages Consent"
+Description: "Represents a patient’s consent to receive Short Message Service (SMS) messages."
 * status 1..1
 * subject 1..1
 * subject only Reference(Patient)
@@ -615,10 +628,11 @@ Description: "Indication whether a patient should receive SMS messages."
 Profile: RepeatHIVTestResult
 Parent: Observation
 Id: viral-load-repeat-test-result
-Title: "Repeat Lab Results"
-Description: "Repeat lab results."
+Title: "Repeat HIV VL Lab Result Observation"
+Description: "Represents the result of the repeat VL test."
 * status 1..1
-* code from VSVLResultCode (required)
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * subject 1..1
 * encounter 1..1
@@ -627,11 +641,11 @@ Description: "Repeat lab results."
 * performer 1..*
 * note 0..* MS
 
-Profile: ResultDisptachedTask
+Profile: ResultDispatchedToRequestingFacility
 Parent: Transport
 Id: result-dispatched-to-facility
 Title: "Result Dispatched"
-Description: "Result Dispatched"
+Description: "Represents the transport request for the VL examination result to be returned to the requesting facility."
 * status 1..1
 * intent 1..1
 * authoredOn 1..1
@@ -642,10 +656,11 @@ Description: "Result Dispatched"
 Profile: SuspendTreatmentHIVTestResult
 Parent: Observation
 Id: viral-load-suspend-treatment-test-result
-Title: "Suspend Treatment Lab Results"
-Description: "Suspend treatment lab results."
+Title: "Suspended Treatment HIV VL Lab Result Observation"
+Description: "Represents the result of the VL test for patient's who suspended treatment."
 * status 1..1
-* code from VSVLResultCode (required)
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * subject 1..1
 * encounter 1..1
@@ -665,10 +680,11 @@ Description: "The device platform used for testing."
 Profile: HIVTestResultViralLoadLog
 Parent: Observation
 Id: viral-load-log
-Title: "Viral Load Log"
-Description: "Viral Load Log"
+Title: "Viral Load Log Observation"
+Description: "Represents the log value for the routine VL test result."
 * status 1..1
-* code from VSVLResultCode (required)
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * subject 1..1
 * encounter 1..1
@@ -682,10 +698,11 @@ Description: "Viral Load Log"
 Profile: HIVTestResultAbsoluteDecimal
 Parent: Observation
 Id: viral-load-test-result-absolute-decimal
-Title: "Viral Load Result Absolute Decimal"
-Description: "Viral load result absolute decimal"
+Title: "Viral Load Result Absolute Decimal Observation"
+Description: "Represents the absolute decimal value for the routine VL test result"
 * status 1..1
-* code from VSVLResultCode (required)
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * subject 1..1
 * encounter 1..1
@@ -700,6 +717,6 @@ Profile: TransportLocation
 Parent: Location
 Id: transport-location
 Title: "Transport Location"
-Description: "Transport location."
+Description: "Represents the names of the requested and current locations associated with the transport activity (VL specimen sent to lab, VL result returned to facility)."
 * status 1..1
 * name 1..1

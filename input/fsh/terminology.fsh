@@ -16,8 +16,8 @@ Description:  "A list of specimen types."
 
 ValueSet: VSTestTypes
 Id: vs-test-types
-Title: "Test Types"
-Description: "A list of HIV test types"
+Title: "HIV Test Types"
+Description: "A list of HIV test types."
 * ^experimental = false
 * $LNC#25842-6 "HIV 2 proviral DNA [Presence] in Specimen by NAA with probe detection"   
 * $LNC#25836-8 "HIV 1 RNA [#/volume] (viral load) in Specimen by NAA with probe detection"
@@ -36,14 +36,6 @@ Description: "A list of reasons associated with the service request for the lab 
 * $SCT#315124004 "Human immunodeficiency virus viral load"
 * $SCT#2528003 "Viremia"
 
-
-ValueSet: VSVLResultCode
-Id: vs-vl-result-code
-Title: "Viral Load Result Code"
-Description: "A code used to indicate the category for the lab result."
-* ^experimental = false
-* $SCT#398579006 "Human immunodeficiency virus-1 nucleic acid assay"
-
 ValueSet: VSVLSuppression
 Id: vs-vl-suppression
 Title: "Viral Load Suppressions Status"
@@ -55,7 +47,7 @@ Description: "Describes a patient's current viral load status."
 
 ValueSet: VSReasonForSampleCancellationOrRejection
 Id: vs-reason-sample-cancelled-or-rejected
-Title: "Reasons why a lab order was cancelled or rejected"
+Title: "Lab Order Reasons For Cancelling/Rejecting Lab Order"
 Description: "Reasons why a lab order was cancelled or rejected."
 * ^experimental = false
 * $SCT#441510007 "Blood specimen with anticoagulant" 
@@ -65,20 +57,6 @@ Description: "Reasons why a lab order was cancelled or rejected."
 * $SCT#281268007 "Insufficient sample"
 * $SCT#281265005 "Sample incorrectly labeled"
 * $SCT#419182006 "Supplies not available"
-
-ValueSet: VSCondition
-Id: vs-condition
-Title: "Conditions"
-Description:  "A list of possible HIV conditions."
-* ^experimental = false
-* $SCT#86406008 "Human immunodeficiency virus infection"
-
-ValueSet: VSHIVTestDone
-Id: vs-hiv-test-done
-Title: "HIV Test Done"
-Description:  "Used by the observation to indicate that a HIV test was performed."
-* ^experimental = false
-* $SCT#315124004 "Human immunodeficiency virus viral load"
 
 ValueSet: VSPatientPregnant
 Id: vs-patient-pregnant
@@ -92,7 +70,7 @@ Description:  "Used by the observation to indicate whether a patient is pregnant
 ValueSet: VSReasonsForARVRegimenChange
 Id: vs-reason-arv-regimen-change
 Title: "Reasons for ARV Regimen Change"
-Description:  "Used by the careplan to indicate the reason why a patient had their ARV regimen changed."
+Description:  "Used by the ARV treatment careplan to indicate the reason why a patient had their ARV regimen changed."
 * ^experimental = false
 * $SCT#7895008 "Poisoning caused by drug AND/OR medicinal substance"
 * $SCT#77386006 "Pregnancy"
@@ -107,7 +85,7 @@ Description:  "Used by the careplan to indicate the reason why a patient had the
 
 ValueSet: VSARVRegimen
 Id: vs-arv-regimen
-Title: "A list of ARV regimen"
+Title: "ARV Regimen"
 Description: "A list of ARV regimen."
 * ^experimental = false
 * $SCT#387105006 "Didanosine"
@@ -132,17 +110,10 @@ Description: "A list of ARV regimen."
 * $SCT#387151007 "Zidovudine"
 * $SCT#776469003 "Product containing only lamivudine and zidovudine"
 
-ValueSet: VSARVMedicationRequest
-Id: vs-arvtreatment-activity-type
-Title: "ARV Treatment Medication Request"
-Description: "Codes used to represent a medication request for ART."
-* ^experimental = false
-*  $LNC#45260-7 "HIV ART medication"
-
 ValueSet: VSARVAdherence
 Id: vs-arv-adherence
-Title: "ARV Adherence"
-Description: "ARV Adherence"
+Title: "Adherence to ARV Treatment"
+Description: "Adherence to ARV Treatment."
 * ^experimental = false
 * $LNC#LA6763-2 "Good = 95% adherence"
 * $LNC#LA6764-0 "Fair 85-94% adherence"
@@ -155,17 +126,3 @@ Description: "Patient Consent for SMS Notifications"
 * ^experimental = false
 * $SCT#699237001 "Consent given for communication by short message service text messaging"
 * $SCT#398227009 "Inadequate consent"
-
-ValueSet: ReasonForHIVTestingCode
-Id: vs-reason-for-hiv-testing
-Title: "Reason for HIV Testing Code"
-Description: "A code used to indicate that a HIV test was done."
-* ^experimental = false
-* $SCT#165813002 "Human immunodeficiency virus antibody test"
-
-ValueSet: VSARVRegimenChange
-Id: vs-arv-regimen-change
-Title: "ARV Regimen Change"
-Description: "ARV regimen change."
-* ^experimental = false
-* $SCT#182838006 "Change of medication"

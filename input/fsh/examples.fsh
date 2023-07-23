@@ -1,8 +1,8 @@
 Instance: HIVOrganizationExample
 InstanceOf: HIVOrganization
 Usage: #example
-Title: "HIV Organization Example"
-Description: "Organization example"
+Title: "Organization"
+Description: "Represents an organization associated with health services."
 * identifier[XX].value = "facility1"
 * identifier[XX].system = "http://openhie.org/fhir/rwanda-hiv/identifier/hiv-organization"
 * identifier[XX].type.coding.code = #XX
@@ -14,8 +14,8 @@ Description: "Organization example"
 Instance: HIVPatientExample
 InstanceOf: HIVPatient
 Usage: #example
-Title: "Patient example"
-Description: "Patient example"
+Title: "HIV Patient"
+Description: "Is used to document demographics and other administrative information about a HIV individual receiving care or other health-related services."
 * name.use = #official
 * name.family = "Smith"
 * name.given[0] = "Jane"
@@ -33,8 +33,8 @@ Description: "Patient example"
 Instance: HIVPatientIsNewExample
 InstanceOf: HIVPatientIsNew
 Usage: #example
-Title: "Patient Is New example"
-Description: "Patient Is New example"
+Title: "HIV Patient Is New Observation"
+Description: "Represents whether this is a new patient."
 * status = #final
 * code = $SCT#769681006
 * code.text = "New Patient Indication"
@@ -48,8 +48,8 @@ Description: "Patient Is New example"
 Instance: PatientPregnantExample
 InstanceOf: PatientPregnancyStatus
 Usage: #example
-Title: "Patient Pregnant example"
-Description: "Patient Pregnant example"
+Title: "Patient Pregnancy Status Observation"
+Description: "Represents the pregnancy status of a patient."
 * status = #final
 * code = $SCT#250421003
 * code.text = "Pregnancy status"
@@ -66,8 +66,8 @@ Description: "Patient Pregnant example"
 Instance: TargetFacilityEncounterExample
 InstanceOf: TargetFacilityEncounter
 Usage: #example
-Title: "Target Facility Encounter example" 
-Description: "Target Facility Encounter example"
+Title: "Target Facility Encounter" 
+Description: "Represents the current facility at which the patient is receiving health services."
 * status = #completed
 * class.coding.code = #AMB
 * class.coding.system = "http://terminology.hl7.org/CodeSystem/v3-ActCode"
@@ -78,8 +78,8 @@ Description: "Target Facility Encounter example"
 Instance: VLSpecimenExample
 InstanceOf: VLSpecimen
 Usage: #example
-Title: "Viral Load Specimen example"
-Description: "Viral Load Specimen example"
+Title: "Viral Load Specimen"
+Description: "Represents the VL test sample that was collected for the service request."
 * extension[SampleReordered].valueBoolean = false
 * identifier[appSampleCode].value = "abc123"
 * identifier[appSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/app-sample-code" (exactly)
@@ -113,8 +113,8 @@ Description: "Viral Load Specimen example"
 Instance: RequestingPractitionerExample
 InstanceOf: HIVPractitioner
 Usage: #example
-Title: "Practitioner example"
-Description: "Practitioner example"
+Title: "Practitioner"
+Description: "Represents the practitioner who requested the VL lab order."
 * extension[ClinicianUserIndex].valueInteger = 2
 * name.given = "James"
 * name.family = "Smith"
@@ -124,8 +124,8 @@ Description: "Practitioner example"
 Instance: PerformingPractitionerExample
 InstanceOf: HIVPractitioner
 Usage: #example
-Title: "Practitioner example"
-Description: "Practitioner example"
+Title: "Practitioner"
+Description:  "Represents the practitioner who must perform the VL examination."
 * extension[ClinicianUserIndex].valueInteger = 6
 * name.given = "Amy"
 * name.family = "White"
@@ -135,8 +135,8 @@ Description: "Practitioner example"
 Instance: HIVServiceRequestExample
 InstanceOf: HIVServiceRequest
 Usage: #example
-Title: "HIV Lab Order example"
-Description: "HIV Lab Order example"
+Title: "HIV VL Service Request"
+Description: "Represents the record of request for the HIV VL lab order."
 * identifier[PLAC].value = "ORDER12345"
 * identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/lab-order-identifier"
 * identifier[PLAC].type.coding.code = #PLAC
@@ -162,8 +162,8 @@ Description: "HIV Lab Order example"
 Instance: HIVLabOrderTaskExample
 InstanceOf: HIVLabTask
 Usage: #example
-Title: "Lab Order example"
-Description: "Lab Order example"
+Title: "HIV VL Lab Order Task"
+Description: "Represents a New Lab Order."
 * extension[ResultStatusIndex].valueInteger = 1
 * identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
@@ -172,8 +172,7 @@ Description: "Lab Order example"
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn[0] = Reference(HIVServiceRequestExample)
-* basedOn[1] = Reference(SampleDisptachedToLabTaskExample)
-* basedOn[2] = Reference(ResultDisptachedTaskExample)
+* basedOn[1] = Reference(SampleDispatchedToLabExample)
 * status = #requested
 * intent = #order
 * executionPeriod.start = "2022-07-28"
@@ -185,8 +184,8 @@ Description: "Lab Order example"
 Instance: HIVLabResultTaskExample
 InstanceOf: HIVLabTask
 Usage: #example
-Title: "Lab Result Task example"
-Description: "Lab Result Task example"
+Title: "HIV VL Lab Order Task"
+Description: "Represents a Lab Result."
 * extension[ResultStatusIndex].valueInteger = 4
 * identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
@@ -196,8 +195,8 @@ Description: "Lab Result Task example"
 * identifier[FILL].type.text = "Lab order number"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn[0] = Reference(HIVServiceRequestExample)
-* basedOn[1] = Reference(SampleDisptachedToLabTaskExample)
-* basedOn[2] = Reference(ResultDisptachedTaskExample)
+* basedOn[1] = Reference(SampleDispatchedToLabExample)
+* basedOn[2] = Reference(ResultDispatchedToRequestingFacilityExample)
 * status = #completed
 * intent = #order
 * executionPeriod.end = "2022-07-30"
@@ -205,7 +204,8 @@ Description: "Lab Result Task example"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
-* output.type = $SCT#398579006
+* output.type.coding.code = #398579006
+* output.type.coding.system = "http://snomed.info/sct"
 * output.type.text = "Viral Load Result"
 * output.type.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
 * output.valueReference = Reference(HIVLabResultsDiagnosticReportExample)
@@ -213,8 +213,8 @@ Description: "Lab Result Task example"
 Instance: HIVLabOrderCancellationTaskExample
 InstanceOf: HIVLabTask
 Usage: #example
-Title: "HIV Lab Order Cancellation  example"
-Description: "HIV Lab Order Cancellation Task example"
+Title: "HIV VL Lab Order Task"
+Description: "Represents HIV Lab Order Cancellation."
 * extension[ResultStatusIndex].valueInteger = 2
 * identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
@@ -223,8 +223,7 @@ Description: "HIV Lab Order Cancellation Task example"
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn[0] = Reference(HIVServiceRequestExample)
-* basedOn[1] = Reference(SampleDisptachedToLabTaskExample)
-* basedOn[2] = Reference(ResultDisptachedTaskExample)
+* basedOn[1] = Reference(SampleDispatchedToLabExample)
 * status = #cancelled
 * statusReason.concept = $SCT#281264009
 * statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
@@ -239,8 +238,8 @@ Description: "HIV Lab Order Cancellation Task example"
 Instance: HIVLabOrderRejectionTaskExample
 InstanceOf: HIVLabTask
 Usage: #example
-Title: "HIV Lab Order Rejection  example"
-Description: "HIV Lab Order Rejection Task example"
+Title: "HIV VL Lab Order Task"
+Description: "Represents HIV Lab Order Rejection"
 * extension[ResultStatusIndex].valueInteger = 3
 * identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
@@ -249,8 +248,7 @@ Description: "HIV Lab Order Rejection Task example"
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn[0] = Reference(HIVServiceRequestExample)
-* basedOn[1] = Reference(SampleDisptachedToLabTaskExample)
-* basedOn[2] = Reference(ResultDisptachedTaskExample)
+* basedOn[1] = Reference(SampleDispatchedToLabExample)
 * status = #rejected
 * statusReason.concept = $SCT#123840003
 * statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
@@ -265,8 +263,8 @@ Description: "HIV Lab Order Rejection Task example"
 Instance: HIVLabResultsDiagnosticReportExample
 InstanceOf: HIVDiagnosticReport
 Usage: #example
-Title: "HIV Lab Results Diagnostic Report example"
-Description: "HIV Lab Results Diagnostic Report example"
+Title: "HIV Viral Load Diagnostic Report"
+Description: "Represents the findings and interpretations for a VL test."
 * extension[TestedByIndex].valueInteger = 7
 * basedOn = Reference(HIVServiceRequestExample)
 * status = #final
@@ -286,8 +284,8 @@ Description: "HIV Lab Results Diagnostic Report example"
 Instance: ResultsInterpreterExample
 InstanceOf: HIVPractitioner
 Usage: #example
-Title: "Results Interpreter example"
-Description: "Results interpreter example"
+Title: "Practitioner"
+Description: "Represents the practitioner who is responsible for interpreting the results."
 * extension[ClinicianUserIndex].valueInteger = 11
 * name.given = "Jhon"
 * name.family = "Smith"
@@ -297,11 +295,12 @@ Description: "Results interpreter example"
 Instance: HIVTestResultExample
 InstanceOf: HIVTestResult
 Usage: #example
-Title: "Viral Load Suppression example" 
-Description: "Viral Load Suppression example"
+Title: "HIV VL Lab Result Observation"
+Description: "Represents the result of the VL test."
 * extension[ResultEnteredManually].valueBoolean = false
 * status = #final
-* code = $SCT#398579006
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
 * subject = Reference(HIVPatientExample)
@@ -319,8 +318,8 @@ Description: "Viral Load Suppression example"
 Instance: ARVTreatmentRegimenChangedExample
 InstanceOf: ARVTreatment
 Usage: #example
-Title: "ARV CarePlan example: Regimen Changed"
-Description: "ARV CarePlan example: regimen changed."
+Title: "ARV Treatment CarePlan"
+Description: "Represents an ARV CarePlan for a patient whose regimen was changed."
 * identifier[PLAC].value = "UAN000123"
 * identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
 * identifier[PLAC].type.coding.code = #PLAC
@@ -341,8 +340,8 @@ Description: "ARV CarePlan example: regimen changed."
 Instance: ARVTreatmentInitiatedExample
 InstanceOf: ARVTreatment
 Usage: #example
-Title: "ARV CarePlan example: ART Initiated"
-Description: "ARV CarePlan example: ART initiated."
+Title: "ARV Treatment CarePlan"
+Description: "Represents an ARV CarePlan for a patient initiated on ART."
 * identifier[PLAC].value = "UAN000123"
 * identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
 * identifier[PLAC].type.coding.code = #PLAC
@@ -364,7 +363,10 @@ Instance: SpecimenConservationExample
 InstanceOf: SpecimenConservation
 Usage: #example
 Title: "Specimen Conservation"
-Description: "Specimen conservation information."
+Description: 
+    "Is used to store specimen conservation data for the VL lab order. In other words, this profile is useful for documenting the ideal 
+    preservation and/or transportation temperatures (low/high) of the specimen before it gets tested. In addition, this resource is used 
+    to document the maximum preservation time for these temperatures and also includes preservation instructions."
 * status = #active
 * typeTested.type = $SCT#119361006
 * typeTested.preference = #preferred
@@ -376,8 +378,8 @@ Description: "Specimen conservation information."
 Instance: ARVAdherenceExample
 InstanceOf: ARVAdherence
 Usage: #example
-Title: "Patient's Adherence to ARV Treatment"
-Description: "ARV adherence."
+Title: "Adherence to ARV Treatment Observation"
+Description: "Represents a patient’s adherence to ARV treatment."
 * status = #final
 * code = $SCT#386091000
 * code.text = "Treatment compliance"
@@ -393,8 +395,8 @@ Description: "ARV adherence."
 Instance: BreastfeedingExample
 InstanceOf: Breastfeeding
 Usage: #example
-Title: "Breastfeeding Patient"
-Description: "Breastfeeding patient."
+Title: "Breastfeeding Patient Observation"
+Description: "Represents a breastfeeding patient."
 * status = #final
 * code = $SCT#413712001
 * code.text = "Breastfeeding"
@@ -408,8 +410,8 @@ Description: "Breastfeeding patient."
 Instance: LabOrderTaskActivityExample
 InstanceOf: LabOrderTaskActivity
 Usage: #example
-Title: "HIV Lab Order Task Activity"
-Description: "HIV lab order task activity."
+Title: "HIV Lab Order Activity Definition"
+Description: "Represents more specific information regarding the task’s lab order request."
 * extension[RevisedBy].valueInteger = 2
 * status = #active
 * reviewer.name = "Someone"
@@ -420,11 +422,11 @@ Description: "HIV lab order task activity."
 * approvalDate = "2023-01-01"
 * specimenRequirement = Canonical(SpecimenConservationExample)
 
-Instance: SampleDisptachedToLabTaskExample
-InstanceOf: SampleDisptachedToLabTask
+Instance: SampleDispatchedToLabExample
+InstanceOf: SampleDispatchedToLab
 Usage: #example
-Title: "Sample Dispatched to Lab Task"
-Description: "Sample dispatched to lab task."
+Title: "Sample Dispatched"
+Description: "Represents the transport request for the VL specimen to be sent to the lab."
 * status = #in-progress
 * intent = #order
 * authoredOn = "2022-07-28"
@@ -496,8 +498,8 @@ Description: "Implementing partner organization."
 Instance: DoNotReceiveSMSMessagesExample
 InstanceOf: ReceiveSMSMessages
 Usage: #example
-Title: "Do Not Receive SMS Messages"
-Description: "Indication that a patient does not consent to receiving SMS messages."
+Title: "Receive SMS Messages Consent"
+Description: "Represents an indication that a patient does not consent to receiving SMS messages."
 * status = #inactive
 * subject = Reference(HIVPatientExample)
 * category = $LNC#89057-4
@@ -508,8 +510,8 @@ Description: "Indication that a patient does not consent to receiving SMS messag
 Instance: ReceiveSMSMessagesExample
 InstanceOf: ReceiveSMSMessages
 Usage: #example
-Title: "Receive SMS Messages"
-Description: "Indication that a patient does consent to receiving SMS messages."
+Title: "Receive SMS Messages Consent"
+Description: "Represents an indication that a patient does consent to receiving SMS messages."
 * status = #active
 * subject = Reference(HIVPatientExample)
 * category = $LNC#89057-4
@@ -520,10 +522,11 @@ Description: "Indication that a patient does consent to receiving SMS messages."
 Instance: RepeatHIVTestResultExample
 InstanceOf: RepeatHIVTestResult
 Usage: #example
-Title: "Repeat Viral Load Suppression example" 
-Description: "Repeat Viral Load Suppression example"
+Title: "Repeat HIV VL Lab Result Observation"
+Description: "Represents the result of the repeat VL test."
 * status = #final
-* code = $SCT#398579006
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
 * subject = Reference(HIVPatientExample)
@@ -535,11 +538,11 @@ Description: "Repeat Viral Load Suppression example"
 * note.time = "2015-02-07T13:28:17-05:00"
 * performer = Reference(HIVOrganizationExample)
 
-Instance: ResultDisptachedTaskExample
-InstanceOf: ResultDisptachedTask
+Instance: ResultDispatchedToRequestingFacilityExample
+InstanceOf: ResultDispatchedToRequestingFacility
 Usage: #example
 Title: "Result Dispatched"
-Description: "Result Dispatched"
+Description: "Represents the transport request for the VL examination result to be returned to the requesting facility."
 * status = #in-progress
 * intent = #order
 * authoredOn = "2022-07-28"
@@ -552,10 +555,11 @@ Description: "Result Dispatched"
 Instance: SuspendTreatmentHIVTestResultExample
 InstanceOf: SuspendTreatmentHIVTestResult
 Usage: #example
-Title: "Suspend Treatment Lab Results"
-Description: "Suspend treatment lab results."
+Title: "Suspended Treatment HIV VL Lab Result Observation"
+Description: "Represents the result of the VL test for patient's who suspended treatment."
 * status = #final
-* code = $SCT#398579006
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
 * subject = Reference(HIVPatientExample)
@@ -580,10 +584,11 @@ Description: "The device platform used for testing."
 Instance: HIVTestResultViralLoadLogExample
 InstanceOf: HIVTestResultViralLoadLog
 Usage: #example
-Title: "Viral Load Log"
-Description: "Viral Load Log"
+Title: "Viral Load Log Observation"
+Description: "Represents the log value for the routine VL test result."
 * status = #final
-* code = $SCT#398579006
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
 * subject = Reference(HIVPatientExample)
@@ -599,10 +604,11 @@ Description: "Viral Load Log"
 Instance: HIVTestResultAbsoluteDecimalExample
 InstanceOf: HIVTestResultAbsoluteDecimal
 Usage: #example
-Title: "Viral Load Result Absolute Decimal"
-Description: "Viral load result absolute decimal"
+Title: "Viral Load Result Absolute Decimal Observation"
+Description: "Represents the absolute decimal value for the routine VL test result"
 * status = #final
-* code = $SCT#398579006
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
 * subject = Reference(HIVPatientExample)
@@ -618,8 +624,8 @@ Description: "Viral load result absolute decimal"
 Instance: ARVRegimenMedicationRequestRegimenChangedExample
 InstanceOf: ARVRegimenMedicationRequest
 Usage: #example
-Title: "ARV Regimen Medication Request: Regimen Changed"
-Description: "ARV Regimen Medication Request: Regimen Changed."
+Title: "ARV Regimen Medication Request"
+Description: "Represents a prescription request for a patient whose ARV regimen was changed."
 * status = #completed
 * intent = #order
 * medication[0].concept = $SCT#427314002
@@ -632,10 +638,11 @@ Description: "ARV Regimen Medication Request: Regimen Changed."
 Instance: ReasonForHIVTestingExample
 InstanceOf: ReasonForHIVTesting
 Usage: #example
-Title: "Reason for HIV testing"
-Description: "The reason for HIV testing."
+Title: "Reason for HIV testing Observation"
+Description: "Represents the reason for HIV VL testing services."
 * status = #final
-* code = $SCT#165813002
+* code.coding.code = #165813002
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "HIV Test"
 * code.coding.display = "Human immunodeficiency virus antibody test"
 * subject = Reference(HIVPatientExample)
@@ -651,10 +658,11 @@ Description: "The reason for HIV testing."
 Instance: ARVRegimenChangeExample
 InstanceOf: ARVRegimenChange
 Usage: #example
-Title: "ARV Regimen Change"
-Description: "ARV regimen change."
+Title: "ARV Regimen Change Observation"
+Description: "Represents a patient whose ARV regimen was changed."
 * status = #final
-* code = $SCT#182838006
+* code.coding.code = #182838006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "ARV Regimen Change"
 * code.coding.display = "Change of medication"
 * subject = Reference(HIVPatientExample)
@@ -671,8 +679,8 @@ Description: "ARV regimen change."
 Instance: ARVRegimenMedicationRequestInitiatedARTExample
 InstanceOf: ARVRegimenMedicationRequest
 Usage: #example
-Title: "ARV Regimen Medication Request: Initiated ART"
-Description: "ARV Regimen Medication Request: Initiated ART"
+Title: "ARV Regimen Medication Request"
+Description: "Represents a prescription request for a patient initiated on ART."
 * status = #completed
 * intent = #order
 * medication[0].concept = $SCT#427314002
@@ -685,8 +693,8 @@ Description: "ARV Regimen Medication Request: Initiated ART"
 Instance: ARTInitiatedExample
 InstanceOf: ARTInitiated
 Usage: #example
-Title: "ART Initiated"
-Description: "ART initiated."
+Title: "ART Initiated Observation"
+Description: "Represents a patient who is initiated on ART."
 * status = #final
 * code = $LNC#47241-5
 * code.text = "ART initiated"
@@ -701,10 +709,11 @@ Description: "ART initiated."
 Instance: ARTRegimenSwitchedOrSubstitutedExample
 InstanceOf: ARTRegimenSwitchedOrSubstituted
 Usage: #example
-Title: "ART Regimen Switched Or Substituted"
-Description: "The ARV regimen has been switched to a new ARV regimen or has been substituted by another ARV regimen."
+Title: "ART Regimen Switched Or Substituted Observation"
+Description: "Represents a patient whose ARV regimen has been switched to a new ARV regimen or has been substituted by another ARV regimen."
 * status = #final
-* code = $SCT#182838006
+* code.coding.code = #182838006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "ARV Regimen Change"
 * code.coding.display = "Change of medication"
 * subject = Reference(HIVPatientExample)
@@ -718,15 +727,15 @@ Description: "The ARV regimen has been switched to a new ARV regimen or has been
 Instance: TransportRequestedLocationExample
 InstanceOf: TransportLocation
 Usage: #example
-Title: "Transport Requested Location"
-Description: "Transport requested location."
+Title: "Transport Location"
+Description: "Represents the name of the requested location associated with the transport activity."
 * status = #active
 * name = "Requested location name"
 
 Instance: TransportCurrentLocationExample
 InstanceOf: TransportLocation
 Usage: #example
-Title: "Transport Current Location"
-Description: "Transport current location."
+Title: "Transport Location"
+Description: "Represents the name of the current location associated with the transport activity."
 * status = #active
 * name = "Current location name"

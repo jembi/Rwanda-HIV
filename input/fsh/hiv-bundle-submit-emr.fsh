@@ -1,8 +1,8 @@
 Instance: EMR
 InstanceOf: Bundle
 Usage: #example
-Title: "HIV Submit EMR Bundle Example"
-Description: "HIV Submit EMR Bundle Example"
+Title: "EMR Bundle"
+Description: "Represents an EMR Bundle."
 * type = #transaction
 
 * entry[+].fullUrl = "Patient/HIVPatientExample"
@@ -84,16 +84,6 @@ Description: "HIV Submit EMR Bundle Example"
 * entry[=].resource = TestingPlatformExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "Device/TestingPlatformExample"
-
-* entry[+].fullUrl = "Transport/SampleDisptachedToLabTaskExample"
-* entry[=].resource = SampleDisptachedToLabTaskExample
-* entry[=].request.method = #PUT
-* entry[=].request.url = "Transport/SampleDisptachedToLabTaskExample"
-
-* entry[+].fullUrl = "Transport/ResultDisptachedTaskExample"
-* entry[=].resource = ResultDisptachedTaskExample
-* entry[=].request.method = #PUT
-* entry[=].request.url = "Transport/ResultDisptachedTaskExample"
 
 * entry[+].fullUrl = "Observation/HIVTestResultAbsoluteDecimalExample"
 * entry[=].resource = HIVTestResultAbsoluteDecimalExample
