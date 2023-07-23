@@ -172,8 +172,7 @@ Description: "Lab Order example"
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn[0] = Reference(HIVServiceRequestExample)
-* basedOn[1] = Reference(SampleDisptachedToLabTaskExample)
-* basedOn[2] = Reference(ResultDisptachedTaskExample)
+* basedOn[1] = Reference(SampleDispatchedToLabExample)
 * status = #requested
 * intent = #order
 * executionPeriod.start = "2022-07-28"
@@ -196,8 +195,8 @@ Description: "Lab Result Task example"
 * identifier[FILL].type.text = "Lab order number"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn[0] = Reference(HIVServiceRequestExample)
-* basedOn[1] = Reference(SampleDisptachedToLabTaskExample)
-* basedOn[2] = Reference(ResultDisptachedTaskExample)
+* basedOn[1] = Reference(SampleDispatchedToLabExample)
+* basedOn[2] = Reference(ResultDispatchedToRequestingFacilityExample)
 * status = #completed
 * intent = #order
 * executionPeriod.end = "2022-07-30"
@@ -223,8 +222,7 @@ Description: "HIV Lab Order Cancellation Task example"
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn[0] = Reference(HIVServiceRequestExample)
-* basedOn[1] = Reference(SampleDisptachedToLabTaskExample)
-* basedOn[2] = Reference(ResultDisptachedTaskExample)
+* basedOn[1] = Reference(SampleDispatchedToLabExample)
 * status = #cancelled
 * statusReason.concept = $SCT#281264009
 * statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
@@ -249,8 +247,7 @@ Description: "HIV Lab Order Rejection Task example"
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn[0] = Reference(HIVServiceRequestExample)
-* basedOn[1] = Reference(SampleDisptachedToLabTaskExample)
-* basedOn[2] = Reference(ResultDisptachedTaskExample)
+* basedOn[1] = Reference(SampleDispatchedToLabExample)
 * status = #rejected
 * statusReason.concept = $SCT#123840003
 * statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
@@ -420,8 +417,8 @@ Description: "HIV lab order task activity."
 * approvalDate = "2023-01-01"
 * specimenRequirement = Canonical(SpecimenConservationExample)
 
-Instance: SampleDisptachedToLabTaskExample
-InstanceOf: SampleDisptachedToLabTask
+Instance: SampleDispatchedToLabExample
+InstanceOf: SampleDispatchedToLab
 Usage: #example
 Title: "Sample Dispatched to Lab Task"
 Description: "Sample dispatched to lab task."
@@ -535,8 +532,8 @@ Description: "Repeat Viral Load Suppression example"
 * note.time = "2015-02-07T13:28:17-05:00"
 * performer = Reference(HIVOrganizationExample)
 
-Instance: ResultDisptachedTaskExample
-InstanceOf: ResultDisptachedTask
+Instance: ResultDispatchedToRequestingFacilityExample
+InstanceOf: ResultDispatchedToRequestingFacility
 Usage: #example
 Title: "Result Dispatched"
 Description: "Result Dispatched"

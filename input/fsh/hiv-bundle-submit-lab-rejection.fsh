@@ -8,3 +8,8 @@ Description: "HIV Submit Lab Rejection Bundle Example"
 * entry[=].resource = HIVLabOrderRejectionTaskExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "Task/HIVLabOrderRejectionTaskExample"
+
+* entry[+].fullUrl = "Transport/SampleDispatchedToLabExample"
+* entry[=].resource = SampleDispatchedToLabExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Transport/SampleDispatchedToLabExample"

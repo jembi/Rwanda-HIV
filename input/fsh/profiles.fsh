@@ -455,7 +455,7 @@ Description: "Specimen conservation information."
 * typeTested.handling.maxDuration 1..1
 * typeTested.handling.instruction 0..1 MS
 
-Profile: SampleDisptachedToLabTask
+Profile: SampleDispatchedToLab
 Parent: Transport
 Id: sample-dispatched-to-lab
 Title: "Sample Dispatched to Lab Task"
@@ -627,7 +627,7 @@ Description: "Repeat lab results."
 * performer 1..*
 * note 0..* MS
 
-Profile: ResultDisptachedTask
+Profile: ResultDispatchedToRequestingFacility
 Parent: Transport
 Id: result-dispatched-to-facility
 Title: "Result Dispatched"

@@ -38,3 +38,8 @@ Description: "HIV Submit Lab Order Bundle Example"
 * entry[=].resource = SpecimenConservationExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "SpecimenDefinition/SpecimenConservationExample"
+
+* entry[+].fullUrl = "Transport/SampleDispatchedToLabExample"
+* entry[=].resource = SampleDispatchedToLabExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Transport/SampleDispatchedToLabExample"
