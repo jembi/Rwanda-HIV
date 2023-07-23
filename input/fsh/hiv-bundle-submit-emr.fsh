@@ -1,8 +1,8 @@
 Instance: EMR
 InstanceOf: Bundle
 Usage: #example
-Title: "HIV Submit EMR Bundle Example"
-Description: "HIV Submit EMR Bundle Example"
+Title: "EMR Bundle"
+Description: "Represents an EMR Bundle."
 * type = #transaction
 
 * entry[+].fullUrl = "Patient/HIVPatientExample"

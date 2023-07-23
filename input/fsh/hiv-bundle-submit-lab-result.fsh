@@ -1,8 +1,8 @@
 Instance: LabResult
 InstanceOf: Bundle
 Usage: #example
-Title: "HIV Submit Lab Result Bundle Example"
-Description: "HIV Submit Lab Result Bundle Example"
+Title: "Lab Result Bundle"
+Description: "Represents a Lab Result Bundle."
 * type = #transaction
 * entry[+].fullUrl = "Task/HIVLabResultTaskExample"
 * entry[=].resource = HIVLabResultTaskExample

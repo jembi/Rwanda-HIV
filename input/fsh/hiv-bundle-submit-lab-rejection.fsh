@@ -1,8 +1,8 @@
 Instance: LabRejection
 InstanceOf: Bundle
 Usage: #example
-Title: "HIV Submit Lab Rejection Bundle Example"
-Description: "HIV Submit Lab Rejection Bundle Example"
+Title: "Lab Order Rejection Bundle"
+Description: "Represents a Lab Rejection Bundle."
 * type = #transaction
 * entry[+].fullUrl = "Task/HIVLabOrderRejectionTaskExample"
 * entry[=].resource = HIVLabOrderRejectionTaskExample
