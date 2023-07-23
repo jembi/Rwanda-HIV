@@ -204,7 +204,8 @@ Description: "Lab Result Task example"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
-* output.type = $SCT#398579006
+* output.type.coding.code = #398579006
+* output.type.coding.system = "http://snomed.info/sct"
 * output.type.text = "Viral Load Result"
 * output.type.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
 * output.valueReference = Reference(HIVLabResultsDiagnosticReportExample)
@@ -298,7 +299,8 @@ Title: "Viral Load Suppression example"
 Description: "Viral Load Suppression example"
 * extension[ResultEnteredManually].valueBoolean = false
 * status = #final
-* code = $SCT#398579006
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
 * subject = Reference(HIVPatientExample)
@@ -520,7 +522,8 @@ Usage: #example
 Title: "Repeat Viral Load Suppression example" 
 Description: "Repeat Viral Load Suppression example"
 * status = #final
-* code = $SCT#398579006
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
 * subject = Reference(HIVPatientExample)
@@ -552,7 +555,8 @@ Usage: #example
 Title: "Suspend Treatment Lab Results"
 Description: "Suspend treatment lab results."
 * status = #final
-* code = $SCT#398579006
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
 * subject = Reference(HIVPatientExample)
@@ -580,7 +584,8 @@ Usage: #example
 Title: "Viral Load Log"
 Description: "Viral Load Log"
 * status = #final
-* code = $SCT#398579006
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
 * subject = Reference(HIVPatientExample)
@@ -599,7 +604,8 @@ Usage: #example
 Title: "Viral Load Result Absolute Decimal"
 Description: "Viral load result absolute decimal"
 * status = #final
-* code = $SCT#398579006
+* code.coding.code = #398579006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "Viral Load Result"
 * code.coding.display = "Human immunodeficiency virus-1 nucleic acid assay"
 * subject = Reference(HIVPatientExample)
@@ -632,7 +638,8 @@ Usage: #example
 Title: "Reason for HIV testing"
 Description: "The reason for HIV testing."
 * status = #final
-* code = $SCT#165813002
+* code.coding.code = #165813002
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "HIV Test"
 * code.coding.display = "Human immunodeficiency virus antibody test"
 * subject = Reference(HIVPatientExample)
@@ -651,7 +658,8 @@ Usage: #example
 Title: "ARV Regimen Change"
 Description: "ARV regimen change."
 * status = #final
-* code = $SCT#182838006
+* code.coding.code = #182838006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "ARV Regimen Change"
 * code.coding.display = "Change of medication"
 * subject = Reference(HIVPatientExample)
@@ -701,7 +709,8 @@ Usage: #example
 Title: "ART Regimen Switched Or Substituted"
 Description: "The ARV regimen has been switched to a new ARV regimen or has been substituted by another ARV regimen."
 * status = #final
-* code = $SCT#182838006
+* code.coding.code = #182838006
+* code.coding.system = "http://snomed.info/sct"
 * code.text = "ARV Regimen Change"
 * code.coding.display = "Change of medication"
 * subject = Reference(HIVPatientExample)
