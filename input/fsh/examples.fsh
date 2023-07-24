@@ -223,7 +223,6 @@ Description: "Represents HIV Lab Order Cancellation."
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn[0] = Reference(HIVServiceRequestExample)
-* basedOn[1] = Reference(SampleDispatchedToLabExample)
 * status = #cancelled
 * statusReason.concept = $SCT#281264009
 * statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
