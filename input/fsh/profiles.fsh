@@ -254,7 +254,7 @@ Description:
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * identifier[FILL].type.text = "Lab order number"
 * instantiatesCanonical 1..1
-* basedOn //only Reference(ServiceRequest)
+* basedOn 1..*
 * status 1..1
 * statusReason 0..1 MS
 * statusReason from VSReasonForSampleCancellationOrRejection (required)
