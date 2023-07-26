@@ -410,7 +410,7 @@ Instance: LabOrderTaskActivityExample
 InstanceOf: LabOrderTaskActivity
 Usage: #example
 Title: "HIV Lab Order Activity Definition"
-Description: "Represents more specific information regarding the task’s lab order request."
+Description: "Represents more specific information regarding the task’s lab order request INCLUDING specimenRequirement Reference."
 * extension[RevisedBy].valueInteger = 2
 * status = #active
 * reviewer.name = "Someone"
@@ -420,6 +420,20 @@ Description: "Represents more specific information regarding the task’s lab or
 * endorser.name = "Someone"
 * approvalDate = "2023-01-01"
 * specimenRequirement = Canonical(SpecimenConservationExample)
+
+Instance: LabOrderResultTaskActivityExample
+InstanceOf: LabOrderTaskActivity
+Usage: #example
+Title: "HIV Lab Order Activity Definition"
+Description: "Represents more specific information regarding the task’s lab order request EXCLUDING specimenRequirement Reference."
+* extension[RevisedBy].valueInteger = 2
+* status = #active
+* reviewer.name = "Someone"
+* lastReviewDate = "2023-01-01"
+* editor.name = "Someone"
+* date = "2023-01-01"
+* endorser.name = "Someone"
+* approvalDate = "2023-01-01"
 
 Instance: SampleDispatchedToLabExample
 InstanceOf: SampleDispatchedToLab

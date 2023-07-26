@@ -409,7 +409,7 @@ Description: "Represents more specific information regarding the task’s lab or
 * endorser 0..* MS
 * endorser.name 1..1
 * approvalDate 0..1 MS
-* specimenRequirement 1..*
+* specimenRequirement 0..* MS
 * extension contains ResultRevisedBy named RevisedBy 0..1 MS
 
 Extension: ResultRevisedBy
