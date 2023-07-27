@@ -19,6 +19,18 @@
     </ul>
   </blockquote>
 
+  <p>
+    The <a href="https://docs.google.com/document/d/1KjpUQoc16EYkJgEemQkHHaZPA8BYe6WvKUxByJ4m1to/" target="_blank">FHIR Resource References Guide</a> illustrates and describes the various resources and their references in this implementation.
+  </p>
+
+   <blockquote class="stu-note">
+    <ul>
+      <li>
+        The FHIR Resource References Guide will be embedded into this FHIR IG at a later stage.
+      </li>
+    </ul>
+  </blockquote>
+
 	<h3>Download</h3> <a name="download"></a>
   <p>You can also download:</p>
   <ul>
