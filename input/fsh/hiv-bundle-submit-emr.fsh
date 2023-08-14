@@ -114,3 +114,8 @@ Description: "Represents an EMR Bundle."
 * entry[=].resource = TransportCurrentLocationExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "Location/TransportCurrentLocationExample"
+
+* entry[+].fullUrl = "Observation/ARTInitiatedExample"
+* entry[=].resource = ARTInitiatedExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Observation/ARTInitiatedExample"

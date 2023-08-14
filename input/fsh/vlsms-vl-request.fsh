@@ -179,3 +179,8 @@ Description: "Represents the VLSMS VL Request Bundle."
 * entry[=].resource = ImplementingPartnerOrganizationExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "Organization/ImplementingPartnerOrganizationExample"
+
+* entry[+].fullUrl = "Observation/ARTInitiatedExample"
+* entry[=].resource = ARTInitiatedExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Observation/ARTInitiatedExample"
