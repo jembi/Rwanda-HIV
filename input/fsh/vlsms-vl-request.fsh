@@ -184,3 +184,13 @@ Description: "Represents the VLSMS VL Request Bundle."
 * entry[=].resource = ARTInitiatedExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "Observation/ARTInitiatedExample"
+
+* entry[+].fullUrl = "Observation/ARVRegimenChangeExample"
+* entry[=].resource = ARVRegimenChangeExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Observation/ARVRegimenChangeExample"
+
+* entry[+].fullUrl = "Observation/ARTRegimenSwitchedOrSubstitutedExample"
+* entry[=].resource = ARTRegimenSwitchedOrSubstitutedExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Observation/ARTRegimenSwitchedOrSubstitutedExample"
