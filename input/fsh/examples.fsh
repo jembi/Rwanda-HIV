@@ -413,11 +413,13 @@ Title: "HIV Lab Order Activity Definition"
 Description: "Represents more specific information regarding the task’s lab order request INCLUDING specimenRequirement Reference."
 * extension[RevisedBy].valueInteger = 2
 * status = #active
-* reviewer.name = "Someone"
+* reviewer.name = "Mark Jones"
+* reviewer.extension[LabTaskReviewer].valueInteger = 23
 * lastReviewDate = "2023-01-01"
-* editor.name = "Someone"
+* editor.name = "Sarah May"
 * date = "2023-01-01"
-* endorser.name = "Someone"
+* endorser.name = "Tobias Menley"
+* endorser.extension[LabTaskApprovedBy].valueInteger = 16
 * approvalDate = "2023-01-01"
 * specimenRequirement = Canonical(SpecimenConservationExample)
 
@@ -428,11 +430,13 @@ Title: "HIV Lab Order Activity Definition"
 Description: "Represents more specific information regarding the task’s lab order request EXCLUDING specimenRequirement Reference."
 * extension[RevisedBy].valueInteger = 2
 * status = #active
-* reviewer.name = "Someone"
+* reviewer.name = "Mark Jones"
+* reviewer.extension[LabTaskReviewer].valueInteger = 23
 * lastReviewDate = "2023-01-01"
 * editor.name = "Someone"
 * date = "2023-01-01"
-* endorser.name = "Someone"
+* endorser.name = "Tobias Menley"
+* endorser.extension[LabTaskApprovedBy].valueInteger = 16
 * approvalDate = "2023-01-01"
 
 Instance: SampleDispatchedToLabExample
