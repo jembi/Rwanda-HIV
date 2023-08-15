@@ -281,6 +281,7 @@ Description: "Represents the findings and interpretations for a VL test."
 * code.text = "Test Type"
 * subject 1..1
 * encounter 1..1
+* effectiveDateTime 0..1
 * performer 0..* MS
 * result 0..1 MS
 * resultsInterpreter 1..*
