@@ -345,7 +345,6 @@ Description: "Represents a prescription request for an ARV regimen for a patient
 * subject 1..1
 * encounter 1..1
 * reason 0..* MS
-* reason 1..*
 * note 0..* MS
 
 Profile: ARVRegimenChange
