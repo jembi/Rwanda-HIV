@@ -231,6 +231,14 @@ Description: "The result status index."
 * ^context[0].type = #element
 * ^context[0].expression = "Task"
 
+Extension: SampleRejectedIndex
+Id: sample-rejected-index
+Title: "Sample Rejected Index"
+Description: "The sample rejection index."
+* value[x] only integer
+* ^context[0].type = #element
+* ^context[0].expression = "Task"
+
 Profile: HIVLabTask
 Parent: Task
 Id: hiv-lab-task
@@ -269,6 +277,7 @@ Description:
 * output.type.text = "Viral Load Result"
 * output.valueReference 1..1
 * extension contains ResultStatusIndex named ResultStatusIndex 0..1 MS
+* extension contains SampleRejectedIndex named SampleRejectedIndex 0..1 MS
 
 Profile: HIVDiagnosticReport
 Parent: DiagnosticReport
@@ -281,6 +290,7 @@ Description: "Represents the findings and interpretations for a VL test."
 * code.text = "Test Type"
 * subject 1..1
 * encounter 1..1
+* effectiveDateTime 0..1
 * performer 0..* MS
 * result 0..1 MS
 * resultsInterpreter 1..*
@@ -344,7 +354,6 @@ Description: "Represents a prescription request for an ARV regimen for a patient
 * subject 1..1
 * encounter 1..1
 * reason 0..* MS
-* reason 1..*
 * note 0..* MS
 
 Profile: ARVRegimenChange
@@ -401,16 +410,34 @@ Title: "HIV Lab Order Activity Definition"
 Description: "Represents more specific information regarding the task’s lab order request."
 * status 1..1
 * reviewer 0..* MS
-* reviewer.name 1..1
+* reviewer.name 0..1 MS
+* reviewer.extension contains LabTaskReviewedBy named LabTaskReviewer 0..1 MS
 * lastReviewDate 0..1 MS
 * editor 0..* MS
-* editor.name 1..1
+* editor.name 0..1 MS
 * date 0..1 MS
 * endorser 0..* MS
-* endorser.name 1..1
+* endorser.name 0..1 MS
+* endorser.extension contains LabTaskApprovedBy named LabTaskApprovedBy 0..1 MS
 * approvalDate 0..1 MS
 * specimenRequirement 0..* MS
 * extension contains ResultRevisedBy named RevisedBy 0..1 MS
+
+Extension: LabTaskReviewedBy
+Id: task-reviewed-by-user-index
+Title: "HIV Lab Task Reviewed By"
+Description: "The user index for the person who reviewed the HIV lab task."
+* value[x] only integer
+* ^context[0].type = #element
+* ^context[0].expression = "ActivityDefinition.reviewer"
+
+Extension: LabTaskApprovedBy
+Id: task-approved-by-user-index
+Title: "HIV Lab Task Approved By"
+Description: "The user index for the person who approved the HIV lab task."
+* value[x] only integer
+* ^context[0].type = #element
+* ^context[0].expression = "ActivityDefinition.endorser"
 
 Extension: ResultRevisedBy
 Id: revised-by-user-index

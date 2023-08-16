@@ -164,7 +164,6 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "HIV VL Lab Order Task"
 Description: "Represents a New Lab Order."
-* extension[ResultStatusIndex].valueInteger = 1
 * identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
@@ -215,7 +214,6 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "HIV VL Lab Order Task"
 Description: "Represents HIV Lab Order Cancellation."
-* extension[ResultStatusIndex].valueInteger = 2
 * identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
@@ -239,7 +237,7 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "HIV VL Lab Order Task"
 Description: "Represents HIV Lab Order Rejection"
-* extension[ResultStatusIndex].valueInteger = 3
+* extension[SampleRejectedIndex].valueInteger = 2
 * identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
@@ -340,7 +338,9 @@ Instance: ARVTreatmentInitiatedExample
 InstanceOf: ARVTreatment
 Usage: #example
 Title: "ARV Treatment CarePlan"
-Description: "Represents an ARV CarePlan for a patient initiated on ART."
+Description:
+    "Represents an ARV CarePlan for a patient on ART. 
+    This resource will be used for ART initiated patient's as well as for routine ARV prescriptions."
 * identifier[PLAC].value = "UAN000123"
 * identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
 * identifier[PLAC].type.coding.code = #PLAC
@@ -353,7 +353,7 @@ Description: "Represents an ARV CarePlan for a patient initiated on ART."
 * encounter = Reference(TargetFacilityEncounterExample)
 * period.start = "2022-12-01"
 * period.end = "2022-12-01"
-* activity.plannedActivityReference = Reference(ARVRegimenMedicationRequestInitiatedARTExample)
+* activity.plannedActivityReference = Reference(ARVRegimenMedicationRequestARVExample)
 * note.text = "Some comments"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -413,11 +413,13 @@ Title: "HIV Lab Order Activity Definition"
 Description: "Represents more specific information regarding the task’s lab order request INCLUDING specimenRequirement Reference."
 * extension[RevisedBy].valueInteger = 2
 * status = #active
-* reviewer.name = "Someone"
+* reviewer.name = "Mark Jones"
+* reviewer.extension[LabTaskReviewer].valueInteger = 23
 * lastReviewDate = "2023-01-01"
-* editor.name = "Someone"
+* editor.name = "Sarah May"
 * date = "2023-01-01"
-* endorser.name = "Someone"
+* endorser.name = "Tobias Menley"
+* endorser.extension[LabTaskApprovedBy].valueInteger = 16
 * approvalDate = "2023-01-01"
 * specimenRequirement = Canonical(SpecimenConservationExample)
 
@@ -428,11 +430,13 @@ Title: "HIV Lab Order Activity Definition"
 Description: "Represents more specific information regarding the task’s lab order request EXCLUDING specimenRequirement Reference."
 * extension[RevisedBy].valueInteger = 2
 * status = #active
-* reviewer.name = "Someone"
+* reviewer.name = "Mark Jones"
+* reviewer.extension[LabTaskReviewer].valueInteger = 23
 * lastReviewDate = "2023-01-01"
 * editor.name = "Someone"
 * date = "2023-01-01"
-* endorser.name = "Someone"
+* endorser.name = "Tobias Menley"
+* endorser.extension[LabTaskApprovedBy].valueInteger = 16
 * approvalDate = "2023-01-01"
 
 Instance: SampleDispatchedToLabExample
@@ -689,11 +693,13 @@ Description: "Represents a patient whose ARV regimen was changed."
 * note.time = "2015-02-07T13:28:17-05:00"
 * derivedFrom = Reference(ARTRegimenSwitchedOrSubstitutedExample)
 
-Instance: ARVRegimenMedicationRequestInitiatedARTExample
+Instance: ARVRegimenMedicationRequestARVExample
 InstanceOf: ARVRegimenMedicationRequest
 Usage: #example
 Title: "ARV Regimen Medication Request"
-Description: "Represents a prescription request for a patient initiated on ART."
+Description: 
+    "Represents a prescription request for a patient's ARV. 
+    This resource will be used for ART initiated patient's as well as for routine ARV prescriptions."
 * status = #completed
 * intent = #order
 * medication[0].concept = $SCT#427314002

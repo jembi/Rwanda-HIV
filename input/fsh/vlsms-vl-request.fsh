@@ -75,10 +75,10 @@ Description: "Represents the VLSMS VL Request Bundle."
 * entry[=].request.method = #PUT
 * entry[=].request.url = "MedicationRequest/ARVRegimenMedicationRequestRegimenChangedExample"
 
-* entry[+].fullUrl = "MedicationRequest/ARVRegimenMedicationRequestInitiatedARTExample"
-* entry[=].resource = ARVRegimenMedicationRequestInitiatedARTExample
+* entry[+].fullUrl = "MedicationRequest/ARVRegimenMedicationRequestARVExample"
+* entry[=].resource = ARVRegimenMedicationRequestARVExample
 * entry[=].request.method = #PUT
-* entry[=].request.url = "MedicationRequest/ARVRegimenMedicationRequestInitiatedARTExample"
+* entry[=].request.url = "MedicationRequest/ARVRegimenMedicationRequestARVExample"
 
 * entry[+].fullUrl = "Encounter/TargetFacilityEncounterExample"
 * entry[=].resource = TargetFacilityEncounterExample
@@ -179,3 +179,18 @@ Description: "Represents the VLSMS VL Request Bundle."
 * entry[=].resource = ImplementingPartnerOrganizationExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "Organization/ImplementingPartnerOrganizationExample"
+
+* entry[+].fullUrl = "Observation/ARTInitiatedExample"
+* entry[=].resource = ARTInitiatedExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Observation/ARTInitiatedExample"
+
+* entry[+].fullUrl = "Observation/ARVRegimenChangeExample"
+* entry[=].resource = ARVRegimenChangeExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Observation/ARVRegimenChangeExample"
+
+* entry[+].fullUrl = "Observation/ARTRegimenSwitchedOrSubstitutedExample"
+* entry[=].resource = ARTRegimenSwitchedOrSubstitutedExample
+* entry[=].request.method = #PUT
+* entry[=].request.url = "Observation/ARTRegimenSwitchedOrSubstitutedExample"
