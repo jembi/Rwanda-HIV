@@ -164,7 +164,6 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "HIV VL Lab Order Task"
 Description: "Represents a New Lab Order."
-* extension[ResultStatusIndex].valueInteger = 1
 * identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
@@ -215,7 +214,6 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "HIV VL Lab Order Task"
 Description: "Represents HIV Lab Order Cancellation."
-* extension[ResultStatusIndex].valueInteger = 2
 * identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
@@ -239,7 +237,7 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "HIV VL Lab Order Task"
 Description: "Represents HIV Lab Order Rejection"
-* extension[ResultStatusIndex].valueInteger = 3
+* extension[SampleRejectedIndex].valueInteger = 2
 * identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL

@@ -231,6 +231,14 @@ Description: "The result status index."
 * ^context[0].type = #element
 * ^context[0].expression = "Task"
 
+Extension: SampleRejectedIndex
+Id: sample-rejected-index
+Title: "Sample Rejected Index"
+Description: "The sample rejection index."
+* value[x] only integer
+* ^context[0].type = #element
+* ^context[0].expression = "Task"
+
 Profile: HIVLabTask
 Parent: Task
 Id: hiv-lab-task
@@ -269,6 +277,7 @@ Description:
 * output.type.text = "Viral Load Result"
 * output.valueReference 1..1
 * extension contains ResultStatusIndex named ResultStatusIndex 0..1 MS
+* extension contains SampleRejectedIndex named SampleRejectedIndex 0..1 MS
 
 Profile: HIVDiagnosticReport
 Parent: DiagnosticReport
