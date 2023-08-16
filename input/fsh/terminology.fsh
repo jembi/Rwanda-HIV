@@ -25,7 +25,7 @@ Description: "A list of HIV test types."
 CodeSystem: CSReasonForAssessment
 Id: cs-reason-for-assessment
 Title: "VLSMS Provided Reasons For Testing"
-Description: "Reasons why a a sample will be tested."
+Description: "Reasons why a sample will be tested."
 * ^experimental = false
 * ^caseSensitive = true
 * #"Baseline VL" "Baseline VL"
