@@ -22,6 +22,26 @@ Description: "A list of HIV test types."
 * $LNC#25842-6 "HIV 2 proviral DNA [Presence] in Specimen by NAA with probe detection"   
 * $LNC#25836-8 "HIV 1 RNA [#/volume] (viral load) in Specimen by NAA with probe detection"
 
+CodeSystem: CSReasonForAssessment
+Id: cs-reason-for-assessment
+Title: "VLSMS Provided Reasons For Testing"
+Description: "Reasons why a sample will be tested."
+* ^experimental = false
+* ^caseSensitive = true
+* #"Baseline VL" "Baseline VL"
+* #"Confirmation Of Treatment Failure(repeat VL at 3M)" "Confirmation Of Treatment Failure(repeat VL at 3M)"
+* #Excol "Excol"
+* #failure "failure"
+* #"immunological failure" "immunological failure"
+* #"Lactating Mother" "Lactating Mother"
+* #"Pregnant Mother" "Pregnant Mother"
+* #recency "recency"
+* #"result missing" "result missing"
+* #routine "routine"
+* #"single drug substitution" "single drug substitution"
+* #suspect "suspect"
+* #"value missed" "value missed"
+
 ValueSet: VSReasonForAssessment
 Id: vs-reason-for-assessment
 Title: "Reason for Assessment or Test Not Performed"
@@ -35,6 +55,7 @@ Description: "A list of reasons associated with the service request for the lab 
 * $SCT#413712001 "Breastfeeding (mother)"
 * $SCT#315124004 "Human immunodeficiency virus viral load"
 * $SCT#2528003 "Viremia"
+* include codes from system CSReasonForAssessment
 
 ValueSet: VSVLSuppression
 Id: vs-vl-suppression
@@ -44,6 +65,55 @@ Description: "Describes a patient's current viral load status."
 * $SCT#245780008 "Suppressed"
 * $SCT#19032002 "Uncontrolled" //Unsuppressed
 * $SCT#261665006 "Unknown"
+
+CodeSystem: CSReasonForSampleCancellationOrRejection
+Id: cs-reason-sample-cancelled-or-rejected
+Title: "VLSMS Provided Reasons For Cancelling/Rejecting Lab Order"
+Description: "Reasons why a lab order was cancelled or rejected."
+* ^experimental = false
+* ^caseSensitive = true
+* #DBS_SRIC	 "DBS cards that have serum rings indicating contamination around spots"
+* #DBS_CPIS	 "DBS card with clotting present in spots"
+* #DBS_IFBS	 "DBS cards with insufficient blood spots"
+* #Gen_MMSP	 "Mismatched sample and form labeling"
+* #Gen_NoSample	 "Form received without Sample"
+* #Gen_ISTR	 "Inappropriate specimen for test request"
+* #Gen_ISPK	 "Inappropriate specimen packing"
+* #Gen_MIAN	 "Missing information on request form - ART No"
+* #Gen_MIRS	 "Missing information on request form - Sex"
+* #Gen_PLSP	 "Poorly labelled specimen"
+* #Gen_MLTS	 "Missing labels on container or tracking form"
+* #Gen_SMRT	 "Sample without request forms/Tracking forms"
+* #Gen_NIRM	 "Name/Information of requester is missing"
+* #Gen_MIRD	 "Missing information on request form - Sample Collection Date"
+* #Gen_MIRA	 "Missing information on request form - Age"
+* #PLS_AATA	 "Plasma that arrives at a temperature above 8 C"
+* #PSL_TCLT	 "Plasma tube contain less than 1.5 mL"
+* #FLG_TM26	 "MPCINVALID"
+* #FLG_AP25	 "SAMPLECLOT"
+* #FLG_AP24	 "PREP_ABORT"
+* #FLG_AP19	 "TEMP_RANGE"
+* #FLG_AP13	 "DISP_ERROR"
+* #FLG_AP12	 "NO_SAMPLE"
+* #FLG_AP02	 "REAG_ERROR"
+* #FLG_TM51	 "POSTCHECK"
+* #FLG_TM50	 "QS_INVALID"
+* #FLG_TM44	 "PRECHECK"
+* #FLG_TM31	 "MATH_ERROR"
+* #FLG_TM29	 "S_INVALID"
+* #FLG_TM27	 "HPCINVALID"
+* #FLG_TM25	 "LPCINVALID"
+* #FLG_TM24	 "NC_INVALID"
+* #FLG_TM20	 "DATA_ERROR"
+* #FLG_TM19	 "RUN_EXPIRY"
+* #FLG_TMAP	 "KIT_EXPIRY"
+* #FLG_TM17	 "A/D_ABORT"
+* #FLG_TM00	 "SYS_ERROR"
+* #FLG_AL00	 "CNTRL_FAIL"
+* #FLG_	     "VL Machine Flag"
+* #BLD_AASC	 "ETDA tube that arrives more than 24 hours after specimen collection"
+* #BLD_HMLY	 "EDTA tube specimens that arrived hemolyzed"
+* #BLD_WCAU	 "Wrong container/anticoagulant used"
 
 ValueSet: VSReasonForSampleCancellationOrRejection
 Id: vs-reason-sample-cancelled-or-rejected
@@ -57,6 +127,7 @@ Description: "Reasons why a lab order was cancelled or rejected."
 * $SCT#281268007 "Insufficient sample"
 * $SCT#281265005 "Sample incorrectly labeled"
 * $SCT#419182006 "Supplies not available"
+* include codes from system CSReasonForSampleCancellationOrRejection
 
 ValueSet: VSPatientPregnant
 Id: vs-patient-pregnant
