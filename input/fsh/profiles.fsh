@@ -169,7 +169,7 @@ Description: "Represents the reason for HIV VL testing services."
 * subject 1..1
 * encounter 1..1
 * effectiveDateTime 1..1
-* valueCodeableConcept from VSReasonForAssessment (required)
+* valueCodeableConcept from VSReasonForAssessment (extensible)
 * valueCodeableConcept.text = "Reason for testing"
 * note 0..* MS
 
@@ -265,7 +265,7 @@ Description:
 * basedOn 1..*
 * status 1..1
 * statusReason 0..1 MS
-* statusReason from VSReasonForSampleCancellationOrRejection (required)
+* statusReason from VSReasonForSampleCancellationOrRejection (extensible)
 * statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
 * intent = #order
 * executionPeriod 0..1 MS
@@ -349,7 +349,7 @@ Title: "ARV Regimen Medication Request"
 Description: "Represents a prescription request for an ARV regimen for a patient."
 * status 1..1
 * intent 1..1
-* medication from VSARVRegimen (required)
+* medication from VSARVRegimen (extensible)
 * medication.concept.text = "ARV regimen"
 * subject 1..1
 * encounter 1..1
