@@ -75,10 +75,10 @@ Description: "Represents the VLSMS VL Request Bundle."
 * entry[=].request.method = #PUT
 * entry[=].request.url = "MedicationRequest/ARVRegimenMedicationRequestRegimenChangedExample"
 
-* entry[+].fullUrl = "MedicationRequest/ARVRegimenMedicationRequestInitiatedARTExample"
-* entry[=].resource = ARVRegimenMedicationRequestInitiatedARTExample
+* entry[+].fullUrl = "MedicationRequest/ARVRegimenMedicationRequestARVExample"
+* entry[=].resource = ARVRegimenMedicationRequestARVExample
 * entry[=].request.method = #PUT
-* entry[=].request.url = "MedicationRequest/ARVRegimenMedicationRequestInitiatedARTExample"
+* entry[=].request.url = "MedicationRequest/ARVRegimenMedicationRequestARVExample"
 
 * entry[+].fullUrl = "Encounter/TargetFacilityEncounterExample"
 * entry[=].resource = TargetFacilityEncounterExample

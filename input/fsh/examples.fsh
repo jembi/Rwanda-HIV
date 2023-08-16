@@ -340,7 +340,9 @@ Instance: ARVTreatmentInitiatedExample
 InstanceOf: ARVTreatment
 Usage: #example
 Title: "ARV Treatment CarePlan"
-Description: "Represents an ARV CarePlan for a patient initiated on ART."
+Description:
+    "Represents an ARV CarePlan for a patient on ART. 
+    This resource will be used for ART initiated patient's as well as for routine ARV prescriptions."
 * identifier[PLAC].value = "UAN000123"
 * identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
 * identifier[PLAC].type.coding.code = #PLAC
@@ -353,7 +355,7 @@ Description: "Represents an ARV CarePlan for a patient initiated on ART."
 * encounter = Reference(TargetFacilityEncounterExample)
 * period.start = "2022-12-01"
 * period.end = "2022-12-01"
-* activity.plannedActivityReference = Reference(ARVRegimenMedicationRequestInitiatedARTExample)
+* activity.plannedActivityReference = Reference(ARVRegimenMedicationRequestARVExample)
 * note.text = "Some comments"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
@@ -693,11 +695,13 @@ Description: "Represents a patient whose ARV regimen was changed."
 * note.time = "2015-02-07T13:28:17-05:00"
 * derivedFrom = Reference(ARTRegimenSwitchedOrSubstitutedExample)
 
-Instance: ARVRegimenMedicationRequestInitiatedARTExample
+Instance: ARVRegimenMedicationRequestARVExample
 InstanceOf: ARVRegimenMedicationRequest
 Usage: #example
 Title: "ARV Regimen Medication Request"
-Description: "Represents a prescription request for a patient initiated on ART."
+Description: 
+    "Represents a prescription request for a patient's ARV. 
+    This resource will be used for ART initiated patient's as well as for routine ARV prescriptions."
 * status = #completed
 * intent = #order
 * medication[0].concept = $SCT#427314002
