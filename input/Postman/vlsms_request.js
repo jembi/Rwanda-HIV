@@ -289,5 +289,4 @@ class VLSMS_Request {
     pm.variables.set(inputData[0], inputData[1]);
   }
 }
-
 module.exports = VLSMS_Request;
