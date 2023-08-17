@@ -292,4 +292,3 @@ class VLSMS_Result {
     pm.variables.set(inputData[0], inputData[1]);
   }
 }
-module.exports = VLSMS_Result;
