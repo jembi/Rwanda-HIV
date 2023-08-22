@@ -22,27 +22,33 @@ Description: "Logically groups all resources into a single document structure."
 * section[=].entry[+] = Reference(ImplementingPartnerOrganizationExample)
 
 * section[+].title = "Pregnancy Status"
-* section[=].code.coding.code = #82810-3
-* section[=].code.coding.system = "http://loinc.org"
+* section[=].code = $LNC#82810-3
 * section[=].entry[+] = Reference(PatientPregnantExample)
 
-* section[+].title = "General Patient Information"
+* section[+].title = "New Patient Consultation"
+* section[=].code = $SCT#185387006
 * section[=].entry[+] = Reference(HIVPatientIsNewExample)
 
 * section[+].title = "Breastfeeding Status"
-* section[=].code.coding.code = #63895-7
-* section[=].code.coding.system = "http://loinc.org"
+* section[=].code = $LNC#63895-7
 * section[=].entry[+] = Reference(BreastfeedingExample)
 
-* section[+].title = "Patient Consent For SMS Communication"
+* section[+].title = "Consent Status"
+* section[=].code = $SCT#309370004
 * section[=].entry[+] = Reference(ReceiveSMSMessagesExample)
 
-* section[+].title = "Viral Load Sample Information"
-* section[=].section[+].title = "Specimen Details"
+* section[+].title = "Viral Load Specimen"
+
+* section[=].section[+].title = "Specimen Information"
+* section[=].section[=].code = $LNC#LP7846-1
 * section[=].section[=].entry[+] = Reference(VLSpecimenExample)
-* section[=].section[+].title = "Specimen Conservation Details"
+
+* section[=].section[+].title = "Specimen Temperature During Transport"
+* section[=].section[=].code = $LNC#LP201807-7
 * section[=].section[=].entry[+] = Reference(SpecimenConservationExample)
-* section[=].section[+].title = "Specimen Transportation Details"
+
+* section[=].section[+].title = "Specimen Transportation"
+* section[=].section[=].code = $SCT#360300001
 * section[=].section[=].entry[+] = Reference(TransportRequestedLocationExample)
 * section[=].section[=].entry[+] = Reference(TransportCurrentLocationExample)
 
