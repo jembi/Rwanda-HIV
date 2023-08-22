@@ -1,3 +1,28 @@
+Profile: VLComposition
+Parent: Composition
+Id: vl-composition
+Title: "Laboratory Report For Viral Load Testing"
+Description: "Logically groups all resources into a single document structure."
+* identifier 0..*
+* identifier ^slicing.discriminator.type = #exists
+* identifier ^slicing.discriminator.path = "value"
+* identifier ^slicing.rules = #open
+* identifier ^slicing.ordered = false
+* identifier ^slicing.description = "Slice based on the type of identifier."
+* identifier contains
+    ID 1..1
+* identifier[ID].value 1..1
+* identifier[ID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/vl-lab-report" (exactly)
+* status 1..1
+* subject 1..1
+* encounter 1..1
+* type 1..1
+* date 1..1
+* author 1..*
+* title 1..1
+* section 1..*
+
+
 Profile: HIVPatient
 Parent: Patient
 Id: hiv-patient

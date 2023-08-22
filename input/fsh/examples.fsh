@@ -1,3 +1,87 @@
+Instance: VLCompositionExample
+InstanceOf: VLComposition
+Usage: #example
+Title: "Laboratory Report For Viral Load Testing"
+Description: "Logically groups all resources into a single document structure."
+* identifier[ID].value = "PAT0001-v1"
+* identifier[ID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/vl-lab-report"
+* status = #final
+* subject = Reference(HIVPatientExample)
+* encounter = Reference(TargetFacilityEncounterExample)
+* type = $LNC#11502-2
+* date = "2023-08-22"
+* author[+] = Reference(RequestingPractitionerExample)
+* author[+] = Reference(PerformingPractitionerExample)
+* author[+] = Reference(ResultsInterpreterExample)
+* title = "Laboratory Report For Viral Load Testing"
+
+* section[+].title = "Funding Organization Information"
+* section[=].entry[+] = Reference(FundingOrganizationExample)
+
+* section[+].title = "Implementing Partner Information"
+* section[=].entry[+] = Reference(ImplementingPartnerOrganizationExample)
+
+* section[+].title = "Pregnancy Status"
+* section[=].code.coding.code = #82810-3
+* section[=].code.coding.system = "http://loinc.org"
+* section[=].entry[+] = Reference(PatientPregnantExample)
+
+* section[+].title = "General Patient Information"
+* section[=].entry[+] = Reference(HIVPatientIsNewExample)
+
+* section[+].title = "Breastfeeding Status"
+* section[=].code.coding.code = #63895-7
+* section[=].code.coding.system = "http://loinc.org"
+* section[=].entry[+] = Reference(BreastfeedingExample)
+
+* section[+].title = "Patient Consent For SMS Communication"
+* section[=].entry[+] = Reference(ReceiveSMSMessagesExample)
+
+* section[+].title = "Viral Load Sample Information"
+* section[=].section[+].title = "Specimen Details"
+* section[=].section[=].entry[+] = Reference(VLSpecimenExample)
+* section[=].section[+].title = "Specimen Conservation Details"
+* section[=].section[=].entry[+] = Reference(SpecimenConservationExample)
+* section[=].section[+].title = "Specimen Transportation Details"
+* section[=].section[=].entry[+] = Reference(TransportRequestedLocationExample)
+* section[=].section[=].entry[+] = Reference(TransportCurrentLocationExample)
+
+* section[+].title = "Laboratory Services"
+* section[=].entry[+] = Reference(ReasonForHIVTestingExample)
+* section[=].entry[+] = Reference(HIVServiceRequestExample)
+* section[=].entry[+] = Reference(LabOrderTaskActivityExample)
+* section[=].entry[+] = Reference(HIVLabResultTaskExample)
+* section[=].entry[+] = Reference(TestingPlatformExample)
+* section[=].section[+].title = "Requester Information"
+* section[=].section[=].entry[+] = Reference(RequestingOrganizationExample)
+* section[=].section[=].entry[+] = Reference(RequestingPractitionerExample)
+* section[=].section[+].title = "Performer Information"
+* section[=].section[=].entry[+] = Reference(PerformingOrganizationExample)
+* section[=].section[=].entry[+] = Reference(PerformingPractitionerExample)
+* section[=].section[+].title = "Result Information"
+* section[=].section[=].entry[+] = Reference(HIVLabResultsDiagnosticReportExample)
+* section[=].section[=].entry[+] = Reference(ResultDispatchedToRequestingFacilityExample)
+* section[=].section[=].section[+].title = "Viral Load Result Details"
+* section[=].section[=].section[=].entry[+] = Reference(HIVTestResultExample)
+* section[=].section[=].section[=].entry[+] = Reference(HIVTestResultViralLoadLogExample)
+* section[=].section[=].section[=].entry[+] = Reference(HIVTestResultAbsoluteDecimalExample)
+* section[=].section[=].section[=].entry[+] = Reference(RepeatHIVTestResultExample)
+* section[=].section[=].section[=].entry[+] = Reference(SuspendTreatmentHIVTestResultExample)
+* section[=].section[=].section[+].title = "Results Interpreter Details"
+* section[=].section[=].section[=].entry[+] = Reference(ResultsInterpreterExample)
+
+* section[+].title = "ART Information"
+* section[=].entry[+] = Reference(ARTInitiatedExample)
+* section[=].entry[+] = Reference(ARVRegimenChangeExample)
+* section[=].entry[+] = Reference(ARTRegimenSwitchedOrSubstitutedExample)
+* section[=].entry[+] = Reference(ARVAdherenceExample)
+* section[=].entry[+] = Reference(ARVTreatmentRegimenChangedExample)
+* section[=].entry[+] = Reference(ARVTreatmentInitiatedExample)
+
+* section[+].title = "ARV Medication Information"
+* section[=].entry[+] = Reference(ARVRegimenMedicationRequestRegimenChangedExample)
+* section[=].entry[+] = Reference(ARVRegimenMedicationRequestARVExample)
+
 Instance: HIVOrganizationExample
 InstanceOf: HIVOrganization
 Usage: #example
