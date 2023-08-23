@@ -16,9 +16,13 @@ Description: "Logically groups all resources into a single document structure."
 * title = "Laboratory Report For Viral Load Testing"
 
 * section[+].title = "Funding Organization Information"
+* section[=].code.coding.code = #Funding-Organization-Information
+* section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-organization-information"
 * section[=].entry[+] = Reference(FundingOrganizationExample)
 
 * section[+].title = "Implementing Partner Information"
+* section[=].code.coding.code = #Implementing-Partner-Information
+* section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-organization-information"
 * section[=].entry[+] = Reference(ImplementingPartnerOrganizationExample)
 
 * section[+].title = "Pregnancy Status"
@@ -43,50 +47,53 @@ Description: "Logically groups all resources into a single document structure."
 * section[=].section[=].code = $LNC#LP7846-1
 * section[=].section[=].entry[+] = Reference(VLSpecimenExample)
 
-* section[=].section[+].title = "Specimen Temperature During Transport"
-* section[=].section[=].code = $LNC#LP201807-7
+* section[=].section[+].title = "Specimen Temperature"
+* section[=].section[=].code.coding.code = #Specimen-Conservation-Temperature
+* section[=].section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-specimen-information"
 * section[=].section[=].entry[+] = Reference(SpecimenConservationExample)
 
 * section[=].section[+].title = "Specimen Transportation"
-* section[=].section[=].code = $SCT#360300001
+* section[=].section[=].code.coding.code = #Specimen-Transportation
+* section[=].section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-specimen-transportation"
 * section[=].section[=].entry[+] = Reference(TransportRequestedLocationExample)
 * section[=].section[=].entry[+] = Reference(TransportCurrentLocationExample)
 
 * section[+].title = "Laboratory Services"
+* section[=].code = $SCT#46159000
 * section[=].entry[+] = Reference(ReasonForHIVTestingExample)
 * section[=].entry[+] = Reference(HIVServiceRequestExample)
 * section[=].entry[+] = Reference(LabOrderTaskActivityExample)
 * section[=].entry[+] = Reference(HIVLabResultTaskExample)
 * section[=].entry[+] = Reference(TestingPlatformExample)
-* section[=].section[+].title = "Requester Information"
-* section[=].section[=].entry[+] = Reference(RequestingOrganizationExample)
-* section[=].section[=].entry[+] = Reference(RequestingPractitionerExample)
-* section[=].section[+].title = "Performer Information"
-* section[=].section[=].entry[+] = Reference(PerformingOrganizationExample)
-* section[=].section[=].entry[+] = Reference(PerformingPractitionerExample)
+* section[=].entry[+] = Reference(RequestingOrganizationExample)
+* section[=].entry[+] = Reference(RequestingPractitionerExample)
+* section[=].entry[+] = Reference(PerformingOrganizationExample)
+* section[=].entry[+] = Reference(PerformingPractitionerExample)
 * section[=].section[+].title = "Result Information"
+* section[=].section[=].code = $SCT#118246004
 * section[=].section[=].entry[+] = Reference(HIVLabResultsDiagnosticReportExample)
 * section[=].section[=].entry[+] = Reference(ResultDispatchedToRequestingFacilityExample)
-* section[=].section[=].section[+].title = "Viral Load Result Details"
-* section[=].section[=].section[=].entry[+] = Reference(HIVTestResultExample)
-* section[=].section[=].section[=].entry[+] = Reference(HIVTestResultViralLoadLogExample)
-* section[=].section[=].section[=].entry[+] = Reference(HIVTestResultAbsoluteDecimalExample)
-* section[=].section[=].section[=].entry[+] = Reference(RepeatHIVTestResultExample)
-* section[=].section[=].section[=].entry[+] = Reference(SuspendTreatmentHIVTestResultExample)
+* section[=].section[=].entry[+] = Reference(HIVTestResultExample)
+* section[=].section[=].entry[+] = Reference(HIVTestResultViralLoadLogExample)
+* section[=].section[=].entry[+] = Reference(HIVTestResultAbsoluteDecimalExample)
+* section[=].section[=].entry[+] = Reference(RepeatHIVTestResultExample)
+* section[=].section[=].entry[+] = Reference(SuspendTreatmentHIVTestResultExample)
 * section[=].section[=].section[+].title = "Results Interpreter Details"
+* section[=].section[=].section[=].code = $SCT#726736004
 * section[=].section[=].section[=].entry[+] = Reference(ResultsInterpreterExample)
 
-* section[+].title = "ART Information"
+* section[+].title = "ART Status"
+* section[=].code = $SCT#410684002
 * section[=].entry[+] = Reference(ARTInitiatedExample)
 * section[=].entry[+] = Reference(ARVRegimenChangeExample)
 * section[=].entry[+] = Reference(ARTRegimenSwitchedOrSubstitutedExample)
 * section[=].entry[+] = Reference(ARVAdherenceExample)
 * section[=].entry[+] = Reference(ARVTreatmentRegimenChangedExample)
 * section[=].entry[+] = Reference(ARVTreatmentInitiatedExample)
-
-* section[+].title = "ARV Medication Information"
-* section[=].entry[+] = Reference(ARVRegimenMedicationRequestRegimenChangedExample)
-* section[=].entry[+] = Reference(ARVRegimenMedicationRequestARVExample)
+* section[=].section[+].title = "Prescribed ARV Medication"
+* section[=].section[=].code = $LNC#45260-7
+* section[=].section[=].entry[+] = Reference(ARVRegimenMedicationRequestRegimenChangedExample)
+* section[=].section[=].entry[+] = Reference(ARVRegimenMedicationRequestARVExample)
 
 Instance: HIVOrganizationExample
 InstanceOf: HIVOrganization
