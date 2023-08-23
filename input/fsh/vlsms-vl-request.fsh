@@ -1,8 +1,8 @@
-Instance: VLSMSVLRequest
+Instance: VLSMS-VL-Request-Transactional
 InstanceOf: Bundle
 Usage: #example
 Title: "VLSMS VL Request Bundle"
-Description: "Represents the VLSMS VL Request Bundle."
+Description: "Represents the VLSMS VL Request Bundle (Transactional Type)."
 * type = #transaction
 
 * entry[+].fullUrl = "Patient/HIVPatientExample"
@@ -194,3 +194,130 @@ Description: "Represents the VLSMS VL Request Bundle."
 * entry[=].resource = ARTRegimenSwitchedOrSubstitutedExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "Observation/ARTRegimenSwitchedOrSubstitutedExample"
+
+Instance: VLSMS-VL-Request-Document
+InstanceOf: Bundle
+Usage: #example
+Title: "VLSMS VL Request Bundle"
+Description: "Represents the VLSMS VL Request Bundle (Document Type)."
+* type = #document
+* identifier[+].value = "document-1"
+* identifier[=].system = "http://openhie.org/fhir/rwanda-hiv/identifier/bundle-id"
+* timestamp = "2023-08-22T13:28:17-05:00"
+
+* entry[+].fullUrl = "Composition/VLCompositionExample"
+* entry[=].resource = VLCompositionExample
+
+* entry[+].fullUrl = "Patient/HIVPatientExample"
+* entry[=].resource = HIVPatientExample
+
+* entry[+].fullUrl = "Specimen/VLSpecimenExample"
+* entry[=].resource = VLSpecimenExample
+
+* entry[+].fullUrl = "Organization/RequestingOrganizationExample"
+* entry[=].resource = RequestingOrganizationExample
+
+* entry[+].fullUrl = "Organization/PerformingOrganizationExample"
+* entry[=].resource = PerformingOrganizationExample
+
+* entry[+].fullUrl = "ServiceRequest/HIVServiceRequestExample"
+* entry[=].resource = HIVServiceRequestExample
+
+* entry[+].fullUrl = "Practitioner/RequestingPractitionerExample"
+* entry[=].resource = RequestingPractitionerExample
+
+* entry[+].fullUrl = "Practitioner/PerformingPractitionerExample"
+* entry[=].resource = PerformingPractitionerExample
+
+* entry[+].fullUrl = "Observation/ReasonForHIVTestingExample"
+* entry[=].resource = ReasonForHIVTestingExample
+
+* entry[+].fullUrl = "Observation/PatientPregnantExample"
+* entry[=].resource = PatientPregnantExample
+
+* entry[+].fullUrl = "Observation/HIVPatientIsNewExample"
+* entry[=].resource = HIVPatientIsNewExample
+
+* entry[+].fullUrl = "Observation/BreastfeedingExample"
+* entry[=].resource = BreastfeedingExample
+
+* entry[+].fullUrl = "CarePlan/ARVTreatmentRegimenChangedExample"
+* entry[=].resource = ARVTreatmentRegimenChangedExample
+
+* entry[+].fullUrl = "CarePlan/ARVTreatmentInitiatedExample"
+* entry[=].resource = ARVTreatmentInitiatedExample
+
+* entry[+].fullUrl = "MedicationRequest/ARVRegimenMedicationRequestRegimenChangedExample"
+* entry[=].resource = ARVRegimenMedicationRequestRegimenChangedExample
+
+* entry[+].fullUrl = "MedicationRequest/ARVRegimenMedicationRequestARVExample"
+* entry[=].resource = ARVRegimenMedicationRequestARVExample
+
+* entry[+].fullUrl = "Encounter/TargetFacilityEncounterExample"
+* entry[=].resource = TargetFacilityEncounterExample
+
+* entry[+].fullUrl = "Observation/HIVTestResultExample"
+* entry[=].resource = HIVTestResultExample
+
+* entry[+].fullUrl = "SpecimenDefinition/SpecimenConservationExample"
+* entry[=].resource = SpecimenConservationExample
+
+* entry[+].fullUrl = "Task/HIVLabResultTaskExample"
+* entry[=].resource = HIVLabResultTaskExample
+
+* entry[+].fullUrl = "ActivityDefinition/LabOrderTaskActivityExample"
+* entry[=].resource = LabOrderTaskActivityExample
+
+* entry[+].fullUrl = "Transport/SampleDispatchedToLabExample"
+* entry[=].resource = SampleDispatchedToLabExample
+
+* entry[+].fullUrl = "Transport/ResultDispatchedToRequestingFacilityExample"
+* entry[=].resource = ResultDispatchedToRequestingFacilityExample
+
+* entry[+].fullUrl = "Location/TransportRequestedLocationExample"
+* entry[=].resource = TransportRequestedLocationExample
+
+* entry[+].fullUrl = "Location/TransportCurrentLocationExample"
+* entry[=].resource = TransportCurrentLocationExample
+
+* entry[+].fullUrl = "DiagnosticReport/HIVLabResultsDiagnosticReportExample"
+* entry[=].resource = HIVLabResultsDiagnosticReportExample
+
+* entry[+].fullUrl = "Practitioner/ResultsInterpreterExample"
+* entry[=].resource = ResultsInterpreterExample
+
+* entry[+].fullUrl = "Consent/ReceiveSMSMessagesExample"
+* entry[=].resource = ReceiveSMSMessagesExample
+
+* entry[+].fullUrl = "Observation/ARVAdherenceExample"
+* entry[=].resource = ARVAdherenceExample
+
+* entry[+].fullUrl = "Observation/RepeatHIVTestResultExample"
+* entry[=].resource = RepeatHIVTestResultExample
+
+* entry[+].fullUrl = "Observation/SuspendTreatmentHIVTestResultExample"
+* entry[=].resource = SuspendTreatmentHIVTestResultExample
+
+* entry[+].fullUrl = "Device/TestingPlatformExample"
+* entry[=].resource = TestingPlatformExample
+
+* entry[+].fullUrl = "Observation/HIVTestResultViralLoadLogExample"
+* entry[=].resource = HIVTestResultViralLoadLogExample
+
+* entry[+].fullUrl = "Observation/HIVTestResultAbsoluteDecimalExample"
+* entry[=].resource = HIVTestResultAbsoluteDecimalExample
+
+* entry[+].fullUrl = "Organization/FundingOrganizationExample"
+* entry[=].resource = FundingOrganizationExample
+
+* entry[+].fullUrl = "Organization/ImplementingPartnerOrganizationExample"
+* entry[=].resource = ImplementingPartnerOrganizationExample
+
+* entry[+].fullUrl = "Observation/ARTInitiatedExample"
+* entry[=].resource = ARTInitiatedExample
+
+* entry[+].fullUrl = "Observation/ARVRegimenChangeExample"
+* entry[=].resource = ARVRegimenChangeExample
+
+* entry[+].fullUrl = "Observation/ARTRegimenSwitchedOrSubstitutedExample"
+* entry[=].resource = ARTRegimenSwitchedOrSubstitutedExample

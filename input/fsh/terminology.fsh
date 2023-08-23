@@ -197,3 +197,28 @@ Description: "Patient Consent for SMS Notifications"
 * ^experimental = false
 * $SCT#699237001 "Consent given for communication by short message service text messaging"
 * $SCT#398227009 "Inadequate consent"
+
+CodeSystem: LaboratoryReportOrganizationInformation
+Id: laboratory-report-organization-information
+Title: "Laboratory Report Organization Information Codes"
+Description: "Used by the relevant section defintions in the Composition resource."
+* ^experimental = false
+* ^caseSensitive = true
+* #Funding-Organization-Information "Funding Organization Information"
+* #Implementing-Partner-Information "Implementing Partner Information"
+
+CodeSystem: LaboratoryReportSpecimenInformation
+Id: laboratory-report-specimen-information
+Title: "Laboratory Report Specimen Information Codes"
+Description: "Used by the relevant section defintions in the Composition resource."
+* ^experimental = false
+* ^caseSensitive = true
+* #Specimen-Conservation-Temperature "Specimen Conservation Temperature"
+
+CodeSystem: LaboratoryReportSpecimenTransportation
+Id: laboratory-report-specimen-transportation
+Title: "Laboratory Report Specimen Transportation Codes"
+Description: "Used by the relevant section defintions in the Composition resource."
+* ^experimental = false
+* ^caseSensitive = true
+* #Specimen-Transportation "Specimen Transportation"
