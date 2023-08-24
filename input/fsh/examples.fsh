@@ -196,6 +196,12 @@ Description: "Represents the VL test sample that was collected for the service r
 * identifier[sampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[sampleCode].type.coding.display = "Unique Specimen ID"
 * identifier[sampleCode].type.text = "Sample identifier"
+* identifier[uniqueId].value = "123456abc"
+* identifier[uniqueId].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uniqueID" (exactly)
+* identifier[uniqueId].type.coding.code = #PLAC
+* identifier[uniqueId].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+* identifier[uniqueId].type.coding.display = "Placer Identifier"
+* identifier[uniqueId].type.text = "Universal Unique Identifier for the sample"
 * type = $SCT#119361006
 * type.text = "Specimen Type"
 * type.coding.display = "Plasma specimen (specimen)"
