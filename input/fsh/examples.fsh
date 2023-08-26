@@ -274,6 +274,7 @@ Description: "Represents a New Lab Order."
 * identifier[FILL].type.coding.display = "Filler Identifier"
 * for = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
+* description = "My Test name"
 * instantiatesCanonical = Canonical(LabOrderTaskActivityExample)
 * basedOn[+] = Reference(HIVServiceRequestExample)
 * basedOn[+] = Reference(SampleDispatchedToLabExample)
@@ -303,6 +304,7 @@ Description: "Represents a Lab Result."
 * basedOn[+] = Reference(ResultDispatchedToRequestingFacilityExample)
 * for = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
+* description = "My Test name"
 * status = #completed
 * intent = #order
 * executionPeriod.end = "2022-07-30"
@@ -330,6 +332,7 @@ Description: "Represents HIV Lab Order Cancellation."
 * basedOn[+] = Reference(HIVServiceRequestExample)
 * for = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
+* description = "My Test name"
 * status = #cancelled
 * statusReason.concept = $SCT#281264009
 * statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
@@ -357,6 +360,7 @@ Description: "Represents HIV Lab Order Rejection"
 * basedOn[+] = Reference(SampleDispatchedToLabExample)
 * for = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
+* description = "My Test name"
 * status = #rejected
 * statusReason.concept = $SCT#123840003
 * statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
