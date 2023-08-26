@@ -295,6 +295,10 @@ Description:
 * identifier[FILL].type.text = "Lab order number"
 * instantiatesCanonical 1..1
 * basedOn 1..*
+* description 0..1 MS
+* for 1..1
+* for only Reference(Patient)
+* encounter 1..1
 * status 1..1
 * statusReason 0..1 MS
 * statusReason from VSReasonForSampleCancellationOrRejection (extensible)
