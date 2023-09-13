@@ -68,10 +68,10 @@ Description: "Organization providing HIV Testing Services."
     XX 1..1
 * identifier[XX].value 1..1
 * identifier[XX].system = "http://openhie.org/fhir/rwanda-hiv/identifier/hiv-organization" (exactly)
-* identifier[XX].type.coding.code = #XX
-* identifier[XX].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[XX].type.coding.display = "Organization identifier"
-* identifier[XX].type.text = "HIV Organization identifier"
+//* identifier[XX].type.coding.code = #XX
+//* identifier[XX].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+//* identifier[XX].type.coding.display = "Organization identifier"
+//* identifier[XX].type.text = "HIV Organization identifier"
 * name 1..1
 
 Profile: HIVPatientIsNew
@@ -115,28 +115,28 @@ Description: "Represents the VL test sample that was collected for the service r
     uniqueId 1..1
 * identifier[appSampleCode].value 1..1
 * identifier[appSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/app-sample-code" (exactly)
-* identifier[appSampleCode].type.coding.code = #USID
-* identifier[appSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[appSampleCode].type.coding.display = "Unique Specimen ID"
-* identifier[appSampleCode].type.text = "App sample identifier"
+//* identifier[appSampleCode].type.coding.code = #USID
+//* identifier[appSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+//* identifier[appSampleCode].type.coding.display = "Unique Specimen ID"
+//* identifier[appSampleCode].type.text = "App sample identifier"
 * identifier[remoteSampleCode].value 1..1
 * identifier[remoteSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/remote-sample-code" (exactly)
-* identifier[remoteSampleCode].type.coding.code = #USID
-* identifier[remoteSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[remoteSampleCode].type.coding.display = "Unique Specimen ID"
-* identifier[remoteSampleCode].type.text = "Remote sample identifier"
+//* identifier[remoteSampleCode].type.coding.code = #USID
+//* identifier[remoteSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+//* identifier[remoteSampleCode].type.coding.display = "Unique Specimen ID"
+//* identifier[remoteSampleCode].type.text = "Remote sample identifier"
 * identifier[sampleCode].value 1..1
 * identifier[sampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/sample-code" (exactly)
-* identifier[sampleCode].type.coding.code = #USID
-* identifier[sampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[sampleCode].type.coding.display = "Unique Specimen ID"
-* identifier[sampleCode].type.text = "Sample identifier"
+//* identifier[sampleCode].type.coding.code = #USID
+//* identifier[sampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+//* identifier[sampleCode].type.coding.display = "Unique Specimen ID"
+//* identifier[sampleCode].type.text = "Sample identifier"
 * identifier[uniqueId].value 1..1
 * identifier[uniqueId].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uniqueID" (exactly)
-* identifier[uniqueId].type.coding.code = #PLAC
-* identifier[uniqueId].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[uniqueId].type.coding.display = "Placer Identifier"
-* identifier[uniqueId].type.text = "Universal Unique Identifier for the sample"
+//* identifier[uniqueId].type.coding.code = #PLAC
+//* identifier[uniqueId].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+//* identifier[uniqueId].type.coding.display = "Placer Identifier"
+//* identifier[uniqueId].type.text = "Universal Unique Identifier for the sample"
 * type 1..1
 * type from VSSpecimenType (required)
 * type.text = "Specimen Type"
@@ -171,10 +171,10 @@ Description: "Represents the record of request for the HIV VL lab order."
     PLAC 0..1
 * identifier[PLAC].value 0..1 MS
 * identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/lab-order-identifier" (exactly)
-* identifier[PLAC].type.coding.code = #PLAC
-* identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[PLAC].type.coding.display = "Placer Identifier"
-* identifier[PLAC].type.text = "HIV lab service request identifier"
+//* identifier[PLAC].type.coding.code = #PLAC
+//* identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+//* identifier[PLAC].type.coding.display = "Placer Identifier"
+//* identifier[PLAC].type.text = "HIV lab service request identifier"
 * status 1..1
 * intent = #order
 * code 1..1
@@ -289,10 +289,10 @@ Description:
     FILL 1..1
 * identifier[FILL].value 1..1
 * identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number" (exactly)
-* identifier[FILL].type.coding.code = #FILL
-* identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[FILL].type.coding.display = "Filler Identifier"
-* identifier[FILL].type.text = "Lab order number"
+//* identifier[FILL].type.coding.code = #FILL
+//* identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+//* identifier[FILL].type.coding.display = "Filler Identifier"
+//* identifier[FILL].type.text = "Lab order number"
 * instantiatesCanonical 1..1
 * basedOn 1..*
 * description 0..1 MS
@@ -364,10 +364,10 @@ Description: "Represents a patient’s Antiretroviral Therapy (ART) treatment re
     PLAC 1..1
 * identifier[PLAC].value 1..1
 * identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan" (exactly)
-* identifier[PLAC].type.coding.code = #PLAC
-* identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[PLAC].type.coding.display = "Placer identifier"
-* identifier[PLAC].type.text = "Unique ART number"
+//* identifier[PLAC].type.coding.code = #PLAC
+//* identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+//* identifier[PLAC].type.coding.display = "Placer identifier"
+//* identifier[PLAC].type.text = "Unique ART number"
 * status 1..1
 * intent 1..1
 * subject 1..1
@@ -559,10 +559,10 @@ Description: "Organization responsible for carrying out the HIV testing services
     OrgID 1..1
 * identifier[OrgID].value 1..1
 * identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
-* identifier[OrgID].type.coding.code = #XX
-* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[OrgID].type.coding.display = "Organization identifier"
-* identifier[OrgID].type.text = "Performing Organization identifier"
+//* identifier[OrgID].type.coding.code = #XX
+//* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+//* identifier[OrgID].type.coding.display = "Organization identifier"
+//* identifier[OrgID].type.text = "Performing Organization identifier"
 * name 1..1
 * contact 0..* MS
 * contact.address 1..1
@@ -602,10 +602,10 @@ Description: "Organization requesting for HIV testing services."
     OrgID 1..1
 * identifier[OrgID].value 1..1
 * identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
-* identifier[OrgID].type.coding.code = #XX
-* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[OrgID].type.coding.display = "Organization identifier"
-* identifier[OrgID].type.text = "Requesting Organization identifier"
+//* identifier[OrgID].type.coding.code = #XX
+//* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+//* identifier[OrgID].type.coding.display = "Organization identifier"
+//* identifier[OrgID].type.text = "Requesting Organization identifier"
 * name 1..1
 
 Profile: FundingOrganization
@@ -623,10 +623,10 @@ Description: "Funding organization."
     OrgID 0..1
 * identifier[OrgID].value 0..1 MS
 * identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
-* identifier[OrgID].type.coding.code = #XX
-* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[OrgID].type.coding.display = "Organization identifier"
-* identifier[OrgID].type.text = "Funding Organization identifier"
+//* identifier[OrgID].type.coding.code = #XX
+//* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+//* identifier[OrgID].type.coding.display = "Organization identifier"
+//* identifier[OrgID].type.text = "Funding Organization identifier"
 * name 1..1
 * extension contains FundingOrganizationIndex named FundingOrganizationIndex 1..1
 
@@ -653,10 +653,10 @@ Description: "Implementing partner organization."
     OrgID 0..1
 * identifier[OrgID].value 0..1 MS
 * identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
-* identifier[OrgID].type.coding.code = #XX
-* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-* identifier[OrgID].type.coding.display = "Organization identifier"
-* identifier[OrgID].type.text = "Implementing Partner Organization identifier"
+//* identifier[OrgID].type.coding.code = #XX
+//* identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
+//* identifier[OrgID].type.coding.display = "Organization identifier"
+//* identifier[OrgID].type.text = "Implementing Partner Organization identifier"
 * name 1..1
 * extension contains ImplementingPartnerOrganizationIndex named ImplementingPartnerOrganizationIndex 1..1
 
