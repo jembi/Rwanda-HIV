@@ -480,7 +480,7 @@ Description: "Represents an ARV CarePlan for a patient whose regimen was changed
 * identifier[PLAC].type.coding.display = "Placer identifier"
 * identifier[PLAC].type.text = "Unique ART number"
 * status = #active
-* intent = #instance-order
+* intent = #order
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
 * period.start = "2022-12-01"
@@ -504,7 +504,7 @@ Description:
 * identifier[PLAC].type.coding.display = "Placer identifier"
 * identifier[PLAC].type.text = "Unique ART number"
 * status = #active
-* intent = #instance-order
+* intent = #order
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
 * period.start = "2022-12-01"
