@@ -303,7 +303,7 @@ Description:
 * statusReason 0..1 MS
 * statusReason from VSReasonForSampleCancellationOrRejection (extensible)
 * statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
-* intent = #order
+* intent 1..1
 * executionPeriod 0..1 MS
 * lastModified 1..1
 * note 0..* MS
