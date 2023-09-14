@@ -905,6 +905,7 @@ Description: "Represents a patient whose ARV regimen has been switched to a new 
 * note.text = "Some comments"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(ObservationPerformingPractitionerExample)
 
 Instance: TransportRequestedLocationExample
 InstanceOf: TransportLocation
