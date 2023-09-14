@@ -19,57 +19,68 @@ Description: "Logically groups all resources into a single document structure."
 * section[=].code.coding.code = #Funding-Organization-Information
 * section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-organization-information"
 * section[=].entry[+] = Reference(FundingOrganizationExample)
-* section[=].text = "Funding Organization Information"
+* section[=].text.status = #generated
+* section[=].text.div = "<div><p>To be added</p></div>"
 
 * section[+].title = "Implementing Partner Information"
 * section[=].code.coding.code = #Implementing-Partner-Information
 * section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-organization-information"
 * section[=].entry[+] = Reference(ImplementingPartnerOrganizationExample)
-* section[=].text = "Implementing Partner Information"
+* section[=].text.status = #generated
+* section[=].text.div = "<div><p>To be added</p></div>"
 
 * section[+].title = "Pregnancy Status"
 * section[=].code = $LNC#82810-3
 * section[=].entry[+] = Reference(PatientPregnantExample)
-* section[=].text = "Pregnancy Status"
+* section[=].text.status = #generated
+* section[=].text.div = "<div><p>To be added</p></div>"
 
 * section[+].title = "New Patient Consultation"
 * section[=].code = $SCT#185387006
 * section[=].entry[+] = Reference(HIVPatientIsNewExample)
-* section[=].text = "New Patient Consultation"
+* section[=].text.status = #generated
+* section[=].text.div = "<div><p>To be added</p></div>"
 
 * section[+].title = "Breastfeeding Status"
 * section[=].code = $LNC#63895-7
 * section[=].entry[+] = Reference(BreastfeedingExample)
-* section[=].text = "Breastfeeding Status"
+* section[=].text.status = #generated
+* section[=].text.div = "<div><p>To be added</p></div>"
 
 * section[+].title = "Consent Status"
 * section[=].code = $SCT#309370004
 * section[=].entry[+] = Reference(ReceiveSMSMessagesExample)
-* section[=].text = "Consent Status"
+* section[=].text.status = #generated
+* section[=].text.div = "<div><p>To be added</p></div>"
 
 * section[+].title = "Viral Load Specimen"
-* section[=].text = "Viral Load Specimen"
+* section[=].text.status = #generated
+* section[=].text.div = "<div><p>To be added</p></div>"
 
 * section[=].section[+].title = "Specimen Information"
 * section[=].section[=].code = $LNC#LP7846-1
 * section[=].section[=].entry[+] = Reference(VLSpecimenExample)
-* section[=].section[=].text = "Specimen Information"
+* section[=].section[=].text.status = #generated
+* section[=].section[=].text.div = "<div><p>To be added</p></div>"
 
 * section[=].section[+].title = "Specimen Temperature"
 * section[=].section[=].code.coding.code = #Specimen-Conservation-Temperature
 * section[=].section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-specimen-information"
 * section[=].section[=].entry[+] = Reference(SpecimenConservationExample)
-* section[=].section[=].text = "Specimen Temperature"
+* section[=].section[=].text.status = #generated
+* section[=].section[=].text.div = "<div><p>To be added</p></div>"
 
 * section[=].section[+].title = "Specimen Transportation"
 * section[=].section[=].code.coding.code = #Specimen-Transportation
 * section[=].section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-specimen-transportation"
 * section[=].section[=].entry[+] = Reference(TransportRequestedLocationExample)
 * section[=].section[=].entry[+] = Reference(TransportCurrentLocationExample)
-* section[=].section[=].text = "Specimen Transportation"
+* section[=].section[=].text.status = #generated
+* section[=].section[=].text.div = "<div><p>To be added</p></div>"
 
 * section[+].title = "Laboratory Services"
-* section[=].text = "Laboratory Services"
+* section[=].text.status = #generated
+* section[=].text.div = "<div><p>To be added</p></div>"
 * section[=].code = $SCT#46159000
 * section[=].entry[+] = Reference(ReasonForHIVTestingExample)
 * section[=].entry[+] = Reference(HIVServiceRequestExample)
@@ -81,7 +92,8 @@ Description: "Logically groups all resources into a single document structure."
 * section[=].entry[+] = Reference(PerformingOrganizationExample)
 * section[=].entry[+] = Reference(PerformingPractitionerExample)
 * section[=].section[+].title = "Result Information"
-* section[=].section[=].text = "Result Information"
+* section[=].section[=].text.status = #generated
+* section[=].section[=].text.div = "<div><p>To be added</p></div>"
 * section[=].section[=].code = $SCT#118246004
 * section[=].section[=].entry[+] = Reference(HIVLabResultsDiagnosticReportExample)
 * section[=].section[=].entry[+] = Reference(ResultDispatchedToRequestingFacilityExample)
@@ -91,12 +103,14 @@ Description: "Logically groups all resources into a single document structure."
 * section[=].section[=].entry[+] = Reference(RepeatHIVTestResultExample)
 * section[=].section[=].entry[+] = Reference(SuspendTreatmentHIVTestResultExample)
 * section[=].section[=].section[+].title = "Results Interpreter Details"
-* section[=].section[=].section[=].text = "Results Interpreter Details"
+* section[=].section[=].section[=].text.status = #generated
+* section[=].section[=].section[=].text.div = "<div><p>To be added</p></div>"
 * section[=].section[=].section[=].code = $SCT#726736004
 * section[=].section[=].section[=].entry[+] = Reference(ResultsInterpreterExample)
 
 * section[+].title = "ART Status"
-* section[=].text = "ART Status"
+* section[=].text.status = #generated
+* section[=].text.div = "<div><p>To be added</p></div>"
 * section[=].code = $SCT#410684002
 * section[=].entry[+] = Reference(ARTInitiatedExample)
 * section[=].entry[+] = Reference(ARVRegimenChangeExample)
@@ -105,7 +119,8 @@ Description: "Logically groups all resources into a single document structure."
 * section[=].entry[+] = Reference(ARVTreatmentRegimenChangedExample)
 * section[=].entry[+] = Reference(ARVTreatmentInitiatedExample)
 * section[=].section[+].title = "Prescribed ARV Medication"
-* section[=].section[=].text = "Prescribed ARV Medication"
+* section[=].section[=].text.status = #generated
+* section[=].section[=].text.div = "<div><p>To be added</p></div>"
 * section[=].section[=].code = $LNC#45260-7
 * section[=].section[=].entry[+] = Reference(ARVRegimenMedicationRequestRegimenChangedExample)
 * section[=].section[=].entry[+] = Reference(ARVRegimenMedicationRequestARVExample)
