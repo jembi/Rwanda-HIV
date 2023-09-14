@@ -42,16 +42,16 @@ Id: patient-age-months
 Title: "Patient Age In Months"
 Description: "Age of the patient calculated in months."
 * value[x] only integer
-* ^context[0].type = #element
-* ^context[0].expression = "Patient"
+* ^context[+].type = #element
+* ^context[=].expression = "Patient"
 
 Extension: PatientAgeInYears
 Id: patient-age-years
 Title: "Patient Age In Years"
 Description: "Age of the patient calculated in years."
 * value[x] only integer
-* ^context[0].type = #element
-* ^context[0].expression = "Patient"
+* ^context[+].type = #element
+* ^context[=].expression = "Patient"
 
 Profile: HIVOrganization
 Parent: Organization
@@ -153,8 +153,8 @@ Id: sample-reordered
 Title: "Sample reordered"
 Description: "An indication whether the sample was reordered."
 * value[x] only boolean
-* ^context[0].type = #element
-* ^context[0].expression = "Specimen"
+* ^context[+].type = #element
+* ^context[=].expression = "Specimen"
 
 Profile: HIVServiceRequest
 Parent: ServiceRequest
@@ -230,8 +230,8 @@ Id: result-entered-manually
 Title: "Test Result Entered Manually"
 Description: "An indication whether the test result was entered manually."
 * value[x] only boolean
-* ^context[0].type = #element
-* ^context[0].expression = "Observation"
+* ^context[+].type = #element
+* ^context[=].expression = "Observation"
 
 Profile: HIVPractitioner
 Parent: Practitioner
@@ -252,24 +252,24 @@ Id: clinician-user-index
 Title: "Clinician User Index"
 Description: "The user index for the person who is requesting or performing the service request."
 * value[x] only integer
-* ^context[0].type = #element
-* ^context[0].expression = "Practitioner"
+* ^context[+].type = #element
+* ^context[=].expression = "Practitioner"
 
 Extension: ResultStatusIndex
 Id: result-status-index
 Title: "Result Status Index"
 Description: "The result status index."
 * value[x] only integer
-* ^context[0].type = #element
-* ^context[0].expression = "Task"
+* ^context[+].type = #element
+* ^context[=].expression = "Task"
 
 Extension: SampleRejectedIndex
 Id: sample-rejected-index
 Title: "Sample Rejected Index"
 Description: "The sample rejection index."
 * value[x] only integer
-* ^context[0].type = #element
-* ^context[0].expression = "Task"
+* ^context[+].type = #element
+* ^context[=].expression = "Task"
 
 Profile: HIVLabTask
 Parent: Task
@@ -464,24 +464,24 @@ Id: task-reviewed-by-user-index
 Title: "HIV Lab Task Reviewed By"
 Description: "The user index for the person who reviewed the HIV lab task."
 * value[x] only integer
-* ^context[0].type = #element
-* ^context[0].expression = "ActivityDefinition.reviewer"
+* ^context[+].type = #element
+* ^context[=].expression = "ActivityDefinition.reviewer"
 
 Extension: LabTaskApprovedBy
 Id: task-approved-by-user-index
 Title: "HIV Lab Task Approved By"
 Description: "The user index for the person who approved the HIV lab task."
 * value[x] only integer
-* ^context[0].type = #element
-* ^context[0].expression = "ActivityDefinition.endorser"
+* ^context[+].type = #element
+* ^context[=].expression = "ActivityDefinition.endorser"
 
 Extension: ResultRevisedBy
 Id: revised-by-user-index
 Title: "HIV Viral Load Result Revised By"
 Description: "The user index for the person who reviewed the viral load result."
 * value[x] only integer
-* ^context[0].type = #element
-* ^context[0].expression = "ActivityDefinition"
+* ^context[+].type = #element
+* ^context[=].expression = "ActivityDefinition"
 
 Profile: ARVAdherence
 Parent: Observation
@@ -576,16 +576,16 @@ Id: performing-organization-province-index
 Title: "Performing Organization Province"
 Description: "The province index for the performing organization."
 * value[x] only integer
-* ^context[0].type = #element
-* ^context[0].expression = "Organization"
+* ^context[+].type = #element
+* ^context[=].expression = "Organization"
 
 Extension: PerformingOrganizationDistrictIndex
 Id: performing-organization-district-index
 Title: "Performing Organization District"
 Description: "The district index for the performing organization."
 * value[x] only integer
-* ^context[0].type = #element
-* ^context[0].expression = "Organization"
+* ^context[+].type = #element
+* ^context[=].expression = "Organization"
 
 Profile: RequestingOrganization
 Parent: Organization
@@ -635,8 +635,8 @@ Id: funding-source-index
 Title: "Funding Organization"
 Description: "The index for the funding organization."
 * value[x] only integer
-* ^context[0].type = #element
-* ^context[0].expression = "Organization"
+* ^context[+].type = #element
+* ^context[=].expression = "Organization"
 
 Profile: ImplementingPartnerOrganization
 Parent: Organization
@@ -665,16 +665,16 @@ Id: implementing-partner-index
 Title: "Implementing Partner Organization"
 Description: "The index for the implementing partner organization."
 * value[x] only integer
-* ^context[0].type = #element
-* ^context[0].expression = "Organization"
+* ^context[+].type = #element
+* ^context[=].expression = "Organization"
 
 Extension: TestedByIndex
 Id: tested-by-user-index
 Title: "HIV Viral Load Result Tested By"
 Description: "The user index for the person who tested the viral load specimen."
 * value[x] only integer
-* ^context[0].type = #element
-* ^context[0].expression = "DiagnosticReport"
+* ^context[+].type = #element
+* ^context[=].expression = "DiagnosticReport"
 
 Profile: ReceiveSMSMessages
 Parent: Consent
