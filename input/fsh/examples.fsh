@@ -19,46 +19,57 @@ Description: "Logically groups all resources into a single document structure."
 * section[=].code.coding.code = #Funding-Organization-Information
 * section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-organization-information"
 * section[=].entry[+] = Reference(FundingOrganizationExample)
+* section[=].text = "Funding Organization Information"
 
 * section[+].title = "Implementing Partner Information"
 * section[=].code.coding.code = #Implementing-Partner-Information
 * section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-organization-information"
 * section[=].entry[+] = Reference(ImplementingPartnerOrganizationExample)
+* section[=].text = "Implementing Partner Information"
 
 * section[+].title = "Pregnancy Status"
 * section[=].code = $LNC#82810-3
 * section[=].entry[+] = Reference(PatientPregnantExample)
+* section[=].text = "Pregnancy Status"
 
 * section[+].title = "New Patient Consultation"
 * section[=].code = $SCT#185387006
 * section[=].entry[+] = Reference(HIVPatientIsNewExample)
+* section[=].text = "New Patient Consultation"
 
 * section[+].title = "Breastfeeding Status"
 * section[=].code = $LNC#63895-7
 * section[=].entry[+] = Reference(BreastfeedingExample)
+* section[=].text = "Breastfeeding Status"
 
 * section[+].title = "Consent Status"
 * section[=].code = $SCT#309370004
 * section[=].entry[+] = Reference(ReceiveSMSMessagesExample)
+* section[=].text = "Consent Status"
 
 * section[+].title = "Viral Load Specimen"
+* section[=].text = "Viral Load Specimen"
 
 * section[=].section[+].title = "Specimen Information"
 * section[=].section[=].code = $LNC#LP7846-1
 * section[=].section[=].entry[+] = Reference(VLSpecimenExample)
+* section[=].section[=].text = "Specimen Information"
 
 * section[=].section[+].title = "Specimen Temperature"
 * section[=].section[=].code.coding.code = #Specimen-Conservation-Temperature
 * section[=].section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-specimen-information"
 * section[=].section[=].entry[+] = Reference(SpecimenConservationExample)
+* section[=].section[=].text = "Specimen Temperature"
 
 * section[=].section[+].title = "Specimen Transportation"
 * section[=].section[=].code.coding.code = #Specimen-Transportation
 * section[=].section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-specimen-transportation"
 * section[=].section[=].entry[+] = Reference(TransportRequestedLocationExample)
 * section[=].section[=].entry[+] = Reference(TransportCurrentLocationExample)
+* section[=].section[=].text = "Specimen Transportation"
 
 * section[+].title = "Laboratory Services"
+* section[=].text = "Laboratory Services"
 * section[=].code = $SCT#46159000
 * section[=].entry[+] = Reference(ReasonForHIVTestingExample)
 * section[=].entry[+] = Reference(HIVServiceRequestExample)
@@ -70,6 +81,7 @@ Description: "Logically groups all resources into a single document structure."
 * section[=].entry[+] = Reference(PerformingOrganizationExample)
 * section[=].entry[+] = Reference(PerformingPractitionerExample)
 * section[=].section[+].title = "Result Information"
+* section[=].section[=].text = "Result Information"
 * section[=].section[=].code = $SCT#118246004
 * section[=].section[=].entry[+] = Reference(HIVLabResultsDiagnosticReportExample)
 * section[=].section[=].entry[+] = Reference(ResultDispatchedToRequestingFacilityExample)
@@ -79,10 +91,12 @@ Description: "Logically groups all resources into a single document structure."
 * section[=].section[=].entry[+] = Reference(RepeatHIVTestResultExample)
 * section[=].section[=].entry[+] = Reference(SuspendTreatmentHIVTestResultExample)
 * section[=].section[=].section[+].title = "Results Interpreter Details"
+* section[=].section[=].section[=].text = "Results Interpreter Details"
 * section[=].section[=].section[=].code = $SCT#726736004
 * section[=].section[=].section[=].entry[+] = Reference(ResultsInterpreterExample)
 
 * section[+].title = "ART Status"
+* section[=].text = "ART Status"
 * section[=].code = $SCT#410684002
 * section[=].entry[+] = Reference(ARTInitiatedExample)
 * section[=].entry[+] = Reference(ARVRegimenChangeExample)
@@ -91,6 +105,7 @@ Description: "Logically groups all resources into a single document structure."
 * section[=].entry[+] = Reference(ARVTreatmentRegimenChangedExample)
 * section[=].entry[+] = Reference(ARVTreatmentInitiatedExample)
 * section[=].section[+].title = "Prescribed ARV Medication"
+* section[=].section[=].text = "Prescribed ARV Medication"
 * section[=].section[=].code = $LNC#45260-7
 * section[=].section[=].entry[+] = Reference(ARVRegimenMedicationRequestRegimenChangedExample)
 * section[=].section[=].entry[+] = Reference(ARVRegimenMedicationRequestARVExample)
@@ -137,10 +152,12 @@ Description: "Represents whether this is a new patient."
 * code.text = "New Patient Indication"
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
+* effectiveDateTime = "2022-11-30"
 * valueBoolean = true
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(ObservationPerformingPractitionerExample)
 
 Instance: PatientPregnantExample
 InstanceOf: PatientPregnancyStatus
@@ -159,6 +176,7 @@ Description: "Represents the pregnancy status of a patient."
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(ObservationPerformingPractitionerExample)
 
 Instance: TargetFacilityEncounterExample
 InstanceOf: TargetFacilityEncounter
@@ -235,6 +253,18 @@ Description:  "Represents the practitioner who must perform the VL examination."
 * telecom.system = #phone
 * telecom.value = "27537687534"
 
+Instance: ObservationPerformingPractitionerExample
+InstanceOf: HIVPractitioner
+Usage: #example
+Title: "Practitioner"
+Description:  "Represents the practitioner who is responsible for the observation."
+* extension[ClinicianUserIndex].valueInteger = 15
+* name.given = "Amy"
+* name.family = "White"
+* telecom.system = #phone
+* telecom.value = "27537687534"
+
+
 Instance: HIVServiceRequestExample
 InstanceOf: HIVServiceRequest
 Usage: #example
@@ -278,7 +308,7 @@ Description: "Represents a New Lab Order."
 * basedOn[+] = Reference(HIVServiceRequestExample)
 * basedOn[+] = Reference(SampleDispatchedToLabExample)
 * status = #requested
-* intent = #order
+* intent = #original-order
 * executionPeriod.start = "2022-07-28"
 * lastModified = "2022-07-28"
 * note.authorReference = Reference(HIVOrganizationExample)
@@ -304,7 +334,7 @@ Description: "Represents a Lab Result."
 * for = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
 * status = #completed
-* intent = #order
+* intent = #original-order
 * executionPeriod.end = "2022-07-30"
 * lastModified = "2022-07-30"
 * note.authorReference = Reference(HIVOrganizationExample)
@@ -334,7 +364,7 @@ Description: "Represents HIV Lab Order Cancellation."
 * statusReason.concept = $SCT#281264009
 * statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
 * statusReason.concept.coding.display = "Inappropriate bottle or container for sample (finding)"
-* intent = #order
+* intent = #original-order
 * executionPeriod.end = "2022-07-30"
 * lastModified = "2022-07-30"
 * note.authorReference = Reference(HIVOrganizationExample)
@@ -361,7 +391,7 @@ Description: "Represents HIV Lab Order Rejection"
 * statusReason.concept = $SCT#123840003
 * statusReason.concept.text = "Reason For Canceling/Rejecting the Lab Order"
 * statusReason.concept.coding.display = "Sample contaminated"
-* intent = #order
+* intent = #original-order
 * executionPeriod.end = "2022-07-30"
 * lastModified = "2022-07-30"
 * note.authorReference = Reference(HIVOrganizationExample)
@@ -435,7 +465,7 @@ Description: "Represents an ARV CarePlan for a patient whose regimen was changed
 * identifier[PLAC].type.coding.display = "Placer identifier"
 * identifier[PLAC].type.text = "Unique ART number"
 * status = #active
-* intent = #plan
+* intent = #instance-order
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
 * period.start = "2022-12-01"
@@ -459,7 +489,7 @@ Description:
 * identifier[PLAC].type.coding.display = "Placer identifier"
 * identifier[PLAC].type.text = "Unique ART number"
 * status = #active
-* intent = #plan
+* intent = #instance-order
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
 * period.start = "2022-12-01"
@@ -501,6 +531,8 @@ Description: "Represents a patient’s adherence to ARV treatment."
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(ObservationPerformingPractitionerExample)
+* effectiveDateTime = "2022-11-30"
 
 Instance: BreastfeedingExample
 InstanceOf: Breastfeeding
@@ -516,6 +548,8 @@ Description: "Represents a breastfeeding patient."
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.text = "additional notes here"
 * note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(ObservationPerformingPractitionerExample)
+* effectiveDateTime = "2022-11-30"
 
 Instance: LabOrderTaskActivityExample
 InstanceOf: LabOrderTaskActivity
@@ -782,6 +816,7 @@ Description: "Represents the reason for HIV VL testing services."
 * note.text = "Some comments"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(ObservationPerformingPractitionerExample)
 
 Instance: ARVRegimenChangeExample
 InstanceOf: ARVRegimenChange
@@ -803,6 +838,7 @@ Description: "Represents a patient whose ARV regimen was changed."
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
 * derivedFrom = Reference(ARTRegimenSwitchedOrSubstitutedExample)
+* performer = Reference(ObservationPerformingPractitionerExample)
 
 Instance: ARVRegimenMedicationRequestARVExample
 InstanceOf: ARVRegimenMedicationRequest
@@ -835,6 +871,7 @@ Description: "Represents a patient who is initiated on ART."
 * note.text = "Some comments"
 * note.authorReference = Reference(HIVOrganizationExample)
 * note.time = "2015-02-07T13:28:17-05:00"
+* performer = Reference(ObservationPerformingPractitionerExample)
 
 Instance: ARTRegimenSwitchedOrSubstitutedExample
 InstanceOf: ARTRegimenSwitchedOrSubstituted
