@@ -33,18 +33,3 @@ Description: "Represents a Lab Result Bundle."
 * entry[=].resource = LabOrderTaskActivityExample
 * entry[=].request.method = #PUT
 * entry[=].request.url = "ActivityDefinition/LabOrderTaskActivityExample"
-
-* entry[+].fullUrl = "Transport/ResultDispatchedToRequestingFacilityExample"
-* entry[=].resource = ResultDispatchedToRequestingFacilityExample
-* entry[=].request.method = #PUT
-* entry[=].request.url = "Transport/ResultDispatchedToRequestingFacilityExample"
-
-* entry[+].fullUrl = "Location/TransportRequestedLocationExample"
-* entry[=].resource = TransportRequestedLocationExample
-* entry[=].request.method = #PUT
-* entry[=].request.url = "Location/TransportRequestedLocationExample"
-
-* entry[+].fullUrl = "Location/TransportCurrentLocationExample"
-* entry[=].resource = TransportCurrentLocationExample
-* entry[=].request.method = #PUT
-* entry[=].request.url = "Location/TransportCurrentLocationExample"
