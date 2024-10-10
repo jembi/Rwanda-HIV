@@ -33,7 +33,7 @@
 
   <h3>Testing</h3> <a name="testing"></a>
   <p>
-    The Rwanda VLSMS <a href="https://www.postman.com/jembi-platform/workspace/rwanda-vlsms" target="_blank">Postman Collection</a> 
+    The Rwanda VLSMS <a href="https://www.postman.com/jembi-platform/rwanda-vlsms-public/overview" target="_blank">Postman Collection</a> 
     provides a few sample bundles that can be used during developer testing. 
     It also allows a developer to create multiple test cases using the pre-request script coming with each Postman request.
   </p>
