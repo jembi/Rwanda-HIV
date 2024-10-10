@@ -12,7 +12,7 @@ Description: "Logically groups all resources into a single document structure."
 * identifier contains
     ID 1..1
 * identifier[ID].value 1..1
-* identifier[ID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/vl-lab-report" (exactly)
+* identifier[ID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/vl-lab-report"
 * status 1..1
 * subject 1..1
 * encounter 1..1
@@ -41,6 +41,8 @@ Extension: PatientAgeInMonths
 Id: patient-age-months
 Title: "Patient Age In Months"
 Description: "Age of the patient calculated in months."
+* ^experimental = true
+* ^status = #active
 * value[x] only integer
 * ^context[+].type = #element
 * ^context[=].expression = "Patient"
@@ -49,6 +51,8 @@ Extension: PatientAgeInYears
 Id: patient-age-years
 Title: "Patient Age In Years"
 Description: "Age of the patient calculated in years."
+* ^experimental = true
+* ^status = #active
 * value[x] only integer
 * ^context[+].type = #element
 * ^context[=].expression = "Patient"
@@ -67,7 +71,7 @@ Description: "Organization providing HIV Testing Services."
 * identifier contains
     XX 1..1
 * identifier[XX].value 1..1
-* identifier[XX].system = "http://openhie.org/fhir/rwanda-hiv/identifier/hiv-organization" (exactly)
+* identifier[XX].system = "http://openhie.org/fhir/rwanda-hiv/identifier/hiv-organization"
 * identifier[XX].type.coding.code = #XX
 * identifier[XX].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[XX].type.coding.display = "Organization identifier"
@@ -114,25 +118,25 @@ Description: "Represents the VL test sample that was collected for the service r
     sampleCode 1..1 and 
     uniqueId 1..1
 * identifier[appSampleCode].value 1..1
-* identifier[appSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/app-sample-code" (exactly)
+* identifier[appSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/app-sample-code"
 * identifier[appSampleCode].type.coding.code = #USID
 * identifier[appSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[appSampleCode].type.coding.display = "Unique Specimen ID"
 * identifier[appSampleCode].type.text = "App sample identifier"
 * identifier[remoteSampleCode].value 1..1
-* identifier[remoteSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/remote-sample-code" (exactly)
+* identifier[remoteSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/remote-sample-code"
 * identifier[remoteSampleCode].type.coding.code = #USID
 * identifier[remoteSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[remoteSampleCode].type.coding.display = "Unique Specimen ID"
 * identifier[remoteSampleCode].type.text = "Remote sample identifier"
 * identifier[sampleCode].value 1..1
-* identifier[sampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/sample-code" (exactly)
+* identifier[sampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/sample-code"
 * identifier[sampleCode].type.coding.code = #USID
 * identifier[sampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[sampleCode].type.coding.display = "Unique Specimen ID"
 * identifier[sampleCode].type.text = "Sample identifier"
 * identifier[uniqueId].value 1..1
-* identifier[uniqueId].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uniqueID" (exactly)
+* identifier[uniqueId].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uniqueID"
 * identifier[uniqueId].type.coding.code = #PLAC
 * identifier[uniqueId].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[uniqueId].type.coding.display = "Placer Identifier"
@@ -152,6 +156,8 @@ Extension: SampleReordered
 Id: sample-reordered
 Title: "Sample reordered"
 Description: "An indication whether the sample was reordered."
+* ^experimental = true
+* ^status = #active
 * value[x] only boolean
 * ^context[+].type = #element
 * ^context[=].expression = "Specimen"
@@ -170,7 +176,7 @@ Description: "Represents the record of request for the HIV VL lab order."
 * identifier contains
     PLAC 0..1
 * identifier[PLAC].value 0..1 MS
-* identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/lab-order-identifier" (exactly)
+* identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/lab-order-identifier"
 * identifier[PLAC].type.coding.code = #PLAC
 * identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[PLAC].type.coding.display = "Placer Identifier"
@@ -229,6 +235,8 @@ Extension: ResultEnteredManually
 Id: result-entered-manually
 Title: "Test Result Entered Manually"
 Description: "An indication whether the test result was entered manually."
+* ^experimental = true
+* ^status = #active
 * value[x] only boolean
 * ^context[+].type = #element
 * ^context[=].expression = "Observation"
@@ -251,6 +259,8 @@ Extension: ClinicianUserIndex
 Id: clinician-user-index
 Title: "Clinician User Index"
 Description: "The user index for the person who is requesting or performing the service request."
+* ^experimental = true
+* ^status = #active
 * value[x] only integer
 * ^context[+].type = #element
 * ^context[=].expression = "Practitioner"
@@ -259,6 +269,8 @@ Extension: ResultStatusIndex
 Id: result-status-index
 Title: "Result Status Index"
 Description: "The result status index."
+* ^experimental = true
+* ^status = #active
 * value[x] only integer
 * ^context[+].type = #element
 * ^context[=].expression = "Task"
@@ -267,6 +279,8 @@ Extension: SampleRejectedIndex
 Id: sample-rejected-index
 Title: "Sample Rejected Index"
 Description: "The sample rejection index."
+* ^experimental = true
+* ^status = #active
 * value[x] only integer
 * ^context[+].type = #element
 * ^context[=].expression = "Task"
@@ -288,7 +302,7 @@ Description:
 * identifier contains
     FILL 1..1
 * identifier[FILL].value 1..1
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number" (exactly)
+* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[FILL].type.coding.display = "Filler Identifier"
@@ -363,7 +377,7 @@ Description: "Represents a patient’s Antiretroviral Therapy (ART) treatment re
 * identifier contains
     PLAC 1..1
 * identifier[PLAC].value 1..1
-* identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan" (exactly)
+* identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
 * identifier[PLAC].type.coding.code = #PLAC
 * identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[PLAC].type.coding.display = "Placer identifier"
@@ -463,6 +477,8 @@ Extension: LabTaskReviewedBy
 Id: task-reviewed-by-user-index
 Title: "HIV Lab Task Reviewed By"
 Description: "The user index for the person who reviewed the HIV lab task."
+* ^experimental = true
+* ^status = #active
 * value[x] only integer
 * ^context[+].type = #element
 * ^context[=].expression = "ActivityDefinition.reviewer"
@@ -471,6 +487,8 @@ Extension: LabTaskApprovedBy
 Id: task-approved-by-user-index
 Title: "HIV Lab Task Approved By"
 Description: "The user index for the person who approved the HIV lab task."
+* ^experimental = true
+* ^status = #active
 * value[x] only integer
 * ^context[+].type = #element
 * ^context[=].expression = "ActivityDefinition.endorser"
@@ -479,6 +497,8 @@ Extension: ResultRevisedBy
 Id: revised-by-user-index
 Title: "HIV Viral Load Result Revised By"
 Description: "The user index for the person who reviewed the viral load result."
+* ^experimental = true
+* ^status = #active
 * value[x] only integer
 * ^context[+].type = #element
 * ^context[=].expression = "ActivityDefinition"
@@ -504,7 +524,7 @@ Id: hiv-patient-breastfeeding
 Title: "Breastfeeding Patient Observation"
 Description: "Represents a breastfeeding patient."
 * status 1..1
-* code = $SCT#413712001
+* code = $SCT#866041003
 * code.text = "Breastfeeding"
 * subject 1..1
 * encounter 1..1
@@ -558,7 +578,7 @@ Description: "Organization responsible for carrying out the HIV testing services
 * identifier contains
     OrgID 1..1
 * identifier[OrgID].value 1..1
-* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
 * identifier[OrgID].type.coding.code = #XX
 * identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[OrgID].type.coding.display = "Organization identifier"
@@ -575,6 +595,8 @@ Extension: PerformingOrganizationProvinceIndex
 Id: performing-organization-province-index
 Title: "Performing Organization Province"
 Description: "The province index for the performing organization."
+* ^experimental = true
+* ^status = #active
 * value[x] only integer
 * ^context[+].type = #element
 * ^context[=].expression = "Organization"
@@ -583,6 +605,8 @@ Extension: PerformingOrganizationDistrictIndex
 Id: performing-organization-district-index
 Title: "Performing Organization District"
 Description: "The district index for the performing organization."
+* ^experimental = true
+* ^status = #active
 * value[x] only integer
 * ^context[+].type = #element
 * ^context[=].expression = "Organization"
@@ -601,7 +625,7 @@ Description: "Organization requesting for HIV testing services."
 * identifier contains
     OrgID 1..1
 * identifier[OrgID].value 1..1
-* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
 * identifier[OrgID].type.coding.code = #XX
 * identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[OrgID].type.coding.display = "Organization identifier"
@@ -622,7 +646,7 @@ Description: "Funding organization."
 * identifier contains
     OrgID 0..1
 * identifier[OrgID].value 0..1 MS
-* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
 * identifier[OrgID].type.coding.code = #XX
 * identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[OrgID].type.coding.display = "Organization identifier"
@@ -634,6 +658,8 @@ Extension: FundingOrganizationIndex
 Id: funding-source-index
 Title: "Funding Organization"
 Description: "The index for the funding organization."
+* ^experimental = true
+* ^status = #active
 * value[x] only integer
 * ^context[+].type = #element
 * ^context[=].expression = "Organization"
@@ -652,7 +678,7 @@ Description: "Implementing partner organization."
 * identifier contains
     OrgID 0..1
 * identifier[OrgID].value 0..1 MS
-* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id" (exactly)
+* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
 * identifier[OrgID].type.coding.code = #XX
 * identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[OrgID].type.coding.display = "Organization identifier"
@@ -664,6 +690,8 @@ Extension: ImplementingPartnerOrganizationIndex
 Id: implementing-partner-index
 Title: "Implementing Partner Organization"
 Description: "The index for the implementing partner organization."
+* ^experimental = true
+* ^status = #active
 * value[x] only integer
 * ^context[+].type = #element
 * ^context[=].expression = "Organization"
@@ -672,6 +700,8 @@ Extension: TestedByIndex
 Id: tested-by-user-index
 Title: "HIV Viral Load Result Tested By"
 Description: "The user index for the person who tested the viral load specimen."
+* ^experimental = true
+* ^status = #active
 * value[x] only integer
 * ^context[+].type = #element
 * ^context[=].expression = "DiagnosticReport"
@@ -684,6 +714,7 @@ Description: "Represents a patient’s consent to receive Short Message Service 
 * status 1..1
 * subject 1..1
 * subject only Reference(Patient)
+* category 1..1
 * category = $LNC#89057-4
 * category.text = "Patient consent for SMS messages"
 * decision 1..1

@@ -5,7 +5,8 @@ ValueSet: VSSpecimenType
 Id: vs-specimen-type
 Title: "Specimen Type Used In Viral Load testing"
 Description:  "A list of specimen types."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * $SCT#119361006 "Plasma specimen"
 * $SCT#440500007 "Dried blood spot specimen"
 * $SCT#441620008 "Oral fluid specimen"
@@ -18,7 +19,8 @@ ValueSet: VSTestTypes
 Id: vs-test-types
 Title: "HIV Test Types"
 Description: "A list of HIV test types."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * $LNC#25842-6 "HIV 2 proviral DNA [Presence] in Specimen by NAA with probe detection"   
 * $LNC#25836-8 "HIV 1 RNA [#/volume] (viral load) in Specimen by NAA with probe detection"
 
@@ -26,7 +28,8 @@ CodeSystem: CSReasonForAssessment
 Id: cs-reason-for-assessment
 Title: "VLSMS Provided Reasons For Testing"
 Description: "Reasons why a sample will be tested."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * ^caseSensitive = true
 * #Baseline-VL "Baseline VL"
 * #Confirmation-Of-Treatment-Failure "Confirmation Of Treatment Failure(repeat VL at 3M)"
@@ -46,13 +49,14 @@ ValueSet: VSReasonForAssessment
 Id: vs-reason-for-assessment
 Title: "Reason for Assessment or Test Not Performed"
 Description: "A list of reasons associated with the service request for the lab order."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * $SCT#77386006 "Pregnancy"
 * $SCT#428450006 "Repeat laboratory specimen sent"
 * $SCT#171111007 "Screened - no result yet"
 * $SCT#266721009 "Absent response to treatment"
 * $SCT#170564007 "Chronic disease - treatment changed"
-* $SCT#413712001 "Breastfeeding (mother)"
+* $SCT#866041003 "Mother currently breastfeeding"
 * $SCT#315124004 "Human immunodeficiency virus viral load"
 * $SCT#2528003 "Viremia"
 * include codes from system CSReasonForAssessment
@@ -61,7 +65,8 @@ ValueSet: VSVLSuppression
 Id: vs-vl-suppression
 Title: "Viral Load Suppressions Status"
 Description: "Describes a patient's current viral load status."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * $SCT#245780008 "Suppressed"
 * $SCT#19032002 "Uncontrolled" //Unsuppressed
 * $SCT#261665006 "Unknown"
@@ -70,7 +75,8 @@ CodeSystem: CSReasonForSampleCancellationOrRejection
 Id: cs-reason-sample-cancelled-or-rejected
 Title: "VLSMS Provided Reasons For Cancelling/Rejecting Lab Order"
 Description: "Reasons why a lab order was cancelled or rejected."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * ^caseSensitive = true
 * #DBS_SRIC	 "DBS cards that have serum rings indicating contamination around spots"
 * #DBS_CPIS	 "DBS card with clotting present in spots"
@@ -119,7 +125,8 @@ ValueSet: VSReasonForSampleCancellationOrRejection
 Id: vs-reason-sample-cancelled-or-rejected
 Title: "Lab Order Reasons For Cancelling/Rejecting Lab Order"
 Description: "Reasons why a lab order was cancelled or rejected."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * $SCT#441510007 "Blood specimen with anticoagulant" 
 * $SCT#123840003 "Sample contaminated"
 * $SCT#397933008 "Equipment error/failure"
@@ -133,7 +140,8 @@ ValueSet: VSPatientPregnant
 Id: vs-patient-pregnant
 Title: "Patient Pregnant"
 Description:  "Used by the observation to indicate whether a patient is pregnant."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * $SCT#250426008 "Pregnancy test equivocal"
 * $SCT#250425007 "Pregnancy test negative"
 * $SCT#250423000 "Pregnancy test positive"
@@ -142,7 +150,8 @@ ValueSet: VSReasonsForARVRegimenChange
 Id: vs-reason-arv-regimen-change
 Title: "Reasons for ARV Regimen Change"
 Description:  "Used by the ARV treatment careplan to indicate the reason why a patient had their ARV regimen changed."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * $SCT#7895008 "Poisoning caused by drug AND/OR medicinal substance"
 * $SCT#77386006 "Pregnancy"
 * $SCT#59037007 "Intolerance to drug"
@@ -158,7 +167,8 @@ ValueSet: VSARVRegimen
 Id: vs-arv-regimen
 Title: "ARV Regimen"
 Description: "A list of ARV regimen."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * $SCT#387105006 "Didanosine"
 * $SCT#387005008 "Abacavir"
 * $SCT#772188001 "Product containing only abacavir and lamivudine"
@@ -185,7 +195,8 @@ ValueSet: VSARVAdherence
 Id: vs-arv-adherence
 Title: "Adherence to ARV Treatment"
 Description: "Adherence to ARV Treatment."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * $LNC#LA6763-2 "Good = 95% adherence"
 * $LNC#LA6764-0 "Fair 85-94% adherence"
 * $LNC#LA6765-7 "Poor <85% adherence"
@@ -194,7 +205,8 @@ ValueSet: VSPatientConsentForSMSNotifications
 Id: vs-patient-consent-for-sms-notifications
 Title: "Patient Consent for SMS Notifications"
 Description: "Patient Consent for SMS Notifications"
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * $SCT#699237001 "Consent given for communication by short message service text messaging"
 * $SCT#398227009 "Inadequate consent"
 
@@ -202,7 +214,8 @@ CodeSystem: LaboratoryReportOrganizationInformation
 Id: laboratory-report-organization-information
 Title: "Laboratory Report Organization Information Codes"
 Description: "Used by the relevant section defintions in the Composition resource."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * ^caseSensitive = true
 * #Funding-Organization-Information "Funding Organization Information"
 * #Implementing-Partner-Information "Implementing Partner Information"
@@ -211,7 +224,8 @@ CodeSystem: LaboratoryReportSpecimenInformation
 Id: laboratory-report-specimen-information
 Title: "Laboratory Report Specimen Information Codes"
 Description: "Used by the relevant section defintions in the Composition resource."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * ^caseSensitive = true
 * #Specimen-Conservation-Temperature "Specimen Conservation Temperature"
 
@@ -219,6 +233,7 @@ CodeSystem: LaboratoryReportSpecimenTransportation
 Id: laboratory-report-specimen-transportation
 Title: "Laboratory Report Specimen Transportation Codes"
 Description: "Used by the relevant section defintions in the Composition resource."
-* ^experimental = false
+* ^experimental = true
+* ^status = #active
 * ^caseSensitive = true
 * #Specimen-Transportation "Specimen Transportation"

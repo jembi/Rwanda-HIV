@@ -111,7 +111,7 @@ Description: "Logically groups all resources into a single document structure."
 * section[+].title = "ART Status"
 * section[=].text.status = #generated
 * section[=].text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>To be added</p></div>"
-* section[=].code = $SCT#410684002
+* section[=].code = $LNC#47248-0
 * section[=].entry[+] = Reference(ARTInitiatedExample)
 * section[=].entry[+] = Reference(ARVRegimenChangeExample)
 * section[=].entry[+] = Reference(ARTRegimenSwitchedOrSubstitutedExample)
@@ -555,7 +555,7 @@ Usage: #example
 Title: "Breastfeeding Patient Observation"
 Description: "Represents a breastfeeding patient."
 * status = #final
-* code = $SCT#413712001
+* code = $SCT#866041003
 * code.text = "Breastfeeding"
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
