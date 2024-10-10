@@ -38,7 +38,7 @@
     It also allows a developer to create multiple test cases using the pre-request script coming with each Postman request.
   </p>
 
-  <figure style="border: none; outline: none;">
+  <!-- <figure style="border: none; outline: none; width: 30%; height: 30%;">
       <img src="organizations-bootstrap.png" alt="Organizations Bootstrap" />
       <figcaption>Organizations Bootstrap</figcaption>
   </figure>
@@ -46,10 +46,10 @@
   <br />
   <br />
 
-  <figure style="border: none; outline: none;">
+  <figure style="border: none; outline: none; width: 30%; height: 30%;">
       <img src="payload-requirements.png" alt="Payload Requirements" />
       <figcaption>Payload Requirements</figcaption>
-  </figure>
+  </figure> -->
 
 	<h3>Download</h3> <a name="download"></a>
   <p>You can also download:</p>
@@ -59,7 +59,7 @@
     <li>the example resources in <a href="examples.json.zip">json</a>, <a href="examples.xml.zip">xml</a> or <a href="examples.ttl.zip">ttl</a> format.</li>
   </ul>
 
-  <p>The source code for this Implementation Guide can be found on <a href="https://github.com/openhie/Training-Solution-1">OpenHIE GitHub</a>.</p>
+  <p>The source code for this Implementation Guide can be found on <a href="https://github.com/openhie/Rwanda-HIV">GitHub</a>.</p>
 
   <h3>Cross Version Analysis</h3> <a name="cross-version-analysis"></a>
   <div>
