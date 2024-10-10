@@ -4,7 +4,7 @@ Usage: #example
 Title: "Laboratory Report For Viral Load Testing"
 Description: "Logically groups all resources into a single document structure."
 * identifier[ID].value = "PAT0001-v1"
-* identifier[ID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/vl-lab-report"
+* identifier[ID].system = "http://moh.gov.rw/fhir/identifier/vl-lab-report"
 * status = #final
 * subject = Reference(HIVPatientExample)
 * encounter = Reference(TargetFacilityEncounterExample)
@@ -17,14 +17,14 @@ Description: "Logically groups all resources into a single document structure."
 
 * section[+].title = "Funding Organization Information"
 * section[=].code.coding.code = #Funding-Organization-Information
-* section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-organization-information"
+* section[=].code.coding.system = "http://moh.gov.rw/fhir/CodeSystem/laboratory-report-organization-information"
 * section[=].entry[+] = Reference(FundingOrganizationExample)
 * section[=].text.status = #generated
 * section[=].text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>To be added</p></div>"
 
 * section[+].title = "Implementing Partner Information"
 * section[=].code.coding.code = #Implementing-Partner-Information
-* section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-organization-information"
+* section[=].code.coding.system = "http://moh.gov.rw/fhir/CodeSystem/laboratory-report-organization-information"
 * section[=].entry[+] = Reference(ImplementingPartnerOrganizationExample)
 * section[=].text.status = #generated
 * section[=].text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>To be added</p></div>"
@@ -65,14 +65,14 @@ Description: "Logically groups all resources into a single document structure."
 
 * section[=].section[+].title = "Specimen Temperature"
 * section[=].section[=].code.coding.code = #Specimen-Conservation-Temperature
-* section[=].section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-specimen-information"
+* section[=].section[=].code.coding.system = "http://moh.gov.rw/fhir/CodeSystem/laboratory-report-specimen-information"
 * section[=].section[=].entry[+] = Reference(SpecimenConservationExample)
 * section[=].section[=].text.status = #generated
 * section[=].section[=].text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>To be added</p></div>"
 
 * section[=].section[+].title = "Specimen Transportation"
 * section[=].section[=].code.coding.code = #Specimen-Transportation
-* section[=].section[=].code.coding.system = "http://openhie.org/fhir/rwanda-hiv/CodeSystem/laboratory-report-specimen-transportation"
+* section[=].section[=].code.coding.system = "http://moh.gov.rw/fhir/CodeSystem/laboratory-report-specimen-transportation"
 * section[=].section[=].entry[+] = Reference(TransportRequestedLocationExample)
 * section[=].section[=].entry[+] = Reference(TransportCurrentLocationExample)
 * section[=].section[=].text.status = #generated
@@ -131,7 +131,7 @@ Usage: #example
 Title: "Organization"
 Description: "Represents an organization associated with health services."
 * identifier[XX].value = "facility1"
-* identifier[XX].system = "http://openhie.org/fhir/rwanda-hiv/identifier/hiv-organization"
+* identifier[XX].system = "http://moh.gov.rw/fhir/identifier/hiv-organization"
 * identifier[XX].type.coding.code = #XX
 * identifier[XX].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[XX].type.coding.display = "Organization identifier"
@@ -212,25 +212,25 @@ Title: "Viral Load Specimen"
 Description: "Represents the VL test sample that was collected for the service request."
 * extension[SampleReordered].valueBoolean = false
 * identifier[appSampleCode].value = "abc123"
-* identifier[appSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/app-sample-code"
+* identifier[appSampleCode].system = "http://moh.gov.rw/fhir/identifier/app-sample-code"
 * identifier[appSampleCode].type.coding.code = #USID
 * identifier[appSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[appSampleCode].type.coding.display = "Unique Specimen ID"
 * identifier[appSampleCode].type.text = "App sample identifier"
 * identifier[remoteSampleCode].value = "def456"
-* identifier[remoteSampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/remote-sample-code" 
+* identifier[remoteSampleCode].system = "http://moh.gov.rw/fhir/identifier/remote-sample-code" 
 * identifier[remoteSampleCode].type.coding.code = #USID
 * identifier[remoteSampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[remoteSampleCode].type.coding.display = "Unique Specimen ID"
 * identifier[remoteSampleCode].type.text = "Remote sample identifier"
 * identifier[sampleCode].value = "ghi789"
-* identifier[sampleCode].system = "http://openhie.org/fhir/rwanda-hiv/identifier/sample-code" 
+* identifier[sampleCode].system = "http://moh.gov.rw/fhir/identifier/sample-code" 
 * identifier[sampleCode].type.coding.code = #USID
 * identifier[sampleCode].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[sampleCode].type.coding.display = "Unique Specimen ID"
 * identifier[sampleCode].type.text = "Sample identifier"
 * identifier[uniqueId].value = "123456abc"
-* identifier[uniqueId].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uniqueID" 
+* identifier[uniqueId].system = "http://moh.gov.rw/fhir/identifier/uniqueID" 
 * identifier[uniqueId].type.coding.code = #PLAC
 * identifier[uniqueId].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[uniqueId].type.coding.display = "Placer Identifier"
@@ -286,7 +286,7 @@ Usage: #example
 Title: "HIV VL Service Request"
 Description: "Represents the record of request for the HIV VL lab order."
 * identifier[PLAC].value = "ORDER12345"
-* identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/lab-order-identifier"
+* identifier[PLAC].system = "http://moh.gov.rw/fhir/identifier/lab-order-identifier"
 * identifier[PLAC].type.coding.code = #PLAC
 * identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[PLAC].type.coding.display = "Placer Identifier"
@@ -312,7 +312,7 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "HIV VL Lab Order Task"
 Description: "Represents a New Lab Order."
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
+* identifier[FILL].system = "http://moh.gov.rw/fhir/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -336,7 +336,7 @@ Usage: #example
 Title: "HIV VL Lab Order Task"
 Description: "Represents a Lab Result."
 * extension[ResultStatusIndex].valueInteger = 4
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
+* identifier[FILL].system = "http://moh.gov.rw/fhir/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -366,7 +366,7 @@ InstanceOf: HIVLabTask
 Usage: #example
 Title: "HIV VL Lab Order Task"
 Description: "Represents HIV Lab Order Cancellation."
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
+* identifier[FILL].system = "http://moh.gov.rw/fhir/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -392,7 +392,7 @@ Usage: #example
 Title: "HIV VL Lab Order Task"
 Description: "Represents HIV Lab Order Rejection"
 * extension[SampleRejectedIndex].valueInteger = 2
-* identifier[FILL].system = "http://openhie.org/fhir/rwanda-hiv/lab-integration/order-number"
+* identifier[FILL].system = "http://moh.gov.rw/fhir/lab-integration/order-number"
 * identifier[FILL].value = "ORDER12345"
 * identifier[FILL].type.coding.code = #FILL
 * identifier[FILL].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
@@ -474,7 +474,7 @@ Usage: #example
 Title: "ARV Treatment CarePlan"
 Description: "Represents an ARV CarePlan for a patient whose regimen was changed."
 * identifier[PLAC].value = "UAN000123"
-* identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
+* identifier[PLAC].system = "http://moh.gov.rw/fhir/identifier/uan"
 * identifier[PLAC].type.coding.code = #PLAC
 * identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[PLAC].type.coding.display = "Placer identifier"
@@ -498,7 +498,7 @@ Description:
     "Represents an ARV CarePlan for a patient on ART. 
     This resource will be used for ART initiated patient's as well as for routine ARV prescriptions."
 * identifier[PLAC].value = "UAN000123"
-* identifier[PLAC].system = "http://openhie.org/fhir/rwanda-hiv/identifier/uan"
+* identifier[PLAC].system = "http://moh.gov.rw/fhir/identifier/uan"
 * identifier[PLAC].type.coding.code = #PLAC
 * identifier[PLAC].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[PLAC].type.coding.display = "Placer identifier"
@@ -622,7 +622,7 @@ Description: "Organization responsible for carrying out the HIV testing services
 * extension[ProvinceIndex].valueInteger = 4
 * extension[DistrictIndex].valueInteger = 9
 * identifier[OrgID].value = "laboratory1"
-* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
+* identifier[OrgID].system = "http://moh.gov.rw/fhir/identifier/organization-id"
 * identifier[OrgID].type.coding.code = #XX
 * identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[OrgID].type.coding.display = "Organization identifier"
@@ -637,7 +637,7 @@ Usage: #example
 Title: "Requesting Organization"
 Description: "Organization requesting for HIV testing services."
 * identifier[OrgID].value = "facility5"
-* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
+* identifier[OrgID].system = "http://moh.gov.rw/fhir/identifier/organization-id"
 * identifier[OrgID].type.coding.code = #XX
 * identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[OrgID].type.coding.display = "Organization identifier"
@@ -651,7 +651,7 @@ Title: "Funding Organization"
 Description: "Funding organization."
 * extension[FundingOrganizationIndex].valueInteger = 1
 * identifier[OrgID].value = "funder1"
-* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
+* identifier[OrgID].system = "http://moh.gov.rw/fhir/identifier/organization-id"
 * identifier[OrgID].type.coding.code = #XX
 * identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[OrgID].type.coding.display = "Organization identifier"
@@ -665,7 +665,7 @@ Title: "Implementing Partner Organization"
 Description: "Implementing partner organization."
 * extension[ImplementingPartnerOrganizationIndex].valueInteger = 14
 * identifier[OrgID].value = "implementing-partner-org1"
-* identifier[OrgID].system = "http://openhie.org/fhir/rwanda-hiv/identifier/organization-id"
+* identifier[OrgID].system = "http://moh.gov.rw/fhir/identifier/organization-id"
 * identifier[OrgID].type.coding.code = #XX
 * identifier[OrgID].type.coding.system = "http://terminology.hl7.org/CodeSystem/v2-0203"
 * identifier[OrgID].type.coding.display = "Organization identifier"
